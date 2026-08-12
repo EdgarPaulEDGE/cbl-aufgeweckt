@@ -4,6 +4,13 @@ Impuls von EDGE Digital beim **Netzwerkfrühstück der LTM im K64**, Lübeck,
 **20. August 2026, ab 8:30 Uhr**. 24 Folien, etwa 40 Minuten plus offenes Q&A.
 Referenten: Edgar Paul-Ghazaryan (Eddie) und Bünyamin Emre Erdogan (Emre).
 
+## Live
+
+**https://edgarpauledge.github.io/cbl-aufgeweckt/**
+GitHub Pages aus `main`, Repo `EdgarPaulEDGE/cbl-aufgeweckt`, öffentlich.
+Jeder Push auf `main` geht automatisch live, das dauert etwa eine Minute.
+Die Karte zum Mitnehmen liegt unter `/karte.html`.
+
 Der Termin ist keine Werbeveranstaltung. Eike-Christian Fock stellt EDGE seinem
 eigenen Netzwerk vor, die Eigenwerbung läuft über Inhalt. Deshalb gibt es im
 ganzen Deck **keine Leistungsübersicht, keinen Case und keinen Call-to-Action**.
