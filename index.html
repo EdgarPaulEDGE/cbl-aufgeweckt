@@ -343,6 +343,45 @@ body.chrome-aus .chrome { opacity: 0; }
 .kopf-name { font-size: 46px; font-weight: 700; }
 .kopf-rolle { font-size: 28px; color: var(--w-45); margin-top: 8px; }
 
+/* ---------- Vollflächiges Bild hinter einer Trennfolie ----------
+   Der Verlauf darüber ist kein Effekt, sondern Bedingung: ohne ihn steht
+   weiße Schrift auf einem Foto mit hellen Stellen und wird unlesbar.
+   Er läuft von links (fast deckend) nach rechts (offen), also genau
+   entgegengesetzt zur Leserichtung der Headline. */
+/* Ohne die Stapelordnung liegt alles Statische HINTER dem absolut gesetzten
+   Bild. Sichtbar blieb nur die Headline, weil ihre Einlauf-Animation einen
+   eigenen Stapelkontext erzeugt. Deshalb hier explizit: Bild nach hinten,
+   alle Geschwister nach vorn. */
+.hat-bild > * { position: relative; z-index: 1; }
+.hat-bild > .bild-voll { z-index: 0; }
+.bild-voll { position: absolute; inset: 0; overflow: hidden; border-radius: 0; }
+/* Wir verlangen die Kennzeichnung auf Folie 20 selbst, also steht sie auch
+   an unserem eigenen Bild. Dezent, aber vorhanden. */
+.bild-quelle {
+  position: absolute; right: 56px; bottom: 40px; z-index: 2;
+  font-weight: 500; font-size: 17px; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(244, 246, 255, .38);
+}
+.bild-voll img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bild-voll::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 3, 9, .97) 0%, rgba(3, 3, 9, .88) 38%, rgba(3, 3, 9, .35) 78%, rgba(3, 3, 9, .55) 100%),
+    linear-gradient(0deg, rgba(3, 3, 9, .7) 0%, transparent 45%);
+}
+
+/* ---------- Beispiel-Posting mit Kennzeichnung ----------
+   Das Bild auf der Rechtsfolie ist selbst mit KI erzeugt. Die Zeile darunter
+   ist die Kennzeichnung, die das Gesetz verlangt, und zugleich die Vorlage,
+   die die Runde abschreiben kann. */
+.posting { border: 1px solid var(--hairline-stark); border-radius: 20px; overflow: hidden; background: rgba(8, 11, 22, .7); }
+.posting img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.posting .hinweis {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 26px; font-size: 25px; color: var(--w-70); border-top: 1px solid var(--hairline);
+}
+.posting .hinweis svg { width: 26px; height: 26px; flex: 0 0 26px; stroke: var(--cyan); }
+
 /* ---------- Platzhalter für offene Punkte ---------- */
 .ph {
   border: 2px dashed var(--hairline-stark); border-radius: 26px;
@@ -475,9 +514,7 @@ body.chrome-aus .chrome { opacity: 0; }
             <p>Sehr geehrte Damen und Herren,</p>
             <p>vielen Dank für Ihre Anfrage. Gerne unterbreiten wir Ihnen ein
                individuelles Angebot.</p>
-            <p>Teilen Sie uns dafür bitte noch Bestuhlung, Übernachtungswunsch
-               und Budgetrahmen mit.</p>
-            <p>Wir freuen uns auf Ihre Rückmeldung.</p>
+            <p>Teilen Sie uns dafür bitte noch Ihre Wünsche mit.</p>
           </div>
         </div>
       </div>
@@ -486,10 +523,9 @@ body.chrome-aus .chrome { opacity: 0; }
         <div class="fenster karte-gut wachsen" style="justify-content:center;">
           <div class="fenster-leib" style="font-size:36px;">
             <p>Hallo Frau Behrens,</p>
-            <p>der 14. Oktober ist frei. Für 25 Personen passt der Raum Trave:
-               Tageslicht, Beamer und WLAN sind drin.</p>
-            <p>Die Tagungspauschale liegt bei 68 Euro pro Person, mit Pausen
-               und Mittagessen.</p>
+            <p>der 14. Oktober ist frei. Für 25 Personen passt der Raum Trave,
+               Beamer und WLAN sind drin.</p>
+            <p>Die Tagungspauschale liegt bei 68 Euro pro Person.</p>
             <p>Soll ich den Termin bis Freitag festhalten?</p>
           </div>
         </div>
@@ -695,8 +731,9 @@ body.chrome-aus .chrome { opacity: 0; }
 
 <!-- ============ 10: DIVIDER VIER FÄLLE ============ -->
 <section data-chrome="aus">
-  <div class="slide" style="justify-content:center;position:relative;">
-    <span class="riesenzahl">3</span>
+  <div class="slide hat-bild" style="justify-content:center;position:relative;">
+    <div class="bild-voll"><img src="assets/images/fruehstueck.jpg" alt=""></div>
+    <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Der praktische Teil</p>
     <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Fälle vom<br><span class="schimmer">Frühstückstisch.</span></h2>
     <p class="divider-zeit">Angebot · Absage · Bewertung</p>
@@ -742,8 +779,7 @@ body.chrome-aus .chrome { opacity: 0; }
           <p>Hallo Frau Behrens,</p>
           <p>der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave:
              Tageslicht, ruhig, gut für einen ganzen Tag.</p>
-          <p>Die Tagungspauschale liegt bei 68 Euro pro Person, mit beiden Pausen
-             und Mittagessen.</p>
+          <p>Die Pauschale liegt bei 68 Euro pro Person, mit Pausen und Mittagessen.</p>
           <p>Ich halte den Termin bis Freitag fest. Passt das?</p>
         </div>
       </div>
@@ -777,8 +813,8 @@ body.chrome-aus .chrome { opacity: 0; }
           <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
           <div class="prompt klein">
             <span>Schreib eine Absage. 120 Personen passen nicht zu uns, unser
-            Maximum sind 60. Der Kunde ist wichtig und soll wiederkommen. Kurz und
-            ehrlich, kein Bedauern über drei Absätze. Lass die Tür offen.</span>
+            Maximum sind 60. Der Kunde soll wiederkommen. Kurz und ehrlich,
+            kein Bedauern über drei Absätze. Lass die Tür offen.</span>
           </div>
         </div>
       </div>
@@ -786,9 +822,8 @@ body.chrome-aus .chrome { opacity: 0; }
         <div class="fenster-kopf"><span class="von">Absage</span><span class="betreff">freundlich, aber klar</span></div>
         <div class="fenster-leib" style="font-size:44px;">
           <p>Hallo Herr Petersen,</p>
-          <p>diesmal muss ich passen: bei 120 Gästen sind wir zu klein, bei uns
-             wird es ab 60 eng. Ich möchte Ihnen keinen Abend verkaufen, der
-             zu voll ist.</p>
+          <p>diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Ich möchte
+             Ihnen keinen Abend verkaufen, der zu voll ist.</p>
           <p>Wenn Sie mögen, frage ich nebenan nach. Für Ihre kleinere Runde im
              Frühjahr halte ich gern wieder etwas frei.</p>
         </div>
@@ -832,8 +867,7 @@ body.chrome-aus .chrome { opacity: 0; }
           <div class="prompt klein">
             <span>Antworte öffentlich auf diese Bewertung. Das Frühstück geht bis
             10 Uhr, an dem Tag war eine Gruppe früher da als angekündigt.
-            Nicht rechtfertigen, nicht streiten. Höchstens vier Sätze, und biete
-            an, das persönlich zu klären.</span>
+            Nicht rechtfertigen, nicht streiten. Höchstens vier Sätze.</span>
           </div>
         </div>
       </div>
@@ -842,8 +876,7 @@ body.chrome-aus .chrome { opacity: 0; }
           <p style="font-size:41px;line-height:1.45;margin:0;">
             Das tut uns leid, so soll ein Morgen bei uns nicht anfangen. An dem Tag
             war eine Gruppe früher da als angemeldet, und wir sind nicht
-            hinterhergekommen. Regulär gibt es bis 10 Uhr Frühstück. Schreiben Sie
-            uns kurz, wir möchten das wiedergutmachen.
+            hinterhergekommen. Regulär gibt es bis 10 Uhr Frühstück.
           </p>
         </div>
         <div class="fragment fade-up" style="flex-shrink:0;">
@@ -1024,59 +1057,7 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 19: KENNZEICHNUNGSPFLICHT ============ -->
-<section>
-  <div class="slide">
-    <h2 class="headline">Seit diesem Monat ist das <span class="schimmer">Pflicht.</span></h2>
-    <div class="reihe wachsen" style="gap:44px;margin-top:8px;align-items:stretch;">
-      <div class="feld fragment fade-up" style="flex:0 0 640px;display:flex;flex-direction:column;justify-content:center;gap:26px;">
-        <p class="label">EU AI Act, Artikel 50</p>
-        <p style="font-size:46px;font-weight:600;line-height:1.25;margin:0;">
-          Seit dem 2. August 2026 gelten die Transparenzpflichten.
-        </p>
-        <p class="lead" style="font-size:29px;">
-          Sie treffen nicht nur die Anbieter, sondern alle, die damit
-          veröffentlichen. Also euch.
-        </p>
-      </div>
-      <div class="spalte wachsen" style="gap:26px;">
-        <div class="feld wachsen fragment fade-up" style="display:flex;align-items:center;gap:36px;">
-          <svg style="width:92px;height:92px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.6"/>
-          </svg>
-          <div>
-            <p class="label" style="margin-bottom:12px;">Bilder, Ton, Video</p>
-            <p style="font-size:41px;line-height:1.35;margin:0;">
-              Wer KI-Material veröffentlicht, muss das offenlegen. Auf Instagram
-              genauso wie auf der Website.
-            </p>
-          </div>
-        </div>
-        <div class="feld wachsen fragment fade-up" style="display:flex;align-items:center;gap:36px;">
-          <svg style="width:92px;height:92px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#009FF4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M9 11h6M9 15h4"/>
-          </svg>
-          <div>
-            <p class="label" style="margin-bottom:12px;">Chatbot</p>
-            <p style="font-size:41px;line-height:1.35;margin:0;">
-              Wer einen einsetzt, muss sagen, dass da eine Maschine schreibt.
-              Ein Satz reicht.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="quelle mt">Verordnung (EU) 2024/1689, Artikel 50. In Kraft seit August 2024, dieser Teil anwendbar ab 2. August 2026.</p>
-    <aside class="notes">
-      Der stärkste Aufwecker der Runde. Erwartbar: die meisten wussten das nicht.
-      Kurz nachfragen, wer schon KI-Bilder gepostet hat. Nicht dramatisieren,
-      aber auch nicht abschwächen: das Ordnungswidrigkeitenrecht dahinter ist real.
-      Wer nach Bußgeldhöhen fragt: nicht raten, sondern anbieten, das nachzureichen.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 20: EIGENER REINFALL ============ -->
+<!-- ============ 19: EIGENER REINFALL ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
@@ -1113,10 +1094,63 @@ body.chrome-aus .chrome { opacity: 0; }
       Die Geschichte gehört euch beiden, also erzählt sie auch zu zweit.
       Sie funktioniert, weil sie nichts beschönigt: die Antworten sahen gut aus,
       und genau das war das Problem. Ruhig lachen lassen.
-      Der Anschluss an Folie 20 ist der Punkt: erkennen konnte man es nicht,
-      nachsehen hätte man müssen.
+      Der Anschluss an die Folie davor ist der Punkt: erkennen konnte man es
+      nicht, nachsehen hätte man müssen. Danach der Sprung ins Recht.
       Wer fragt, ob das erlaubt war: ja, Open Book, alle Hilfsmittel zugelassen.
       Erlaubt war es. Klug war es nicht.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 20: KENNZEICHNUNGSPFLICHT ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Seit diesem Monat ist das <span class="schimmer">Pflicht.</span></h2>
+    <div class="reihe wachsen" style="gap:52px;margin-top:8px;align-items:center;">
+      <!-- Das Bild ist selbst mit KI erzeugt und trägt die Kennzeichnung, die
+           der Artikel verlangt. Damit ist die Rechtsfolie kein Hinweis mehr,
+           sondern ein Beispiel, das die Runde abschreiben kann. -->
+      <div class="posting fragment fade-up" style="flex:0 0 700px;">
+        <img src="assets/images/tagungsraum-ki.jpg" alt="Beispielbild eines Tagungsraums">
+        <div class="hinweis">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.4"/>
+          </svg>
+          <span>Dieses Bild wurde mit KI erstellt.</span>
+        </div>
+      </div>
+      <div class="spalte wachsen" style="gap:30px;">
+        <div class="fragment fade-up">
+          <p class="label" style="margin-bottom:16px;">EU AI Act, Artikel 50</p>
+          <p style="font-size:50px;font-weight:600;line-height:1.2;margin:0;">
+            Wer KI-Bilder veröffentlicht, muss das offenlegen.
+          </p>
+        </div>
+        <div class="fragment fade-up">
+          <p class="lead" style="font-size:33px;">
+            Seit dem 2. August 2026. Auf Instagram genauso wie auf der Website.
+            Für Ton und Video gilt dasselbe, und wer einen Chatbot einsetzt,
+            muss sagen, dass da eine Maschine schreibt.
+          </p>
+        </div>
+        <div class="fragment fade-up">
+          <p style="font-size:33px;line-height:1.4;margin:0;">
+            Die Zeile links reicht als Kennzeichnung.
+            <span class="cyan">Genau so, ein Satz.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="quelle mt">Verordnung (EU) 2024/1689, Artikel 50. In Kraft seit August 2024, dieser Teil anwendbar ab 2. August 2026.</p>
+    <aside class="notes">
+      Der stärkste Aufwecker der Runde. Erwartbar: die meisten wussten das nicht.
+      Das Bild links haben wir heute früh in zwei Minuten erzeugen lassen.
+      Genau diese Sorte Bild postet ein Haus auf Instagram, und genau dafür
+      gilt die Pflicht. Wer genau hinsieht: hinter den Fenstern liegen Berge,
+      an der Ostsee gibt es die nicht. Das ist der Anschluss an die Folie davor.
+      Nicht dramatisieren, aber auch nicht abschwächen: das Ordnungswidrigkeiten-
+      recht dahinter ist real. Wer nach Bußgeldhöhen fragt: nicht raten, sondern
+      anbieten, das nachzureichen.
     </aside>
   </div>
 </section>
@@ -1244,6 +1278,42 @@ function pizzaPruefen() {
 }
 Reveal.on('ready', pizzaPruefen);
 Reveal.on('slidechanged', pizzaPruefen);
+
+/* Die beiden Wortzahlen zählen hoch, sobald ihr Segment erscheint. Der
+   Unterschied zwischen 4 und 61 wird dadurch körperlich spürbar: die eine
+   Zahl ist sofort fertig, die andere läuft. Über setInterval statt
+   requestAnimationFrame, weil der Browser Animationsbilder anhält, sobald
+   die Seite im Hintergrund liegt, Timer aber weiterlaufen. */
+function zahlHochzaehlen(el) {
+  if (el.dataset.gezaehlt) return;
+  el.dataset.gezaehlt = '1';
+  /* Zielwert einmal merken: wird beim Zurückblättern mitten im Lauf
+     abgebrochen, stünde sonst der halbe Zwischenstand als neues Ziel da. */
+  var ziel = parseInt(el.dataset.ziel || el.textContent, 10);
+  if (!ziel) return;
+  el.dataset.ziel = String(ziel);
+  var dauer = 340 + ziel * 9;     // grosse Zahlen laufen laenger
+  var start = null;
+  el.textContent = '0';
+  var takt = setInterval(function () {
+    start = (start || 0) + 40;
+    var anteil = Math.min(1, start / dauer);
+    /* am Ende auslaufen lassen, sonst wirkt der Stopp abgehackt */
+    var weich = 1 - Math.pow(1 - anteil, 3);
+    el.textContent = String(Math.round(ziel * weich));
+    if (anteil >= 1) clearInterval(takt);
+  }, 40);
+}
+Reveal.on('fragmentshown', function (e) {
+  var z = e.fragment.querySelector('.wortzahl .zahl');
+  if (z) zahlHochzaehlen(z);
+});
+/* Beim Zurückblättern wieder auf Anfang, damit der Effekt beim zweiten
+   Durchgang nicht fehlt. */
+Reveal.on('fragmenthidden', function (e) {
+  var z = e.fragment.querySelector('.wortzahl .zahl');
+  if (z) { delete z.dataset.gezaehlt; }
+});
 
 /* Sternschnuppen wie im EdgeVision-Wizard: alle 6,5 Sekunden eine,
    hinter den Folien auf der Raum-Ebene. */

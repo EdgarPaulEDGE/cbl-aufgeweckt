@@ -70,6 +70,22 @@ laufenden `npm run serve` in einem zweiten Fenster.
   Drucken über Chrome, A4, Ränder "keine", Hintergrundgrafiken einschalten.
   Zwei Karten passen auf ein A4-Blatt.
 
+## Bilder
+
+Zwei Bilder im Deck sind mit KI erzeugt (Higgsfield, GPT Image 2) und beide
+gekennzeichnet:
+
+- `assets/images/fruehstueck.jpg` auf der Trennfolie vor den drei Fällen
+- `assets/images/tagungsraum-ki.jpg` auf der Folie zur Kennzeichnungspflicht
+
+Das zweite ist Absicht bis ins Detail: es ist genau die Sorte Hochglanzbild, die
+ein Haus auf Instagram stellt, es trägt die Kennzeichnung, die Artikel 50
+verlangt, und hinter seinen Fenstern liegen Berge, die es an der Ostsee nicht
+gibt. Damit belegt es beide Aussagen des Blocks auf einmal.
+
+Wer die Bilder austauscht: die Kennzeichnung muss mit. Ein Deck, das die Pflicht
+erklärt und selbst dagegen verstößt, verliert den Raum.
+
 ## Gestaltung
 
 Übernommen aus der SoulByte-Schulung, damit alle EDGE-Auftritte gleich aussehen:
@@ -96,9 +112,11 @@ Trennfolien (`data-chrome="aus"`) verschwinden beide samt Seitenzahl.
 4. **Live-Moment auf Folie 18 vorbereiten:** einmal selbst durchspielen, was die
    KI auf eine Lübsche Frage antwortet, die die Runde selbst prüfen kann.
 
-Folie 20 erzählt die Open-Book-Klausur von 2023: ChatGPT 3.5 gefragt, nicht
-gegengelesen, beide durchgefallen. Die Geschichte ist echt und trägt den Block
-über Halluzinationen, weil sie zeigt, dass man es dem Text nicht ansieht.
+Folie 19 erzählt die Open-Book-Klausur von 2023: ChatGPT 3.5 gefragt, nicht
+gegengelesen, beide durchgefallen. Die Geschichte ist echt und steht bewusst
+direkt hinter der Halluzinations-Folie, weil sie deren Aussage belegt: man
+sieht es dem Text nicht an. Erst danach kommt mit der Kennzeichnungspflicht
+der Sprung ins Recht.
 
 ## Abgrenzung zu den anderen beiden Terminen
 
