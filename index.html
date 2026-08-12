@@ -260,10 +260,10 @@ body.chrome-aus .chrome { opacity: 0; }
    Ersetzt den Erklärabsatz: der Größenunterschied zwischen beiden Prompts
    ist eine Zahl und braucht keinen Satz. margin-top:auto stellt beide Zahlen
    auf dieselbe Linie, egal wie lang der Prompt darüber ist. */
-.wortzahl { display: flex; align-items: baseline; gap: 18px; margin-top: auto; padding-top: 30px; }
+.wortzahl { display: flex; align-items: baseline; gap: 18px; padding-top: 26px; }
 .wortzahl .zahl { font-size: 104px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
 .wortzahl .was { font-size: 27px; color: var(--w-45); }
-.wortzahl.schwach .zahl { color: var(--w-25); }
+.wortzahl.schwach .zahl { color: var(--w-45); }
 .wortzahl.gut .zahl {
   background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -516,7 +516,7 @@ body.chrome-aus .chrome { opacity: 0; }
       <div class="fragment fade-up">
         <div class="wertung schwach">Antwort A</div>
         <div class="fenster karte-schwach wachsen" style="justify-content:center;">
-          <div class="fenster-leib" style="font-size:36px;color:var(--w-70);">
+          <div class="fenster-leib" style="font-size:42px;color:var(--w-70);">
             <p>Sehr geehrte Damen und Herren,</p>
             <p>vielen Dank für Ihre Anfrage. Gerne unterbreiten wir Ihnen ein
                individuelles Angebot.</p>
@@ -527,7 +527,7 @@ body.chrome-aus .chrome { opacity: 0; }
       <div class="fragment fade-up">
         <div class="wertung gut">Antwort B</div>
         <div class="fenster karte-gut wachsen" style="justify-content:center;">
-          <div class="fenster-leib" style="font-size:36px;">
+          <div class="fenster-leib" style="font-size:42px;">
             <p>Hallo Frau Behrens,</p>
             <p>der 14. Oktober ist frei. Für 25 Personen passt der Raum Trave,
                Beamer und WLAN sind drin.</p>
@@ -644,7 +644,7 @@ body.chrome-aus .chrome { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Die <span class="schimmer">Brücke.</span></h2>
-    <div class="reihe wachsen" style="align-items:stretch;gap:60px;margin-top:6px;max-height:520px;">
+    <div class="reihe wachsen" style="align-items:stretch;gap:60px;margin-top:20px;max-height:420px;">
       <div class="feld fragment fade-up" style="flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center;">
         <p class="label" style="margin-bottom:20px;">Diesseits</p>
         <p style="font-size:62px;font-weight:600;line-height:1.2;margin:0;">
@@ -677,7 +677,8 @@ body.chrome-aus .chrome { opacity: 0; }
 <!-- ============ 8: MERKSATZ ============ -->
 <section data-chrome="aus">
   <div class="slide mittig">
-    <h2 class="hero" style="font-size:142px;">Die KI liefert nicht schlecht.<br><span class="schimmer">Wir fragen schlecht.</span></h2>
+    <h2 class="hero" style="font-size:96px;margin-bottom:14px;">Die KI liefert nicht schlecht.</h2>
+    <p class="hero schimmer" style="font-size:126px;margin:0;">Wir fragen schlecht.</p>
     <aside class="notes">
       Kurz stehen lassen. Nicht erklären. Die Erklärung kommt mit der Pizza.
     </aside>
@@ -692,7 +693,7 @@ body.chrome-aus .chrome { opacity: 0; }
       <div class="fragment fade-up">
         <div class="wertung schwach">Ihr sagt</div>
         <div class="feld karte-schwach wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;">
-          <p style="font-size:64px;font-weight:700;margin:0;">„Pizza."</p>
+          <p style="font-size:64px;font-weight:700;margin:0;min-height:150px;display:flex;align-items:center;">„Pizza."</p>
           <!-- Nackter Teig ohne alles: dieselbe Form wie rechts, damit der
                Vergleich über den Belag läuft und nicht über die Zeichnung. -->
           <svg class="pizza" viewBox="0 0 200 200" fill="none" aria-hidden="true" style="width:300px;height:300px;">
@@ -704,8 +705,8 @@ body.chrome-aus .chrome { opacity: 0; }
       </div>
       <div class="fragment fade-up">
         <div class="wertung gut">Oder ihr sagt</div>
-        <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:30px;">
-          <p style="font-size:32px;font-weight:600;margin:0;text-align:center;line-height:1.4;max-width:24em;">
+        <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;">
+          <p style="font-size:32px;font-weight:600;margin:0;text-align:center;line-height:1.4;max-width:24em;min-height:150px;display:flex;align-items:center;">
             „Eine Salami, 32er, dünner Boden,<br>extra Käse, in einer halben Stunde,<br>Fischstraße 16."
           </p>
           <svg class="pizza" id="pizza-gut" viewBox="0 0 200 200" fill="none" aria-hidden="true" style="width:300px;height:300px;">
@@ -1225,7 +1226,7 @@ body.chrome-aus .chrome { opacity: 0; }
 <!-- ============ 24: ABSCHLUSS ============ -->
 <section data-chrome="aus">
   <div class="slide mittig">
-    <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:110px;margin-bottom:54px;">
+    <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:140px;margin-bottom:66px;">
     <h2 class="hero" style="font-size:128px;">Danke fürs <span class="schimmer">Frühstück.</span></h2>
     <p class="lead fragment fade-up" style="font-size:34px;margin-top:22px;">
       Edgar Paul-Ghazaryan und Emre Erdogan<br>
