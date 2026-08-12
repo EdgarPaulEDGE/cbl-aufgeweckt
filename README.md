@@ -46,16 +46,26 @@ alle lokalen Verweise und meldet fehlende Dateien. Ein Bild, das nicht existiert
 fällt im Browser stumm aus und man merkt es sonst erst vor Publikum.
 
 ```bash
-npm install     # einmalig, holt puppeteer
-npm run pruefe        # misst jede Folie auf Überlauf, legt PNGs in .pruefung/
+npm install           # einmalig, holt puppeteer
+npm run pruefe-alles  # die vier Layoutprüfungen nacheinander
 npm run pruefe-karte  # prüft, ob die Karte über die Papierkante läuft
 ```
 
-`npm run pruefe` ist die wichtigere der beiden Prüfungen. Reveal schneidet zu
-hohe Folien kommentarlos ab: kein Fehler, keine Scrollleiste, der Inhalt ist
-einfach unsichtbar. Das Skript navigiert zu jeder Folie, misst jedes Element
-gegen den Rand und meldet, was rausläuft. Beide Skripte brauchen einen
-laufenden `npm run serve` in einem zweiten Fenster.
+Alle Prüfskripte brauchen einen laufenden `npm run serve` in einem zweiten
+Fenster. Sie fahren jede Folie an und messen im Browser, weil sich Layoutfehler
+im Quelltext nicht sehen lassen:
+
+| Skript | Findet |
+|---|---|
+| `pruefe-folien.mjs` | Inhalt außerhalb der Folie. Reveal schneidet zu hohe Folien kommentarlos ab, ohne Fehler und ohne Scrollleiste. Legt zusätzlich von jeder Folie ein PNG in `.pruefung/`. |
+| `pruefe-ueberlappung.mjs` | Kästen, die sich gegenseitig überdecken. Passiert mitten auf der Folie, wo weder Rand- noch Kantenprüfung anschlägt. |
+| `pruefe-ausrichtung.mjs` | Kanten, die um 1 bis 24 Pixel danebenliegen. Genau dieser Graubereich liest sich als Fehler, größere Abstände liest das Auge als Absicht. |
+| `pruefe-reihenfolge.mjs` | Einblendungen, die gegen die Leserichtung springen, und Folien, deren Kopfzeile beim Blättern noch fehlt. |
+
+Die vier decken unterschiedliche Fehlerklassen ab, deshalb ersetzt keines das
+andere. Die Überlappungsprüfung kam dazu, nachdem sich auf der Halluzinations-
+Folie zwei Kästen 54 Pixel weit überdeckt hatten und die beiden älteren
+Prüfungen das nicht sahen.
 
 ## Dateien
 
