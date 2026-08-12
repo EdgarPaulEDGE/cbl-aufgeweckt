@@ -358,7 +358,7 @@ body.chrome-aus .chrome { opacity: 0; }
 /* Wir verlangen die Kennzeichnung auf Folie 20 selbst, also steht sie auch
    an unserem eigenen Bild. Dezent, aber vorhanden. */
 .bild-quelle {
-  position: absolute; right: 56px; bottom: 40px; z-index: 2;
+  position: absolute; left: 130px; bottom: 40px; z-index: 2;
   font-weight: 500; font-size: 17px; letter-spacing: .1em; text-transform: uppercase;
   color: rgba(244, 246, 255, .38);
 }
@@ -940,8 +940,12 @@ body.chrome-aus .chrome { opacity: 0; }
 
 <!-- ============ 15: DIVIDER DO'S UND DON'TS ============ -->
 <section data-chrome="aus">
-  <div class="slide" style="justify-content:center;position:relative;">
-    <span class="riesenzahl">!</span>
+  <div class="slide hat-bild" style="justify-content:center;position:relative;">
+    <!-- Derselbe Tisch wie vor den drei Fällen, nur ist das Frühstück vorbei
+         und der Rechner steht da. Der Tonwechsel des Blocks liegt damit
+         schon im Bild, bevor ein Wort gesagt ist. -->
+    <div class="bild-voll"><img src="assets/images/schreibtisch.jpg" alt=""></div>
+    <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Bevor ihr loslegt</p>
     <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Dinge, die euch<br><span class="schimmer">teuer werden können.</span></h2>
     <p class="divider-zeit">Daten · Erfindungen · Kennzeichnung</p>
