@@ -28,6 +28,24 @@ Vollflächenfolie den Wechsel, damit er nicht mitten im Satz passiert.
 Wer gerade nicht spricht, hört zu und wirft ein, wenn im Raum jemand die Stirn
 runzelt. Das ist bei acht Leuten am Tisch wichtiger als jede Folie.
 
+## Wie sich eine Folie aufbaut
+
+Jede Folie kommt **geführt**, nicht fertig. Beim Blättern läuft zuerst die
+Headline allein ein, ohne Klick. Danach folgt Segment für Segment, je ein Klick
+in Leserichtung: linke Spalte vor rechter, oben vor unten, der Takeaway zuletzt.
+Headline und Inhalt erscheinen nie zusammen.
+
+Das sind etwa drei bis sieben Klicks pro Inhaltsfolie. Wer schneller durchwill,
+drückt einfach mehrmals: die Pfeiltaste rechts arbeitet die Segmente ab und
+springt danach zur nächsten Folie. Rückwärts geht es genauso.
+
+Praktisch heißt das: **redet zum Segment, das gerade gekommen ist.** Wer alle
+Segmente vorklickt und dann erzählt, verschenkt genau den Effekt, für den die
+Staffelung da ist.
+
+`?nofrag` an die Adresse hängen zeigt alles sofort, praktisch für die Durchsicht
+und für den Fall, dass jemand anders das Deck durchblättert.
+
 ## Die drei Momente, auf die es ankommt
 
 **Folie 3 und 4.** Antwort A einblenden, wirken lassen, dann B. Erst danach
