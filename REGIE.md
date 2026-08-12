@@ -16,7 +16,7 @@ lauffähig: man kann jeden Fall weglassen, ohne dass der Rest bricht.
 | 0:11 | 11 bis 13 | Die drei Fälle, live getippt | Emre |
 | 0:24 | 14 | Die vier Bausteine, jetzt benannt | Emre |
 | 0:27 | 15 bis 20 | Daten, Erfindungen, Kennzeichnung, unser Reinfall | Eddie |
-| 0:36 | 21 bis 23 | Sieben zum Mitnehmen, offenes Ende | beide |
+| 0:36 | 21 bis 23 | Acht zum Mitnehmen, offenes Ende | beide |
 | 0:40 | 24 | Steht, während weitergefrühstückt wird | |
 
 ## Rollenverteilung
@@ -57,7 +57,7 @@ Auftrag ist.
 prüfen kann. Vorher einmal durchspielen. Wenn die KI zufällig richtig liegt,
 ist das kein Problem: dann ist der Punkt, dass man es eben nicht ansieht.
 
-**Folie 19, Kennzeichnungspflicht.** Der stärkste Aufwecker. Nicht
+**Folie 20, Kennzeichnungspflicht.** Der stärkste Aufwecker. Nicht
 dramatisieren, aber auch nicht abschwächen. Wer nach Bußgeldhöhen fragt: nicht
 raten, sondern anbieten, die Zahl nachzureichen.
 
@@ -78,10 +78,10 @@ In dieser Reihenfolge streichen:
 1. **Folie 12** (Fall 2, Absage) nur zeigen statt tippen. Spart drei Minuten,
    ohne dass der Bogen bricht.
 2. **Folie 5** (zwei Sätze zu uns) gesprochen statt gezeigt.
-3. **Folie 12** ganz. Erst wenn es wirklich nicht anders geht: dieser Fall
-   löst erfahrungsgemäß viel Zustimmung aus.
+3. **Folie 9** (Pizza) gesprochen statt gezeigt. Die Analogie trägt auch
+   ohne Bild, sie ist in zwei Sätzen erzählt.
 
-Nicht streichen: Folie 4, Folie 14, Folie 19. Das sind die drei Folien, wegen
+Nicht streichen: Folie 4, Folie 14, Folie 20. Das sind die drei Folien, wegen
 denen der Vortrag stattfindet.
 
 ## Wenn es keine Verbindung gibt

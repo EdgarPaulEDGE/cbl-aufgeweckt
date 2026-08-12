@@ -2,7 +2,7 @@
 
 Impuls von EDGE Digital beim **Netzwerkfrühstück der LTM im K64**, Lübeck,
 **20. August 2026, ab 8:30 Uhr**. 24 Folien, etwa 40 Minuten plus offenes Q&A.
-Referenten: Edgar Paul-Ghazaryan (Eddie) und Bünyamin Emre Erdogan (Emre).
+Referenten: Edgar Paul-Ghazaryan (Eddie) und Emre Erdogan.
 
 ## Live
 
@@ -66,7 +66,7 @@ laufenden `npm run serve` in einem zweiten Fenster.
 
 **Für den Frühstückstisch**
 - `karte.html` — Karte zum Mitnehmen, A5 quer, beidseitig. Vorderseite die
-  sieben Punkte, Rückseite die vier Bausteine und ein Prompt zum Abschreiben.
+  acht Punkte, Rückseite die vier Bausteine und ein Prompt zum Abschreiben.
   Drucken über Chrome, A4, Ränder "keine", Hintergrundgrafiken einschalten.
   Zwei Karten passen auf ein A4-Blatt.
 
