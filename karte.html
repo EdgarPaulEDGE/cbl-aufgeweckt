@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Aufgeweckt · Karte zum Mitnehmen</title>
+<style>
+/* ============================================================================
+   KARTE ZUM MITNEHMEN, A5 quer, beidseitig.
+   Zwei Karten passen auf ein A4-Blatt. Bewusst hell statt im Deck-Schwarz:
+   eine vollflächig dunkle Karte zieht auf jedem Bürodrucker Streifen und
+   frisst Toner. Die Marke trägt hier die Typografie und ein Verlaufsstrich.
+   Drucken: Chrome, A4, Ränder "keine", Hintergrundgrafiken einschalten.
+   ========================================================================== */
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Regular.ttf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-DemiBold.ttf") format("truetype"); font-weight: 600; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Bold.ttf") format("truetype"); font-weight: 700; }
+
+:root {
+  --papier: #FCFCFD;
+  --tinte: #0B0D16;
+  --grau: #5A5F72;
+  --linie: rgba(11, 13, 22, .14);
+  --purple: #C15DE6;
+  --blau: #009FF4;
+  --cyan: #00B8C4;
+  --font: "Avenir Next LT", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #D9DCE4; font-family: var(--font); color: var(--tinte);
+  padding: 10mm; display: flex; flex-direction: column; align-items: center; gap: 8mm;
+}
+.karte {
+  width: 210mm; height: 148mm; background: var(--papier);
+  padding: 13mm 15mm; display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+/* Der Markenstrich läuft oben über die volle Breite: das einzige farbige
+   Element, das auch bei schlechtem Druck noch als EDGE lesbar ist. */
+.karte::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4mm;
+  background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
+}
+
+.kopf { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7mm; }
+h1 { font-size: 27pt; font-weight: 700; letter-spacing: -.02em; text-transform: uppercase; line-height: 1; }
+h1 span {
+  background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.unter { font-size: 10.5pt; color: var(--grau); margin-top: 2.5mm; }
+.marke { font-size: 7pt; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--grau); text-align: right; line-height: 1.7; }
+
+h2 { font-size: 11pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--grau); margin-bottom: 4mm; }
+
+/* Vorderseite: die sieben Punkte in zwei Spalten */
+.sieben { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12mm; }
+.sieben > div { display: flex; gap: 5mm; align-items: baseline; padding: 3.4mm 0; border-bottom: 1px solid var(--linie); }
+.sieben .nr { font-size: 15pt; font-weight: 700; color: var(--blau); flex: 0 0 7mm; }
+.sieben .satz { font-size: 12pt; font-weight: 600; line-height: 1.25; }
+.sieben .satz small { display: block; font-size: 9.5pt; font-weight: 400; color: var(--grau); margin-top: 1mm; }
+
+/* Rückseite: die vier Bausteine und ein Prompt zum Abschreiben */
+.vier { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 7mm; margin-bottom: 4mm; }
+.vier > div { padding-right: 6mm; }
+.vier > div + div { border-left: 1px solid var(--linie); padding-left: 6mm; }
+.vier .name { font-size: 9pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 2mm; }
+/* Feste Höhe für die Frage: sonst startet das Beispiel unter der einen
+   dreizeiligen Frage tiefer als unter den drei zweizeiligen. */
+.vier .frage { font-size: 11.5pt; font-weight: 600; line-height: 1.25; margin-bottom: 3mm; min-height: 11mm; }
+.vier .bsp { font-size: 9.5pt; color: var(--grau); line-height: 1.4; }
+.n-rolle { color: #A93FCB; }
+.n-ziel { color: var(--blau); }
+.n-kontext { color: #00919C; }
+.n-aufgabe { color: #8A8F00; }
+
+.prompt {
+  border: 1px solid var(--linie);
+  padding: 4mm 6mm; font-size: 11pt; line-height: 1.45; background: #F4F6FA;
+}
+.prompt b { font-weight: 700; }
+
+.fuss { margin-top: auto; padding-top: 5mm; border-top: 1px solid var(--linie);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 9pt; color: var(--grau); }
+
+@media print {
+  body { background: none; padding: 0; gap: 0; }
+  .karte { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ VORDERSEITE ============ -->
+<section class="karte">
+  <div class="kopf">
+    <div>
+      <h1>Auf<span>geweckt.</span></h1>
+      <p class="unter">Sieben Dinge, die ab heute Nachmittag gelten.</p>
+    </div>
+    <div class="marke">
+      EDGE Digital<br>
+      20. August 2026 · K64 Lübeck
+    </div>
+  </div>
+
+  <h2>Zum Mitnehmen</h2>
+  <div class="sieben">
+    <div><span class="nr">1</span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe. Siehe Rückseite.</small></span></div>
+    <div><span class="nr">5</span><span class="satz">Keine echten Namen eintippen.<small>„Frau B." und „unser Haus" reichen völlig.</small></span></div>
+    <div><span class="nr">2</span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
+    <div><span class="nr">6</span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, Haken raus.</small></span></div>
+    <div><span class="nr">3</span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Was rausgeht, liest ein Mensch gegen.</small></span></div>
+    <div><span class="nr">7</span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht, auch bei Instagram.</small></span></div>
+    <div style="border-bottom:none;"><span class="nr">4</span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken schneller als Lob.</small></span></div>
+    <div style="border-bottom:none;"><span class="nr">·</span><span class="satz" style="color:var(--grau);font-weight:400;">Einer davon reicht für heute.<small>Der Rest kommt von allein.</small></span></div>
+  </div>
+
+  <div class="fuss">
+    <span>EDGE Digital · Künstliche Intelligenz. Echte Wirkung.</span>
+    <span>Fischstraße 16 · 23552 Lübeck</span>
+  </div>
+</section>
+
+<!-- ============ RÜCKSEITE ============ -->
+<section class="karte">
+  <div class="kopf">
+    <div>
+      <h1>Die vier <span>Bausteine.</span></h1>
+      <p class="unter">Wer diese vier Dinge hinschreibt, bekommt einen brauchbaren Text.</p>
+    </div>
+    <div class="marke">
+      Rückseite<br>
+      Zum Abschreiben
+    </div>
+  </div>
+
+  <div class="vier">
+    <div>
+      <div class="name n-rolle">Rolle</div>
+      <div class="frage">Wer soll das schreiben?</div>
+      <div class="bsp">„Du bist Veranstaltungsleiterin in unserem Haus."</div>
+    </div>
+    <div>
+      <div class="name n-ziel">Ziel</div>
+      <div class="frage">Was soll danach passieren?</div>
+      <div class="bsp">„Sie soll den Termin bis Freitag halten."</div>
+    </div>
+    <div>
+      <div class="name n-kontext">Kontext</div>
+      <div class="frage">Was weiß nur ihr?</div>
+      <div class="bsp">„68 Euro pro Person, Raum frei am 14. Oktober."</div>
+    </div>
+    <div>
+      <div class="name n-aufgabe">Aufgabe</div>
+      <div class="frage">Was genau kommt raus?</div>
+      <div class="bsp">„Eine Mail, höchstens 150 Wörter, Ende mit einer Frage."</div>
+    </div>
+  </div>
+
+  <h2>Einmal zusammengesetzt</h2>
+  <div class="prompt">
+    <b>Du bist Veranstaltungsleiterin in unserem Haus.</b> Antworte auf die Anfrage unten.
+    Das sind die Fakten: [Raum, Personenzahl, Preis, freier Termin]. Ton: freundlich und knapp,
+    kein Werbedeutsch, keine Superlative. Sie soll den Termin halten.
+    Ende mit einer konkreten Frage. Höchstens 150 Wörter.
+  </div>
+
+  <p style="font-size:10pt;color:var(--grau);margin-top:4mm;line-height:1.45;">
+    Funktioniert genauso für eine Absage, einen Text für die Website und die Antwort
+    auf eine Bewertung. Getauscht wird nur, was in den eckigen Klammern steht.
+  </p>
+
+  <div class="fuss">
+    <span>Fragen? info@edge-digital.ai</span>
+    <span>edge-digital.ai</span>
+  </div>
+</section>
+
+</body>
+</html>

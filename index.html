@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aufgeweckt. KI-Klartext zum Frühstück | EDGE Digital x LTM</title>
+<meta name="theme-color" content="#030309">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="vendor/reveal/reveal.css">
+<style>
+/* ============================================================================
+   AUFGEWECKT. KI-KLARTEXT ZUM FRÜHSTÜCK
+   Netzwerkfrühstück der LTM im K64, Lübeck, 20.08.2026
+   Gestaltung 1:1 aus der SoulByte-Schulung: Raumschwarz, Galaxie, Avenir Next,
+   Typografie trägt die Fläche, Struktur aus Hairline-Trennern.
+   Kein box-shadow (decktape-PDF-Bug). Kein Monospace. Keine Emojis.
+   ========================================================================== */
+
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Regular.ttf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-DemiBold.ttf") format("truetype"); font-weight: 600; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Bold.ttf") format("truetype"); font-weight: 700; }
+
+:root {
+  --raum: #030309;
+  --weiss: #F4F6FF;
+  --w-70: rgba(244, 246, 255, 0.70);
+  --w-45: rgba(244, 246, 255, 0.45);
+  --w-25: rgba(244, 246, 255, 0.25);
+  --hairline: rgba(244, 246, 255, 0.14);
+  --hairline-stark: rgba(244, 246, 255, 0.28);
+  --purple: #C15DE6;
+  --blau: #009FF4;
+  --cyan: #00E2E2;
+  --limette: #C7D300;      /* Convention Lübeck, nur als Gastfarbe */
+  --warn: #ff6b5e;
+  --ok: #3ad29f;
+  --font: "Avenir Next LT", "Avenir Next", Avenir, "Nunito Sans", "Segoe UI", sans-serif;
+}
+
+html, body { background: var(--raum); font-family: var(--font); }
+.reveal-viewport { background: transparent !important; }
+
+/* ---------- Raum-Ebenen: liegen fix HINTER allen Folien ---------- */
+#kosmos { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; }
+.nebel {
+  position: fixed; inset: -20%; z-index: 0; pointer-events: none; filter: blur(60px);
+  background:
+    radial-gradient(38% 30% at 78% 24%, rgba(0, 159, 244, 0.10), transparent 70%),
+    radial-gradient(34% 28% at 16% 80%, rgba(193, 93, 230, 0.11), transparent 70%),
+    radial-gradient(24% 20% at 62% 86%, rgba(0, 226, 226, 0.07), transparent 70%);
+  animation: nebel-atmen 46s ease-in-out infinite alternate;
+}
+@keyframes nebel-atmen {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+  to   { transform: translate3d(2.5%, -1.8%, 0) scale(1.06); opacity: .82; }
+}
+.vignette {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(140% 120% at 50% 42%, transparent 50%, rgba(1, 1, 4, 0.88) 100%);
+}
+.schnuppe {
+  position: fixed; z-index: 0; width: 150px; height: 1.5px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(220, 235, 255, 0.9), transparent);
+  filter: drop-shadow(0 0 6px rgba(160, 220, 255, 0.8));
+  animation: schnuppen-flug 1.1s ease-out forwards;
+}
+@keyframes schnuppen-flug {
+  from { opacity: 0; transform: rotate(var(--wk)) translateX(0); }
+  12%  { opacity: 1; }
+  to   { opacity: 0; transform: rotate(var(--wk)) translateX(46vw); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nebel { animation: none; }
+  .schnuppe { animation: none; display: none; }
+}
+
+/* ---------- Reveal-Grundgerüst ---------- */
+.reveal { font-family: var(--font); font-size: 30px; color: var(--weiss); }
+.reveal .slides { text-align: left; }
+.reveal .slides > section { padding: 0; height: 1080px; }
+.reveal .progress { color: var(--cyan); height: 4px; }
+.reveal .controls { color: var(--w-45); }
+.reveal ::selection { background: rgba(0, 226, 226, 0.28); }
+
+.slide {
+  width: 1920px; height: 1080px;
+  display: flex !important; flex-direction: column;
+  padding: 132px 130px 96px;
+  box-sizing: border-box;
+}
+.slide.mittig { justify-content: center; align-items: center; text-align: center; }
+
+/* ---------- Typografie ---------- */
+h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
+.hero {
+  font-size: 148px; line-height: 1.0; letter-spacing: -.025em; font-weight: 700;
+  text-transform: uppercase; text-wrap: balance; margin: 0 0 28px;
+}
+.headline {
+  font-size: 82px; line-height: 1.03; letter-spacing: -.02em; font-weight: 700;
+  text-transform: uppercase; text-wrap: balance; margin: 0 0 20px; flex-shrink: 0;
+}
+.schimmer {
+  background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lead { color: var(--w-70); font-size: 35px; line-height: 1.5; max-width: 32em; text-wrap: balance; margin: 0; }
+.slide.mittig .lead { margin-left: auto; margin-right: auto; }
+.label {
+  font-weight: 600; font-size: 20px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--w-45);
+}
+
+/* ---------- Feld: dunkles Glas mit Space-Schimmer ---------- */
+.feld {
+  border: 1px solid var(--hairline);
+  border-radius: 28px;
+  background: rgba(8, 11, 22, 0.62);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  padding: 40px 48px;
+  position: relative; overflow: hidden;
+}
+.feld::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(90% 70% at 10% 0%, rgba(0, 226, 226, 0.07), transparent 60%),
+    radial-gradient(80% 60% at 95% 100%, rgba(0, 159, 244, 0.05), transparent 60%);
+}
+.feld.zeilen > div:first-child { border-top: none; }
+.feld.zeilen > div:last-child { border-bottom: none; }
+
+/* ---------- Offene Spalten mit Hairline-Trennern ---------- */
+.spalten { display: grid; width: 100%; }
+.spalten > div { padding: 0 50px; }
+.spalten > div:first-child { padding-left: 0; }
+.spalten > div:last-child { padding-right: 0; }
+.spalten > div + div { border-left: 1px solid var(--hairline); }
+.spalten .sp-icon { margin-bottom: 24px; }
+.spalten .sp-icon svg { width: 46px; height: 46px; }
+.spalten h3 { font-size: 36px; font-weight: 700; letter-spacing: -.015em; margin: 0 0 14px; }
+.spalten p { color: var(--w-70); font-size: 26px; line-height: 1.55; margin: 0; }
+.sp-num { font-size: 46px; font-weight: 700; color: var(--cyan); margin-bottom: 16px; line-height: 1; }
+
+/* ---------- Zeilen-Listen ---------- */
+.zeilen { display: flex; flex-direction: column; width: 100%; }
+.zeilen > div { padding: 24px 6px; border-bottom: 1px solid var(--hairline); }
+.zeilen > div:first-child { border-top: 1px solid var(--hairline); }
+
+/* ---------- Takeaway: Statement statt Box ---------- */
+.takeaway { text-align: center; padding-top: 6px; }
+.takeaway::before {
+  content: ""; display: block; width: 90px; height: 3px; margin: 0 auto 24px;
+  background: linear-gradient(90deg, var(--purple), var(--blau) 52%, var(--cyan));
+  border-radius: 2px;
+}
+.takeaway p { font-size: 40px; font-weight: 600; line-height: 1.35; margin: 0; text-wrap: balance; }
+
+/* ---------- Chrome (fixe Overlays) ---------- */
+.chrome { position: fixed; z-index: 20; pointer-events: none; transition: opacity .3s; }
+.chrome-edge { top: 34px; left: 56px; }
+.chrome-edge img { height: 50px; display: block; }
+.chrome-client { top: 40px; right: 56px; }
+.chrome-client img { height: 40px; display: block; opacity: .9; }
+.chrome-num {
+  bottom: 36px; left: 60px;
+  font-weight: 500; font-size: 16px; letter-spacing: .12em; color: var(--w-25);
+}
+body.chrome-aus .chrome { opacity: 0; }
+
+/* ---------- Divider ---------- */
+.riesenzahl {
+  position: absolute; top: 50%; right: 120px; transform: translateY(-50%);
+  font-size: 620px; font-weight: 700; line-height: 1; pointer-events: none;
+  color: transparent; -webkit-text-stroke: 2px rgba(244, 246, 255, 0.10);
+}
+.divider-zeit {
+  font-weight: 500; font-size: 24px; letter-spacing: .18em; color: var(--w-45);
+  margin-top: 32px; text-transform: uppercase;
+}
+
+/* ============================================================================
+   EIGENE BAUTEILE FÜR DIESEN VORTRAG
+   ========================================================================== */
+
+/* ---------- Kaffeetasse auf der Titelfolie ----------
+   Der Dampf steigt in drei Fäden unterschiedlich schnell auf. Reine CSS-
+   Animation auf einem SVG-Pfad: läuft auch dann weiter, wenn der Browser
+   die Seite im Hintergrund hält und rAF anhält. */
+.tasse { width: 268px; height: 268px; display: block; }
+.dampf { stroke: rgba(244, 246, 255, .5); stroke-width: 4.5; fill: none; stroke-linecap: round; }
+.dampf-1 { animation: dampf-steigen 4.2s ease-in-out infinite; }
+.dampf-2 { animation: dampf-steigen 5.4s ease-in-out infinite .6s; }
+.dampf-3 { animation: dampf-steigen 4.8s ease-in-out infinite 1.2s; }
+@keyframes dampf-steigen {
+  0%   { opacity: 0; transform: translateY(14px) scaleY(.7); }
+  25%  { opacity: .85; }
+  100% { opacity: 0; transform: translateY(-30px) scaleY(1.25); }
+}
+@media (prefers-reduced-motion: reduce) { .dampf-1, .dampf-2, .dampf-3 { animation: none; opacity: .55; } }
+
+/* ---------- Mail- und Chatfenster ----------
+   Ein Fenster steht für "das hier kennt ihr aus eurem Postfach". Die Kopfzeile
+   trägt Absender und Betreff, damit der Text darunter ohne Erklärung wirkt. */
+.fenster {
+  border: 1px solid var(--hairline); border-radius: 20px; overflow: hidden;
+  background: rgba(8, 11, 22, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  display: flex; flex-direction: column;
+}
+.fenster-kopf {
+  padding: 22px 34px; border-bottom: 1px solid var(--hairline);
+  display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+}
+.fenster-kopf .von { font-size: 24px; font-weight: 600; color: var(--w-70); }
+.fenster-kopf .betreff { font-size: 24px; color: var(--w-45); }
+.fenster-leib { padding: 32px 34px; font-size: 29px; line-height: 1.55; color: var(--weiss); }
+.fenster-leib p { margin: 0 0 18px; }
+.fenster-leib p:last-child { margin-bottom: 0; }
+.fenster-fuss { padding: 18px 34px 24px; border-top: 1px solid var(--hairline); }
+
+/* ---------- Gegenüberstellung schwach gegen gut ----------
+   Kein farbiger Balken als Dekoration: die Wertung steht als Wort über der
+   Spalte, die Fläche bleibt ruhig. Nur ein Hauch Farbe im Hintergrund. */
+.gegen { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; width: 100%; }
+.gegen > div { display: flex; flex-direction: column; }
+.wertung { font-weight: 700; font-size: 22px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; }
+.wertung.schwach { color: var(--warn); }
+.wertung.gut { color: var(--ok); }
+.karte-schwach { border-color: rgba(255, 107, 94, .28); }
+.karte-gut { border-color: rgba(58, 210, 159, .32); background: rgba(9, 18, 20, .68); }
+
+/* ---------- Prompt-Zeile ----------
+   Der Prompt ist das Werkzeug, deshalb steht er nicht in Fließtext, sondern
+   in einer eigenen Zeile mit vorangestelltem Zeichen. Kein Monospace: die
+   Runde soll ihn lesen wie einen Satz, nicht wie Code. */
+.prompt {
+  border: 1px solid var(--hairline-stark); border-radius: 18px;
+  background: rgba(0, 226, 226, .045);
+  padding: 26px 32px; font-size: 28px; line-height: 1.5; color: var(--weiss);
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.prompt::before {
+  content: ""; flex: 0 0 10px; height: 10px; margin-top: 14px; border-radius: 50%;
+  background: linear-gradient(96deg, var(--purple), var(--cyan));
+}
+.prompt.klein { font-size: 25px; padding: 20px 26px; }
+.prompt b { font-weight: 700; color: var(--cyan); }
+/* blinkender Balken hinter getipptem Text */
+.cursor { display: inline-block; width: 3px; height: 1em; margin-left: 4px;
+  background: var(--cyan); vertical-align: text-bottom; animation: blinken 1s steps(2) infinite; }
+@keyframes blinken { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* ---------- Wortzahl unter dem Prompt ----------
+   Ersetzt den Erklärabsatz: der Größenunterschied zwischen beiden Prompts
+   ist eine Zahl und braucht keinen Satz. margin-top:auto stellt beide Zahlen
+   auf dieselbe Linie, egal wie lang der Prompt darüber ist. */
+.wortzahl { display: flex; align-items: baseline; gap: 18px; margin-top: auto; padding-top: 30px; }
+.wortzahl .zahl { font-size: 104px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+.wortzahl .was { font-size: 27px; color: var(--w-45); }
+.wortzahl.schwach .zahl { color: var(--w-25); }
+.wortzahl.gut .zahl {
+  background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Notizzettel: der handschriftliche Ausgangspunkt ---------- */
+.zettel {
+  border: 1px dashed var(--hairline-stark); border-radius: 18px;
+  padding: 26px 32px; background: rgba(244, 246, 255, .03);
+}
+.zettel ul { margin: 0; padding: 0; list-style: none; }
+.zettel li { font-size: 27px; line-height: 1.75; color: var(--w-70); }
+.zettel li::before { content: "·"; color: var(--cyan); font-weight: 700; margin-right: 14px; }
+
+/* ---------- Bausteine des Prompts ---------- */
+.baustein-kopf { font-weight: 700; font-size: 24px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
+.b-rolle { color: var(--purple); }
+.b-ziel { color: var(--blau); }
+.b-kontext { color: var(--cyan); }
+.b-aufgabe { color: var(--limette); }
+
+/* ---------- Pizza ---------- */
+.pizza { width: 340px; height: 340px; display: block; margin: 0 auto; }
+.pizza .zutat { opacity: 0; transition: opacity .5s ease; }
+.pizza.fertig .zutat { opacity: 1; }
+.pizza.fertig .zutat:nth-of-type(2) { transition-delay: .25s; }
+.pizza.fertig .zutat:nth-of-type(3) { transition-delay: .5s; }
+.pizza.fertig .zutat:nth-of-type(4) { transition-delay: .75s; }
+
+/* ---------- Sterne für die Bewertung ---------- */
+.sterne { display: flex; gap: 6px; }
+.sterne svg { width: 30px; height: 30px; }
+.stern-voll { fill: #ffc531; }
+.stern-leer { fill: rgba(244, 246, 255, .16); }
+
+/* ---------- Zeitstrahl ---------- */
+.strahl { position: relative; width: 100%; padding-top: 20px; }
+.strahl-linie { position: absolute; left: 0; right: 0; top: 96px; height: 2px; border: none; margin: 0;
+  background: linear-gradient(90deg, rgba(244,246,255,.18), var(--blau) 55%, var(--cyan)); }
+.strahl-reihe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; position: relative; }
+.strahl-punkt { text-align: center; }
+/* Die Jahreszahl bekommt eine feste Zeilenhöhe. Sonst schiebt die größere
+   Schrift von "Heute" den eigenen Knoten unter die Linie der anderen. */
+.strahl-jahr {
+  font-size: 40px; font-weight: 700; letter-spacing: -.01em; color: var(--w-45);
+  height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+}
+.strahl-punkt.jetzt .strahl-jahr { color: var(--cyan); font-size: 46px; }
+.strahl-knoten { width: 16px; height: 16px; border-radius: 50%; background: var(--w-25); margin: 0 auto 30px; }
+.strahl-punkt.jetzt .strahl-knoten {
+  width: 22px; height: 22px; background: var(--cyan); margin: -3px auto 27px;
+}
+.strahl-text { font-size: 25px; line-height: 1.45; color: var(--w-70); padding: 0 8px; text-wrap: balance; }
+
+/* ---------- Takeaway-Liste ---------- */
+.mitnehmen { display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; width: 100%; }
+.mitnehmen > div { display: flex; gap: 26px; align-items: baseline; padding: 21px 4px; border-bottom: 1px solid var(--hairline); }
+.mitnehmen .nr { font-size: 34px; font-weight: 700; color: var(--cyan); flex: 0 0 46px; }
+.mitnehmen .satz { font-size: 30px; line-height: 1.4; }
+.mitnehmen .satz small { display: block; font-size: 23px; color: var(--w-45); margin-top: 5px; }
+
+/* ---------- Warnliste (was nie ins Tool gehört) ---------- */
+.nie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 34px; width: 100%; }
+.nie > div { display: flex; gap: 18px; align-items: center; font-size: 28px; line-height: 1.35; padding: 16px 0; }
+.nie .zeichen { flex: 0 0 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(255, 107, 94, .12); }
+.nie .zeichen svg { width: 20px; height: 20px; stroke: var(--warn); }
+
+/* ---------- Portraits ---------- */
+.koepfe { display: flex; gap: 56px; }
+.kopf { display: flex; align-items: center; gap: 28px; }
+.kopf-foto {
+  width: 150px; height: 150px; border-radius: 50%; flex: 0 0 150px;
+  border: 1px solid var(--hairline-stark);
+  background:
+    radial-gradient(75% 70% at 50% 12%, rgba(0, 226, 226, .10), transparent 62%),
+    radial-gradient(80% 80% at 50% 100%, rgba(0, 159, 244, .10), transparent 60%),
+    rgba(12, 16, 30, .78);
+  position: relative; overflow: hidden;
+}
+.kopf-foto img { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: 104%; height: auto; display: block; }
+.kopf-name { font-size: 38px; font-weight: 700; }
+.kopf-rolle { font-size: 25px; color: var(--w-45); margin-top: 6px; }
+
+/* ---------- Platzhalter für offene Punkte ---------- */
+.ph {
+  border: 2px dashed var(--hairline-stark); border-radius: 26px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; color: var(--w-25); background: rgba(244, 246, 255, 0.02); padding: 40px;
+  text-align: center;
+}
+.ph .label { color: var(--w-25); font-size: 16px; letter-spacing: .2em; }
+.ph p { font-size: 26px; color: var(--w-45); margin: 0; max-width: 24em; line-height: 1.5; }
+
+/* ---------- Fragmente ---------- */
+.reveal .fragment.fade-up { transform: translateY(28px); }
+.reveal .fragment.fade-up.visible { transform: translateY(0); }
+
+/* ---------- Utility ---------- */
+.reihe { display: flex; gap: 34px; }
+.spalte { display: flex; flex-direction: column; gap: 34px; }
+.wachsen { flex: 1; min-height: 0; }
+.mt-auto { margin-top: auto; }
+.mt { margin-top: 40px; }
+.zentriert { text-align: center; }
+.cyan { color: var(--cyan); }
+.warn { color: var(--warn); }
+.ok { color: var(--ok); }
+.limette { color: var(--limette); }
+.quelle { font-size: 19px; color: var(--w-25); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<canvas id="kosmos"></canvas>
+<div class="nebel"></div>
+<div class="vignette"></div>
+
+<div class="chrome chrome-edge"><img src="assets/logos/edge-logo-white.png" alt="EDGE Digital"></div>
+<div class="chrome chrome-client"><img src="assets/logos/convention-bureau.png" alt="Convention Bureau Lübeck"></div>
+<div class="chrome chrome-num" id="chrome-num"></div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ============ 1: TITEL ============ -->
+<section data-chrome="aus">
+  <div class="slide mittig">
+    <svg class="tasse" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <!-- Dampf -->
+      <g>
+        <path class="dampf dampf-1" d="M44 40c-7-6 7-11 0-17s7-11 0-17"/>
+        <path class="dampf dampf-2" d="M60 36c-7-6 7-11 0-17s7-11 0-17"/>
+        <path class="dampf dampf-3" d="M76 40c-7-6 7-11 0-17s7-11 0-17"/>
+      </g>
+      <!-- Tasse -->
+      <path d="M26 48h58v26a29 29 0 0 1-58 0V48Z" stroke="url(#tassenlicht)" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M84 54h8a13 13 0 0 1 0 26h-8" stroke="url(#tassenlicht)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M18 110h74" stroke="rgba(244,246,255,.35)" stroke-width="4" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="tassenlicht" x1="18" y1="48" x2="100" y2="106" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C15DE6"/><stop offset=".52" stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <h1 class="hero" style="font-size:196px;margin-top:44px;">Auf<span class="schimmer">geweckt.</span></h1>
+    <p class="lead" style="font-size:42px;margin-top:14px;">KI-Klartext zum Frühstück.</p>
+    <p class="label" style="margin-top:64px;">20. August 2026 · K64 Lübeck · Netzwerkfrühstück der LTM</p>
+    <aside class="notes">
+      Eddie begrüßt. Kein Agenda-Slide, keine Vorstellungsrunde. Direkt zur Mail auf Folie 2.
+      Ein Satz reicht: "Bevor wir irgendwas erzählen, zeigen wir euch etwas."
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 2: DIE ANFRAGE ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Diese Mail lag heute früh im <span class="schimmer">Postfach.</span></h2>
+    <div class="reihe wachsen" style="align-items:center;margin-top:8px;">
+      <div class="fenster" style="width:100%;">
+        <div class="fenster-kopf">
+          <span class="von">Katrin Behrens, Nordwerk Consulting</span>
+          <span class="betreff">Betreff: Anfrage Tagung am 14. Oktober</span>
+        </div>
+        <div class="fenster-leib" style="font-size:34px;">
+          <p>Guten Tag,</p>
+          <p>wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig,
+             mit Mittagessen. Beamer und WLAN wären wichtig.</p>
+          <p>Können Sie uns ein Angebot machen? Wir entscheiden Ende der Woche.</p>
+          <p>Viele Grüße, Katrin Behrens</p>
+        </div>
+      </div>
+    </div>
+    <p class="label mt">Eine Anfrage, wie sie jede Woche eingeht</p>
+    <aside class="notes">
+      Kurz vorlesen lassen wirkt besser als selbst vorlesen. Frage in die Runde:
+      "Wie lange braucht ihr für die Antwort?" Antworten sammeln, nicht bewerten.
+      Dann weiter. Maximal 60 Sekunden auf dieser Folie.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 3: ZWEI ANTWORTEN ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Zwei Antworten. Beide von der <span class="schimmer">KI.</span></h2>
+    <div class="gegen wachsen" style="margin-top:6px;">
+      <div class="fragment fade-up">
+        <div class="wertung schwach">Antwort A</div>
+        <div class="fenster karte-schwach wachsen" style="justify-content:center;">
+          <div class="fenster-leib" style="font-size:31px;color:var(--w-70);">
+            <p>Sehr geehrte Damen und Herren,</p>
+            <p>vielen Dank für Ihre Anfrage. Gerne unterbreiten wir Ihnen ein
+               individuelles Angebot.</p>
+            <p>Teilen Sie uns dafür bitte noch Bestuhlung, Übernachtungswunsch
+               und Budgetrahmen mit.</p>
+            <p>Wir freuen uns auf Ihre Rückmeldung.</p>
+          </div>
+        </div>
+      </div>
+      <div class="fragment fade-up">
+        <div class="wertung gut">Antwort B</div>
+        <div class="fenster karte-gut wachsen" style="justify-content:center;">
+          <div class="fenster-leib" style="font-size:31px;">
+            <p>Hallo Frau Behrens,</p>
+            <p>der 14. Oktober ist frei. Für 25 Personen passt der Raum Trave:
+               Tageslicht, Beamer und WLAN sind drin.</p>
+            <p>Die Tagungspauschale liegt bei 68 Euro pro Person, mit Pausen
+               und Mittagessen.</p>
+            <p>Soll ich den Termin bis Freitag festhalten?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Erst A einblenden, kurz wirken lassen. Typische Reaktion: "Das schreibt bei
+      uns auch keiner." Genau. Dann B. Wichtig: nicht sagen, welches Modell.
+      Es ist dasselbe. Die Auflösung kommt auf der nächsten Folie.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 4: DER UNTERSCHIED ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Gleiches Werkzeug. Gleicher Tag. Ein <span class="schimmer">Unterschied.</span></h2>
+    <div class="gegen wachsen" style="margin-top:8px;align-items:stretch;">
+      <div>
+        <div class="wertung schwach">Das wurde für A getippt</div>
+        <div class="prompt" style="min-height:0;font-size:38px;">Antworte auf diese Mail.</div>
+        <div class="wortzahl schwach"><span class="zahl">4</span><span class="was">Wörter</span></div>
+      </div>
+      <div>
+        <div class="wertung gut">Das wurde für B getippt</div>
+        <div class="prompt klein">
+          <span><b>Du bist Veranstaltungsleiterin in unserem Haus.</b> Antworte auf die
+          Anfrage von Frau Behrens. Fakten: Raum Trave, bis 30 Personen, Tageslicht,
+          Blick aufs Wasser, Tagungspauschale 68 Euro pro Person mit zwei Pausen,
+          Mittagessen und Getränken, Beamer und WLAN inklusive, 14. Oktober ist frei.
+          Ton: freundlich und knapp, kein Werbedeutsch. Sie soll den Termin halten.
+          Ende mit einer konkreten Frage. Höchstens 150 Wörter.</span>
+        </div>
+        <div class="wortzahl gut"><span class="zahl">61</span><span class="was">Wörter</span></div>
+      </div>
+    </div>
+    <div class="takeaway mt-auto" style="padding-top:26px;">
+      <p>Der Unterschied liegt nicht im Werkzeug. Er liegt in der Bestellung.</p>
+    </div>
+    <aside class="notes">
+      Kernmoment des Einstiegs. Hier ruhig bleiben und den langen Prompt
+      NICHT vorlesen. Nur zeigen: der eine ist vier Wörter, der andere ist ein
+      Auftrag. Danach Übergang zur Vorstellung: zwei Sätze, mehr nicht.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 5: WER WIR SIND ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Kurz zu <span class="schimmer">uns.</span></h2>
+    <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;gap:56px;margin-top:10px;">
+      <div class="koepfe" style="justify-content:center;">
+        <div class="kopf fragment fade-up">
+          <div class="kopf-foto"><img src="assets/images/team/edgar.png" alt="Edgar Paul-Ghazaryan"></div>
+          <div>
+            <div class="kopf-name">Eddie</div>
+            <div class="kopf-rolle">Edgar Paul-Ghazaryan, COO</div>
+          </div>
+        </div>
+        <div class="kopf fragment fade-up">
+          <div class="kopf-foto"><img src="assets/images/team/emre.png" alt="Bünyamin Emre Erdogan"></div>
+          <div>
+            <div class="kopf-name">Emre</div>
+            <div class="kopf-rolle">Bünyamin Emre Erdogan, Geschäftsführer</div>
+          </div>
+        </div>
+      </div>
+      <p class="lead zentriert" style="font-size:36px;max-width:30em;">
+        EDGE Digital aus Lübeck. Wir bauen KI in den Arbeitsalltag von Unternehmen ein.
+        Heute früh geht es nicht um uns, sondern um euch.
+      </p>
+    </div>
+    <aside class="notes">
+      Wirklich nur zwei Sätze. Eike hat ausdrücklich gesagt: kein Leistungsportfolio.
+      Wer mehr wissen will, fragt später. Das ist der Plan.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 6: HANDZEICHEN ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Kurze Runde. Hand <span class="schimmer">hoch.</span></h2>
+    <div class="zeilen feld wachsen" style="justify-content:center;margin-top:10px;padding:20px 52px;">
+      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:34px;padding:38px 6px;">
+        <span class="sp-num" style="margin:0;flex:0 0 70px;">01</span>
+        <span style="font-size:46px;font-weight:600;">Wer hat KI schon einmal benutzt?</span>
+      </div>
+      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:34px;padding:38px 6px;">
+        <span class="sp-num" style="margin:0;flex:0 0 70px;">02</span>
+        <span style="font-size:46px;font-weight:600;">Wer benutzt sie im Job?</span>
+      </div>
+      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:34px;padding:38px 6px;">
+        <span class="sp-num" style="margin:0;flex:0 0 70px;">03</span>
+        <span style="font-size:46px;font-weight:600;">Wer hat sie heute schon aufgehabt?</span>
+      </div>
+    </div>
+    <aside class="notes">
+      Ergebnis laut benennen, es ist der Übergang: "Ihr seid nicht am Anfang.
+      Genau deshalb reden wir heute nicht darüber, was KI ist, sondern darüber,
+      wie man sie wirklich arbeiten lässt."
+      Falls wider Erwarten kaum Hände hochgehen: Folie 7 etwas länger nehmen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 7: DIE BRÜCKE ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Die <span class="schimmer">Brücke.</span></h2>
+    <div class="reihe wachsen" style="align-items:stretch;gap:60px;margin-top:6px;max-height:520px;">
+      <div class="feld" style="flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center;">
+        <p class="label" style="margin-bottom:20px;">Diesseits</p>
+        <p style="font-size:44px;font-weight:600;line-height:1.3;margin:0;">
+          Wir haben uns im Unternehmen eine KI angeschafft.
+        </p>
+      </div>
+      <svg style="width:120px;height:60px;flex-shrink:0;align-self:center;" viewBox="0 0 120 60" fill="none" aria-hidden="true">
+        <path d="M4 30h100M92 16l16 14-16 14" stroke="url(#pfeil)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="pfeil" x1="0" y1="30" x2="120" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C15DE6"/><stop offset=".5" stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/>
+        </linearGradient></defs>
+      </svg>
+      <div class="feld" style="flex:1;padding:52px 56px;border-color:rgba(0,226,226,.3);display:flex;flex-direction:column;justify-content:center;">
+        <p class="label" style="margin-bottom:20px;">Jenseits</p>
+        <p style="font-size:44px;font-weight:600;line-height:1.3;margin:0;">
+          Unsere Leute arbeiten wirklich damit.
+        </p>
+      </div>
+    </div>
+    <div class="takeaway mt-auto" style="padding-top:30px;">
+      <p>Auf dieser Brücke stehen gerade fast alle.</p>
+    </div>
+    <aside class="notes">
+      Das ist Eikes eigene Beobachtung aus dem Abstimmungstermin. Wenn Eike im
+      Raum ist: kurz zu ihm schauen, er erkennt seinen Satz wieder.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 8: MERKSATZ ============ -->
+<section data-chrome="aus">
+  <div class="slide mittig">
+    <h2 class="hero" style="font-size:124px;">Die KI liefert nicht schlecht.<br><span class="schimmer">Wir fragen schlecht.</span></h2>
+    <aside class="notes">
+      Kurz stehen lassen. Nicht erklären. Die Erklärung kommt mit der Pizza.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 9: PIZZA ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Bestellen kann man <span class="schimmer">lernen.</span></h2>
+    <div class="gegen wachsen" style="margin-top:6px;align-items:stretch;">
+      <div>
+        <div class="wertung schwach">Ihr sagt</div>
+        <div class="feld karte-schwach wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;">
+          <p style="font-size:64px;font-weight:700;margin:0;">„Pizza."</p>
+          <!-- Nackter Teig ohne alles: dieselbe Form wie rechts, damit der
+               Vergleich über den Belag läuft und nicht über die Zeichnung. -->
+          <svg class="pizza" viewBox="0 0 200 200" fill="none" aria-hidden="true" style="width:250px;height:250px;">
+            <circle cx="100" cy="100" r="76" fill="rgba(244,246,255,.05)" stroke="rgba(244,246,255,.2)" stroke-width="3"/>
+            <circle cx="100" cy="100" r="64" fill="rgba(244,246,255,.03)" stroke="rgba(244,246,255,.1)" stroke-width="2"/>
+          </svg>
+          <p class="lead zentriert" style="font-size:26px;">Ihr bekommt irgendeine.</p>
+        </div>
+      </div>
+      <div>
+        <div class="wertung gut">Oder ihr sagt</div>
+        <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:30px;">
+          <p style="font-size:32px;font-weight:600;margin:0;text-align:center;line-height:1.4;max-width:24em;">
+            „Eine Salami, 32er, dünner Boden,<br>extra Käse, in einer halben Stunde,<br>Fischstraße 16."
+          </p>
+          <svg class="pizza" id="pizza-gut" viewBox="0 0 200 200" fill="none" aria-hidden="true" style="width:250px;height:250px;">
+            <circle cx="100" cy="100" r="76" fill="rgba(255,190,110,.14)" stroke="#e8b26a" stroke-width="3"/>
+            <circle class="zutat" cx="100" cy="100" r="64" fill="rgba(226,84,60,.35)"/>
+            <circle class="zutat" cx="100" cy="100" r="64" fill="rgba(255,214,140,.22)"/>
+            <g class="zutat">
+              <circle cx="76" cy="82" r="12" fill="#d1493c"/><circle cx="124" cy="90" r="12" fill="#d1493c"/>
+              <circle cx="92" cy="126" r="12" fill="#d1493c"/><circle cx="132" cy="130" r="11" fill="#d1493c"/>
+              <circle cx="66" cy="118" r="9" fill="#d1493c"/>
+            </g>
+            <g class="zutat">
+              <path d="M60 62c6 4 10 4 16 0" stroke="#7cc47a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M112 56c6 4 10 4 16 0" stroke="#7cc47a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M138 106c6 4 10 4 16 0" stroke="#7cc47a" stroke-width="5" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <p class="lead zentriert" style="font-size:26px;">Ihr bekommt genau die.</p>
+        </div>
+      </div>
+    </div>
+    <p class="label mt">Je genauer die Bestellung, desto besser das Ergebnis.</p>
+    <aside class="notes">
+      Die Analogie funktioniert in jeder Runde. Sie erlaubt außerdem den Satz:
+      "Ihr müsst nichts Technisches lernen. Ihr müsst nur aufhören, im Vorbeigehen
+      zu bestellen." Danach kommen die vier Fälle.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 10: DIVIDER VIER FÄLLE ============ -->
+<section data-chrome="aus">
+  <div class="slide" style="justify-content:center;position:relative;">
+    <span class="riesenzahl">3</span>
+    <p class="label">Der praktische Teil</p>
+    <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Fälle vom<br><span class="schimmer">Frühstückstisch.</span></h2>
+    <p class="divider-zeit">Angebot · Absage · Bewertung</p>
+    <aside class="notes">
+      Übergabe an Emre. Ab hier wird getippt, nicht erzählt.
+      Jede Folie hat die fertige Gegenüberstellung, falls das Netz streikt.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 11: FALL 1 ANGEBOT ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
+      <div class="spalte" style="flex:0 0 620px;gap:26px;">
+        <div>
+          <!-- Die Fallnummer sitzt in der Labelzeile, nicht in der Headline:
+               eine zweite Farbe in der Überschrift zerreißt die Zeile. -->
+          <p class="label" style="margin-bottom:14px;">Fall 1 &middot; Was auf dem Zettel steht</p>
+          <div class="zettel">
+            <ul>
+              <li>25 Personen, 14.10., ganztags</li>
+              <li>Raum Trave, Tageslicht</li>
+              <li>68 Euro pro Person</li>
+              <li>Mittag und Pausen drin</li>
+              <li>Antwort bis Freitag</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wachsen">
+          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
+          <div class="prompt klein">
+            <span>Du bist Veranstaltungsleiterin in unserem Tagungshaus. Schreib aus
+            diesen Notizen eine Antwortmail an Frau Behrens. Ton freundlich und knapp,
+            kein Werbedeutsch. Höchstens 150 Wörter, Ende mit einer Frage.</span>
+          </div>
+        </div>
+      </div>
+      <div class="fenster wachsen fragment fade-up">
+        <div class="fenster-kopf"><span class="von">Antwort an K. Behrens</span><span class="betreff">in acht Sekunden</span></div>
+        <div class="fenster-leib" style="font-size:31px;">
+          <p>Hallo Frau Behrens,</p>
+          <p>der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave:
+             Tageslicht, ruhig, gut für einen ganzen Tag.</p>
+          <p>Die Tagungspauschale liegt bei 68 Euro pro Person, mit beiden Pausen
+             und Mittagessen.</p>
+          <p>Ich halte den Termin bis Freitag fest. Passt das?</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Live tippen. Wichtig zu zeigen: die Fakten kommen von euch, nicht aus dem Netz.
+      Wer keine Zahlen liefert, bekommt erfundene Zahlen. Das ist die Brücke zu Folie 21.
+      Zeit: etwa drei Minuten.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 12: FALL 2 ABSAGE ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Absagen, ohne die Tür <span class="schimmer">zuzuziehen.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
+      <div class="spalte" style="flex:0 0 620px;gap:26px;">
+        <div>
+          <p class="label" style="margin-bottom:14px;">Fall 2 &middot; Die Lage</p>
+          <div class="zettel">
+            <ul>
+              <li>Anfrage über 120 Personen</li>
+              <li>Wir haben Platz für 60</li>
+              <li>Guter Kontakt, kommt jedes Jahr</li>
+              <li>Sollen wiederkommen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wachsen">
+          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
+          <div class="prompt klein">
+            <span>Schreib eine Absage. 120 Personen passen nicht zu uns, unser
+            Maximum sind 60. Der Kunde ist wichtig und soll wiederkommen. Kurz und
+            ehrlich, kein Bedauern über drei Absätze. Lass die Tür offen.</span>
+          </div>
+        </div>
+      </div>
+      <div class="fenster wachsen fragment fade-up">
+        <div class="fenster-kopf"><span class="von">Absage</span><span class="betreff">freundlich, aber klar</span></div>
+        <div class="fenster-leib" style="font-size:31px;">
+          <p>Hallo Herr Petersen,</p>
+          <p>diesmal muss ich passen: bei 120 Gästen sind wir zu klein, bei uns
+             wird es ab 60 eng. Ich möchte Ihnen keinen Abend verkaufen, der
+             zu voll ist.</p>
+          <p>Wenn Sie mögen, frage ich nebenan nach. Für Ihre kleinere Runde im
+             Frühjahr halte ich gern wieder etwas frei.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Der Punkt hier: die KI kann den Ton halten, den man selbst nicht mehr findet,
+      wenn man schon zwölf Mails geschrieben hat. Und: eine Absage ist der Text,
+      den die meisten am längsten vor sich herschieben.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 13: FALL 3 BEWERTUNG ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Ein Stern. Und jetzt <span class="schimmer">ruhig bleiben.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
+      <div class="spalte" style="flex:0 0 620px;gap:26px;">
+        <div>
+        <p class="label" style="margin-bottom:14px;">Fall 3 &middot; Was hereinkommt</p>
+        <div class="fenster">
+          <div class="fenster-kopf" style="align-items:center;">
+            <span class="sterne" aria-label="Ein von fünf Sternen">
+              <svg viewBox="0 0 24 24"><path class="stern-voll" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
+            </span>
+            <span class="betreff">vor zwei Stunden</span>
+          </div>
+          <div class="fenster-leib" style="font-size:27px;">
+            <p>Frühstück um kurz nach neun schon komplett leergeräumt, auf Nachfrage
+               kam nichts nach. Personal genervt. So nicht.</p>
+          </div>
+        </div>
+        </div>
+        <div class="wachsen">
+          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
+          <div class="prompt klein">
+            <span>Antworte öffentlich auf diese Bewertung. Das Frühstück geht bis
+            10 Uhr, an dem Tag war eine Gruppe früher da als angekündigt.
+            Nicht rechtfertigen, nicht streiten. Höchstens vier Sätze, und biete
+            an, das persönlich zu klären.</span>
+          </div>
+        </div>
+      </div>
+      <div class="spalte wachsen">
+        <div class="feld karte-gut wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;">
+          <p style="font-size:32px;line-height:1.55;margin:0;">
+            Das tut uns leid, so soll ein Morgen bei uns nicht anfangen. An dem Tag
+            war eine Gruppe früher da als angemeldet, und wir sind nicht
+            hinterhergekommen. Regulär gibt es bis 10 Uhr Frühstück. Schreiben Sie
+            uns kurz, wir möchten das wiedergutmachen.
+          </p>
+        </div>
+        <div class="fragment fade-up" style="flex-shrink:0;">
+          <p class="label" style="margin-bottom:10px;">Warum das trägt</p>
+          <p class="lead" style="font-size:28px;">Die Antwort ist nicht für den Gast von gestern.
+             Sie ist für die zwanzig Leute, die sie nächste Woche lesen.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      Erfahrungsgemäß der Fall mit den meisten Zwischenfragen. Ruhig zulassen,
+      hier darf das Gespräch kippen.
+      Hier gehört noch ein Satz mündlich dazu, weil die eigene Folie dafür
+      gestrichen wurde: Es hilft mehr zu sagen, was man NICHT will
+      ("kein Werbedeutsch", "keine Superlative"), als den Wunschton zu
+      beschreiben. Steht als Punkt 4 auf der Karte.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 14: DIE VIER BAUSTEINE ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Immer dasselbe <span class="schimmer">Muster.</span></h2>
+    <div class="spalten feld wachsen" style="grid-template-columns:repeat(4,1fr);align-items:center;margin-top:8px;padding:54px 52px;">
+      <div class="fragment fade-up">
+        <div class="sp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></div>
+        <div class="baustein-kopf b-rolle">Rolle</div>
+        <h3 style="font-size:36px;min-height:2.4em;">Wer soll das schreiben?</h3>
+        <p style="font-size:28px;">„Du bist Veranstaltungsleiterin."</p>
+      </div>
+      <div class="fragment fade-up">
+        <div class="sp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#009FF4" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="#009FF4"/></svg></div>
+        <div class="baustein-kopf b-ziel">Ziel</div>
+        <h3 style="font-size:36px;min-height:2.4em;">Was soll danach passieren?</h3>
+        <p style="font-size:28px;">„Sie soll den Termin halten."</p>
+      </div>
+      <div class="fragment fade-up">
+        <div class="sp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9.5 4h5v3.2h-5z"/><path d="M9 12.5h6M9 16.5h4"/></svg></div>
+        <div class="baustein-kopf b-kontext">Kontext</div>
+        <h3 style="font-size:36px;min-height:2.4em;">Was weiß nur ihr?</h3>
+        <p style="font-size:28px;">„68 Euro, Raum Trave, 14. Oktober frei."</p>
+      </div>
+      <div class="fragment fade-up">
+        <div class="sp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 14.5l2 2 4-4"/></svg></div>
+        <div class="baustein-kopf b-aufgabe">Aufgabe</div>
+        <h3 style="font-size:36px;min-height:2.4em;">Was genau kommt raus?</h3>
+        <p style="font-size:28px;">„Eine Mail, 150 Wörter, Ende mit Frage."</p>
+      </div>
+    </div>
+    <div class="takeaway mt-auto" style="padding-top:26px;">
+      <p>Mehr ist es nicht.</p>
+    </div>
+    <aside class="notes">
+      Bewusst erst jetzt. Die Theorie kommt nach dem Erlebnis, nicht davor.
+      Wer mitschreiben will: genau hier ist der Moment. Ruhig Zeit lassen und
+      auf die Karte zum Mitnehmen hinweisen, da stehen die vier auch drauf.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 15: DIVIDER DO'S UND DON'TS ============ -->
+<section data-chrome="aus">
+  <div class="slide" style="justify-content:center;position:relative;">
+    <span class="riesenzahl">!</span>
+    <p class="label">Bevor ihr loslegt</p>
+    <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Dinge, die euch<br><span class="schimmer">teuer werden können.</span></h2>
+    <p class="divider-zeit">Daten · Erfindungen · Kennzeichnung</p>
+    <aside class="notes">
+      Übergabe zurück an Eddie. Ton wechselt: eben war es spielerisch,
+      jetzt wird es konkret. Nicht mit erhobenem Zeigefinger, aber klar.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 16: DATENSCHUTZ ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Das gehört in kein <span class="schimmer">KI-Fenster.</span></h2>
+    <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;margin-top:8px;padding:44px 56px;">
+      <div class="nie">
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Namen und Adressen von Gästen</div>
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Personalakten und Bewerbungen</div>
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Verträge und Konditionen</div>
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Krankmeldungen und Diagnosen</div>
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Kontodaten und Rechnungen</div>
+        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Listen aus dem Buchungssystem</div>
+      </div>
+      <hr style="border:none;height:1px;background:var(--hairline);margin:36px 0 32px;">
+      <p class="lead fragment fade-up" style="font-size:34px;max-width:none;">
+        Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
+        „Frau B." reicht völlig. Der Text wird genauso gut.
+      </p>
+    </div>
+    <aside class="notes">
+      Kein Paragrafenritt. Ein Satz zur Einordnung reicht: personenbezogene Daten
+      fallen unter die DSGVO, und ein Chatfenster ist keine Verarbeitung, die ihr
+      dokumentiert habt. Wer es genauer braucht, fragt hinterher.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 17: TRAINING ABSCHALTEN ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Einmal umlegen, dann ist <span class="schimmer">Ruhe.</span></h2>
+    <p class="lead" style="margin-top:4px;font-size:38px;">In den kostenlosen Zugängen lernen die
+       Anbieter aus dem mit, was ihr eintippt.</p>
+    <!-- align-items:start hält die drei Ziffern auf einer Linie. Bei center
+         wandern sie mit der Textlänge auseinander. -->
+    <div class="spalten feld wachsen" style="grid-template-columns:repeat(3,1fr);align-items:start;margin-top:30px;padding:64px 52px;">
+      <div>
+        <div class="sp-num" style="font-size:52px;">01</div>
+        <h3 style="font-size:38px;min-height:2.2em;">Einstellungen öffnen</h3>
+        <p style="font-size:28px;">Unten links über euren Namen.</p>
+      </div>
+      <div>
+        <div class="sp-num" style="font-size:52px;">02</div>
+        <h3 style="font-size:38px;min-height:2.2em;">Datenschutz suchen</h3>
+        <p style="font-size:28px;">Heißt auch Datenkontrolle.</p>
+      </div>
+      <div>
+        <div class="sp-num" style="font-size:52px;">03</div>
+        <h3 style="font-size:38px;min-height:2.2em;">Training ausschalten</h3>
+        <p style="font-size:28px;">Alles mit „Modell verbessern" aus.</p>
+      </div>
+    </div>
+    <p class="lead mt" style="font-size:30px;max-width:none;">
+      <span class="cyan">Geschäftskonten</span> sind meist ohnehin ausgenommen. Nachsehen lohnt sich trotzdem.
+    </p>
+    <aside class="notes">
+      Bewusst ohne Screenshots und ohne genaue Menüpfade: die ändern sich
+      schneller als jede Folie. Wer will, macht es hier direkt am Handy mit.
+      Das ist ein guter Moment für zwei Minuten Unruhe im Raum.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 18: HALLUZINATIONEN ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Sie sagt es dir freundlich. Und <span class="schimmer">falsch.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:8px;align-items:stretch;">
+      <div class="spalte" style="flex:1;">
+        <p class="label">Was am liebsten erfunden wird</p>
+        <div class="zeilen feld wachsen" style="justify-content:center;">
+          <div>Öffnungszeiten und Preise</div>
+          <div>Telefonnummern und Adressen</div>
+          <div>Zitate, die nie jemand gesagt hat</div>
+          <div>Förderprogramme und Fristen</div>
+          <div>Quellen und Studien mit Titel und Jahr</div>
+        </div>
+      </div>
+      <div class="spalte" style="flex:1;">
+        <p class="label">Woran ihr es merkt</p>
+        <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;gap:28px;">
+          <p style="font-size:36px;line-height:1.45;margin:0;">
+            An gar nichts. Erfundenes klingt genauso ruhig und sicher wie Richtiges.
+          </p>
+          <hr style="border:none;height:1px;background:var(--hairline);margin:0;">
+          <p style="font-size:36px;line-height:1.45;margin:0;">
+            Die einzige Regel, die hilft:
+            <span class="cyan">Alles, was das Haus verlässt, liest ein Mensch gegen.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway mt-auto" style="padding-top:26px;">
+      <p>Die KI schreibt den Entwurf. Die Verantwortung bleibt am Tisch.</p>
+    </div>
+    <aside class="notes">
+      LIVE-MOMENT: Fragt die KI vor der Runde etwas Lübsches, das jeder im Raum
+      prüfen kann. Zum Beispiel nach den Öffnungszeiten eines kleinen Ladens in
+      der Altstadt oder nach dem Programm einer regionalen Veranstaltung.
+      Vorher einmal selbst durchspielen, damit klar ist, was kommt.
+      Ohne Netz: diese Folie trägt auch allein.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 19: KENNZEICHNUNGSPFLICHT ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Seit diesem Monat ist das <span class="schimmer">Pflicht.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:8px;align-items:stretch;">
+      <div class="feld" style="flex:0 0 640px;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+        <p class="label">EU AI Act, Artikel 50</p>
+        <p style="font-size:40px;font-weight:600;line-height:1.3;margin:0;">
+          Seit dem 2. August 2026 gelten die Transparenzpflichten.
+        </p>
+        <p class="lead" style="font-size:29px;">
+          Sie treffen nicht nur die Anbieter, sondern alle, die damit
+          veröffentlichen. Also euch.
+        </p>
+      </div>
+      <div class="spalte wachsen" style="gap:26px;">
+        <div class="feld wachsen fragment fade-up" style="display:flex;align-items:center;gap:36px;">
+          <svg style="width:76px;height:76px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.6"/>
+          </svg>
+          <div>
+            <p class="label" style="margin-bottom:12px;">Bilder, Ton, Video</p>
+            <p style="font-size:33px;line-height:1.45;margin:0;">
+              Wer KI-Material veröffentlicht, muss das offenlegen. Auf Instagram
+              genauso wie auf der Website.
+            </p>
+          </div>
+        </div>
+        <div class="feld wachsen fragment fade-up" style="display:flex;align-items:center;gap:36px;">
+          <svg style="width:76px;height:76px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#009FF4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M9 11h6M9 15h4"/>
+          </svg>
+          <div>
+            <p class="label" style="margin-bottom:12px;">Chatbot</p>
+            <p style="font-size:33px;line-height:1.45;margin:0;">
+              Wer einen einsetzt, muss sagen, dass da eine Maschine schreibt.
+              Ein Satz reicht.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="quelle mt">Verordnung (EU) 2024/1689, Artikel 50. In Kraft seit August 2024, dieser Teil anwendbar ab 2. August 2026.</p>
+    <aside class="notes">
+      Der stärkste Aufwecker der Runde. Erwartbar: die meisten wussten das nicht.
+      Kurz nachfragen, wer schon KI-Bilder gepostet hat. Nicht dramatisieren,
+      aber auch nicht abschwächen: das Ordnungswidrigkeitenrecht dahinter ist real.
+      Wer nach Bußgeldhöhen fragt: nicht raten, sondern anbieten, das nachzureichen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 20: EIGENER REINFALL ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
+      <div class="feld" style="flex:0 0 620px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
+        <p class="label">Klausur an der Uni, 2023</p>
+        <p style="font-size:40px;font-weight:600;line-height:1.3;margin:0;">
+          Open-Book-Klausur. Alle Hilfsmittel erlaubt.
+        </p>
+        <p class="lead" style="font-size:30px;">
+          Also fragten wir ChatGPT. Damals noch Version 3.5.
+        </p>
+      </div>
+      <div class="spalte wachsen" style="gap:26px;">
+        <div class="feld wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;">
+          <p class="label" style="margin-bottom:14px;">Was auf dem Bildschirm stand</p>
+          <p style="font-size:34px;line-height:1.5;margin:0;">
+            Ganze Sätze, sauber gegliedert, ohne Zögern. Genau das, was in einer
+            Klausur stehen sollte. Wir haben abgeschrieben und nichts nachgeschlagen.
+          </p>
+        </div>
+        <div class="feld wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;border-color:rgba(255,107,94,.28);">
+          <p class="label" style="margin-bottom:14px;">Was dabei herauskam</p>
+          <p style="font-size:38px;font-weight:700;line-height:1.35;margin:0;">
+            Wir sind beide durchgefallen.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="takeaway mt-auto" style="padding-top:26px;">
+      <p>Nicht die KI ist durchgefallen. Wir haben nicht gegengelesen.</p>
+    </div>
+    <aside class="notes">
+      Die Geschichte gehört euch beiden, also erzählt sie auch zu zweit.
+      Sie funktioniert, weil sie nichts beschönigt: die Antworten sahen gut aus,
+      und genau das war das Problem. Ruhig lachen lassen.
+      Der Anschluss an Folie 20 ist der Punkt: erkennen konnte man es nicht,
+      nachsehen hätte man müssen.
+      Wer fragt, ob das erlaubt war: ja, Open Book, alle Hilfsmittel zugelassen.
+      Erlaubt war es. Klug war es nicht.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 21: SIEBEN ZUM MITNEHMEN ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Sieben Dinge für den <span class="schimmer">Schreibtisch.</span></h2>
+    <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;margin-top:8px;padding:34px 52px;">
+      <div class="mitnehmen">
+        <div><span class="nr">1</span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
+        <div><span class="nr">5</span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
+        <div><span class="nr">2</span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
+        <div><span class="nr">6</span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
+        <div><span class="nr">3</span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
+        <div><span class="nr">7</span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
+        <div style="border-bottom:none;"><span class="nr">4</span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
+      </div>
+    </div>
+    <aside class="notes">
+      Eike arbeitet selbst mit Siebener-Listen, seine "Sieben Türme, sieben Tipps".
+      Die gedruckte Karte liegt schon auf dem Tisch, hier nur kurz darauf zeigen.
+      Nicht alle sieben vorlesen. Zwei herausgreifen, der Rest steht da.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 22: TITEL EINGELÖST ============ -->
+<section data-chrome="aus">
+  <div class="slide mittig">
+    <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
+    <p class="lead" style="font-size:38px;margin-top:26px;max-width:30em;">
+      Es heißt, dass das Ding auf eurem Rechner nicht mehr nur herumliegt.
+      Ein Fall, einmal richtig bestellt, heute Nachmittag.
+    </p>
+    <aside class="notes">
+      Der Bogen zum Titel. Danach nicht weiterreden, sondern öffnen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 23: OFFENES ENDE ============ -->
+<section>
+  <div class="slide mittig">
+    <h2 class="hero" style="font-size:130px;">Jetzt seid <span class="schimmer">ihr dran.</span></h2>
+    <p class="lead" style="font-size:38px;margin-top:16px;">
+      Fragt uns, was ihr fragen wollt.<br>
+      Es gibt hier keine Frage, die zu einfach wäre.
+    </p>
+    <p class="label" style="margin-top:64px;">Und wenn wir etwas nicht wissen, sagen wir das auch</p>
+    <aside class="notes">
+      Genau dieser Teil ist Eike wichtig: der luftleere Raum.
+      Nicht zu früh auflösen, Stille aushalten. Die erste Frage kommt immer.
+      Wenn nicht: selbst eine typische Frage stellen und beantworten.
+      Die häufigsten Fragen stehen in FRAGEN.md.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 24: ABSCHLUSS ============ -->
+<section data-chrome="aus">
+  <div class="slide mittig">
+    <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:110px;margin-bottom:54px;">
+    <h2 class="hero" style="font-size:128px;">Danke fürs <span class="schimmer">Frühstück.</span></h2>
+    <p class="lead" style="font-size:34px;margin-top:22px;">
+      Edgar Paul-Ghazaryan und Emre Erdogan<br>
+      Fischstraße 16 · 23552 Lübeck
+    </p>
+    <p class="label" style="margin-top:60px;">Künstliche Intelligenz. Echte Wirkung.</p>
+    <aside class="notes">
+      Stehen lassen, während die Runde weiterfrühstückt.
+    </aside>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="vendor/reveal/reveal.js"></script>
+<script src="vendor/reveal/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  /* ?nofrag zeigt alle Einblendungen sofort: für die visuelle Prüfung und den PDF-Export */
+  fragments: !new URLSearchParams(location.search).has('nofrag'),
+  hash: true,
+  history: true,
+  transition: 'fade',
+  transitionSpeed: 'default',
+  backgroundTransition: 'none',
+  controls: true,
+  controlsLayout: 'bottom-right',
+  controlsTutorial: false,
+  progress: true,
+  slideNumber: false,
+  center: false,
+  width: 1920,
+  height: 1080,
+  margin: 0,
+  plugins: [RevealNotes]
+});
+
+/* Seitenzahl und Chrome: Titel- und Trennfolien (data-chrome="aus")
+   laufen ohne Logos und ohne Zähler. */
+var numEl = document.getElementById('chrome-num');
+function chromeUpdate() {
+  var slides = Reveal.getSlides();
+  var idx = Reveal.getState().indexh;
+  var aktuelle = Reveal.getCurrentSlide();
+  var aus = aktuelle.dataset.chrome === 'aus';
+  document.body.classList.toggle('chrome-aus', aus);
+  numEl.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+}
+Reveal.on('ready', chromeUpdate);
+Reveal.on('slidechanged', chromeUpdate);
+
+/* Die Pizza baut sich auf, sobald ihre Folie steht. Der Aufbau läuft über
+   CSS-Transitions mit gestaffelter Verzögerung, nicht über Einzelbilder:
+   so kommt er auch dann an, wenn der Browser die Seite im Hintergrund hält
+   und Animationsbilder gar nicht erst anfordert. */
+function pizzaPruefen() {
+  var p = document.getElementById('pizza-gut');
+  if (!p) return;
+  var aufFolie = Reveal.getCurrentSlide().contains(p);
+  p.classList.toggle('fertig', aufFolie);
+}
+Reveal.on('ready', pizzaPruefen);
+Reveal.on('slidechanged', pizzaPruefen);
+
+/* Sternschnuppen wie im EdgeVision-Wizard: alle 6,5 Sekunden eine,
+   hinter den Folien auf der Raum-Ebene. */
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var nebel = document.querySelector('.nebel');
+  setInterval(function () {
+    if (document.hidden) return;
+    var s = document.createElement('div');
+    s.className = 'schnuppe';
+    s.style.top = (8 + Math.random() * 55) + 'vh';
+    s.style.left = (5 + Math.random() * 55) + 'vw';
+    s.style.setProperty('--wk', (18 + Math.random() * 24) + 'deg');
+    nebel.after(s);
+    setTimeout(function () { s.remove(); }, 1300);
+  }, 6500);
+}
+</script>
+<!-- Die Galaxie aus dem EdgeVision-Wizard: three.js-Spiralarme, Sternschichten,
+     Milchstraßenband, langsame Rotation. 2D-Sternenfeld als Rückfall.
+     Zuletzt geladen: die Folien stehen, bevor three.js überhaupt kommt. -->
+<script src="kosmos.js"></script>
+</body>
+</html>
