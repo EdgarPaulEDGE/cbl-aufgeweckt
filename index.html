@@ -402,6 +402,12 @@ body.chrome-aus .chrome { opacity: 0; }
   background: linear-gradient(0deg, rgba(3, 3, 9, .88), transparent);
 }
 
+/* ---------- Bilder in Flex-Spalten ----------
+   In einer Spalten-Flexbox gilt align-items:stretch. Ein Bild mit fester Höhe
+   und width:auto wird dadurch auf die Containerbreite gezogen und verzerrt.
+   Hier stand der Roboter am Laptop 825px breit statt 195px. */
+.gegen > div > img, .spalte > img, .zeilen > img { align-self: flex-start; }
+
 /* ---------- Der Begleiter ----------
    Freigestellt, deshalb ohne Rahmen und ohne Fläche: er steht einfach da. */
 .begleiter { position: absolute; z-index: 3; pointer-events: none; }
@@ -590,7 +596,7 @@ body.chrome-aus .chrome { opacity: 0; }
         <div class="prompt" style="min-height:0;font-size:38px;">Antworte auf diese Mail.</div>
         <div class="wortzahl schwach"><span class="zahl">4</span><span class="was">Wörter</span></div>
         <img src="assets/images/robo/laptop.png" alt=""
-             style="height:228px;width:auto;display:block;margin:14px 0 0 -12px;">
+             style="height:250px;width:auto;display:block;align-self:flex-start;margin:16px 0 0 -10px;">
       </div>
       <div class="fragment fade-up">
         <div class="wertung gut">Das wurde für B getippt</div>

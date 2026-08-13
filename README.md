@@ -70,6 +70,7 @@ im Quelltext nicht sehen lassen:
 | `pruefe-folien.mjs` | Inhalt außerhalb der Folie. Reveal schneidet zu hohe Folien kommentarlos ab, ohne Fehler und ohne Scrollleiste. Legt zusätzlich von jeder Folie ein PNG in `.pruefung/`. |
 | `pruefe-ueberlappung.mjs` | Kästen, die sich gegenseitig überdecken. Passiert mitten auf der Folie, wo weder Rand- noch Kantenprüfung anschlägt. |
 | `pruefe-ausrichtung.mjs` | Kanten, die um 1 bis 24 Pixel danebenliegen. Genau dieser Graubereich liest sich als Fehler, größere Abstände liest das Auge als Absicht. |
+| `pruefe-verzerrung.mjs` | Bilder, die verzerrt dargestellt werden: das gezeigte Seitenverhältnis gegen das der Datei. Passiert lautlos, sobald ein Bild mit fester Höhe in einer Spalten-Flexbox landet, die es auf ihre Breite streckt. |
 | `pruefe-reihenfolge.mjs` | Einblendungen, die gegen die Leserichtung springen, und Folien, deren Kopfzeile beim Blättern noch fehlt. |
 
 Die vier decken unterschiedliche Fehlerklassen ab, deshalb ersetzt keines das
