@@ -164,13 +164,23 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 
 /* ---------- Chrome (fixe Overlays) ---------- */
 .chrome { position: fixed; z-index: 20; pointer-events: none; transition: opacity .3s; }
-.chrome-edge { top: 34px; left: 56px; }
-.chrome-edge img { height: 50px; display: block; }
-.chrome-client { top: 40px; right: 56px; }
-.chrome-client img { height: 40px; display: block; opacity: .9; }
+/* Die Werte sind Folienpixel und werden mit --folie-skala umgerechnet, die
+   Ränder kommen aus der tatsächlichen Lage der Bühne im Fenster. */
+.chrome-edge {
+  top: calc(var(--folie-oben, 0px) + 34px * var(--folie-skala, 1));
+  left: calc(var(--folie-links, 0px) + 56px * var(--folie-skala, 1));
+}
+.chrome-edge img { height: calc(50px * var(--folie-skala, 1)); display: block; }
+.chrome-client {
+  top: calc(var(--folie-oben, 0px) + 40px * var(--folie-skala, 1));
+  right: calc(var(--folie-rechts, 0px) + 56px * var(--folie-skala, 1));
+}
+.chrome-client img { height: calc(40px * var(--folie-skala, 1)); display: block; opacity: .9; }
 .chrome-num {
-  bottom: 36px; left: 60px;
-  font-weight: 500; font-size: 16px; letter-spacing: .12em; color: var(--w-25);
+  bottom: calc(var(--folie-unten, 0px) + 36px * var(--folie-skala, 1));
+  left: calc(var(--folie-links, 0px) + 60px * var(--folie-skala, 1));
+  font-weight: 500; font-size: calc(16px * var(--folie-skala, 1));
+  letter-spacing: .12em; color: var(--w-25);
 }
 body.chrome-aus .chrome { opacity: 0; }
 
@@ -1366,6 +1376,24 @@ function chromeUpdate() {
 }
 Reveal.on('ready', chromeUpdate);
 Reveal.on('slidechanged', chromeUpdate);
+
+/* Wo genau liegt die Bühne im Fenster? Reveal skaliert sie und zentriert sie,
+   sobald das Fenster nicht 16:9 ist. Die Logos sollen an der Folienkante
+   hängen, nicht am Fensterrand. */
+function chromeAusrichten() {
+  var s = document.querySelector('.reveal .slides');
+  if (!s) return;
+  var r = s.getBoundingClientRect();
+  var w = document.documentElement.style;
+  w.setProperty('--folie-links', Math.max(0, r.left) + 'px');
+  w.setProperty('--folie-rechts', Math.max(0, window.innerWidth - r.right) + 'px');
+  w.setProperty('--folie-oben', Math.max(0, r.top) + 'px');
+  w.setProperty('--folie-unten', Math.max(0, window.innerHeight - r.bottom) + 'px');
+  w.setProperty('--folie-skala', String(r.height / 1080));
+}
+Reveal.on('ready', chromeAusrichten);
+Reveal.on('resize', chromeAusrichten);
+window.addEventListener('resize', chromeAusrichten);
 
 /* Die Pizza baut sich auf, sobald ihre Folie steht. Der Aufbau läuft über
    CSS-Transitions mit gestaffelter Verzögerung, nicht über Einzelbilder:
