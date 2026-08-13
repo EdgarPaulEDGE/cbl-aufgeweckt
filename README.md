@@ -6,10 +6,20 @@ Referenten: Edgar Paul-Ghazaryan (Eddie) und Emre Erdogan.
 
 ## Live
 
-**https://edgarpauledge.github.io/cbl-aufgeweckt/**
+**https://aufgeweckt.edge-digital.ai/**
 GitHub Pages aus `main`, Repo `EdgarPaulEDGE/cbl-aufgeweckt`, öffentlich.
 Jeder Push auf `main` geht automatisch live, das dauert etwa eine Minute.
 Die Karte zum Mitnehmen liegt unter `/karte.html`.
+
+Die alte Adresse `edgarpauledge.github.io/cbl-aufgeweckt/` leitet dorthin um.
+
+**Domain:** `CNAME` im Repo hält den Namen, der DNS-Eintrag liegt bei Wix
+(die Nameserver von `edge-digital.ai` zeigen auf `ns8/ns9.wixdns.net`, nicht
+auf den Registrar). Dort steht ein CNAME `aufgeweckt` auf
+`edgarpauledge.github.io`, genau wie bei `visionista.edge-digital.ai`.
+Reihenfolge beim nächsten Mal: erst den DNS-Eintrag setzen, dann die
+`CNAME`-Datei ins Repo. Andersherum leitet GitHub sofort auf einen Namen um,
+der noch nicht auflöst, und die Seite ist zwischenzeitlich tot.
 
 Der Termin ist keine Werbeveranstaltung. Eike-Christian Fock stellt EDGE seinem
 eigenen Netzwerk vor, die Eigenwerbung läuft über Inhalt. Deshalb gibt es im
