@@ -388,6 +388,25 @@ body.chrome-aus .chrome { opacity: 0; }
 }
 .posting .hinweis svg { width: 26px; height: 26px; flex: 0 0 26px; stroke: var(--cyan); }
 
+/* ---------- Vier Bilder als Beleg ----------
+   Enge Fugen und gleiche Rundung lassen die vier als eine Fläche lesen.
+   Die Bildunterschrift trägt den Ort, nicht die Erklärung. */
+.galerie { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; }
+.galerie figure { margin: 0; position: relative; overflow: hidden; border-radius: 18px;
+  border: 1px solid var(--hairline); }
+.galerie img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galerie figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 24px 16px;
+  font-weight: 600; font-size: 22px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--weiss);
+  background: linear-gradient(0deg, rgba(3, 3, 9, .88), transparent);
+}
+
+/* ---------- Der Begleiter ----------
+   Freigestellt, deshalb ohne Rahmen und ohne Fläche: er steht einfach da. */
+.begleiter { position: absolute; z-index: 3; pointer-events: none; }
+.begleiter img { display: block; height: 100%; width: auto; }
+
 /* ---------- Platzhalter für offene Punkte ---------- */
 .ph {
   border: 2px dashed var(--hairline-stark); border-radius: 26px;
@@ -452,7 +471,12 @@ body.chrome-aus .chrome { opacity: 0; }
 
 <!-- ============ 1: TITEL ============ -->
 <section data-chrome="aus">
-  <div class="slide mittig">
+  <div class="slide mittig" style="position:relative;">
+    <!-- Freigestellt und angeschnitten: er steht am Bildrand, statt in einem
+         eigenen Kasten zu sitzen. -->
+    <div class="begleiter" style="right:60px;bottom:0;height:400px;">
+      <img src="assets/images/robo/winkt.png" alt="">
+    </div>
     <svg class="tasse" viewBox="0 0 120 120" fill="none" aria-hidden="true">
       <!-- Dampf -->
       <g>
@@ -1029,8 +1053,11 @@ body.chrome-aus .chrome { opacity: 0; }
 
 <!-- ============ 18: HALLUZINATIONEN ============ -->
 <section>
-  <div class="slide">
+  <div class="slide" style="position:relative;">
     <h2 class="headline">Sie sagt es dir freundlich. Und <span class="schimmer">falsch.</span></h2>
+    <div class="begleiter" style="right:70px;top:124px;height:210px;opacity:.92;">
+      <img src="assets/images/robo/ratlos.png" alt="">
+    </div>
     <div class="reihe wachsen" style="gap:44px;margin-top:8px;align-items:stretch;">
       <div class="spalte fragment fade-up" style="flex:1;">
         <p class="label">Was am liebsten erfunden wird</p>
@@ -1167,7 +1194,55 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 21: SIEBEN ZUM MITNEHMEN ============ -->
+<!-- ============ 21: WIE SCHNELL DAS GEHT ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Diese vier sind heute früh <span class="schimmer">entstanden.</span></h2>
+    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
+      <div class="galerie fragment fade-up" style="flex:1;">
+        <figure><img src="assets/images/robo/holstentor.jpg" alt="Roboter vor dem Holstentor"><figcaption>Holstentor</figcaption></figure>
+        <figure><img src="assets/images/robo/passat.jpg" alt="Roboter an Bord der Passat"><figcaption>Passat, Travemünde</figcaption></figure>
+        <figure><img src="assets/images/robo/strandkorb.jpg" alt="Roboter im Strandkorb"><figcaption>Strand Travemünde</figcaption></figure>
+        <figure><img src="assets/images/robo/muk.jpg" alt="Roboter vor der MuK"><figcaption>MuK</figcaption></figure>
+      </div>
+      <div class="spalte" style="flex:0 0 560px;gap:30px;justify-content:center;">
+        <div class="fragment fade-up">
+          <p class="label" style="margin-bottom:16px;">Zutaten</p>
+          <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
+            Drei Bilder und ein Satz.
+          </p>
+          <p class="lead" style="font-size:29px;margin-top:18px;">
+            Ein Roboter, eine Mütze, ein Fischbrötchen. Die Orte kannte das
+            Werkzeug von selbst.
+          </p>
+        </div>
+        <div class="fragment fade-up">
+          <p class="label" style="margin-bottom:16px;">Aufwand</p>
+          <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
+            Zehn Minuten. Ohne Fotograf.
+          </p>
+        </div>
+        <div class="fragment fade-up">
+          <p style="font-size:31px;line-height:1.4;margin:0;">
+            Und alle vier tragen aus demselben Grund einen Hinweis wie den
+            unten links. <span class="cyan">Genau darum ging es eben.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <span class="bild-quelle" style="left:270px;bottom:34px;">Bilder mit KI erstellt</span>
+    <aside class="notes">
+      Der Lacher nach dem Rechtsblock, und trotzdem inhaltlich: die Runde sieht,
+      wie wenig dahintersteckt und warum die Kennzeichnung kein Sonderfall ist,
+      sondern Alltag. Wer fragt, womit: Nano Banana über Higgsfield, die drei
+      Ausgangsbilder lagen auf dem Schreibtisch.
+      Wenn die Zeit knapp ist, ist das die erste Folie zum Streichen.
+      Sie trägt keinen eigenen Lernpunkt, sie verstärkt nur den vorherigen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 22: SIEBEN ZUM MITNEHMEN ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Acht Dinge für den <span class="schimmer">Schreibtisch.</span></h2>
@@ -1191,7 +1266,7 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 22: TITEL EINGELÖST ============ -->
+<!-- ============ 23: TITEL EINGELÖST ============ -->
 <section data-chrome="aus">
   <div class="slide mittig">
     <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
@@ -1205,9 +1280,12 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 23: OFFENES ENDE ============ -->
+<!-- ============ 24: OFFENES ENDE ============ -->
 <section>
-  <div class="slide mittig">
+  <div class="slide mittig" style="position:relative;">
+    <div class="begleiter" style="left:110px;bottom:0;height:440px;">
+      <img src="assets/images/robo/daumen.png" alt="">
+    </div>
     <h2 class="hero" style="font-size:154px;">Jetzt seid <span class="schimmer">ihr dran.</span></h2>
     <p class="lead fragment fade-up" style="font-size:38px;margin-top:16px;">
       Fragt uns, was ihr fragen wollt.<br>
@@ -1223,7 +1301,7 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 24: ABSCHLUSS ============ -->
+<!-- ============ 25: ABSCHLUSS ============ -->
 <section data-chrome="aus">
   <div class="slide mittig">
     <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:140px;margin-bottom:66px;">

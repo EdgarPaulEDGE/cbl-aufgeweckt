@@ -1,7 +1,7 @@
 # Aufgeweckt. KI-Klartext zum Frühstück
 
 Impuls von EDGE Digital beim **Netzwerkfrühstück der LTM im K64**, Lübeck,
-**20. August 2026, ab 8:30 Uhr**. 24 Folien, etwa 40 Minuten plus offenes Q&A.
+**20. August 2026, ab 8:30 Uhr**. 25 Folien, etwa 40 Minuten plus offenes Q&A.
 Referenten: Edgar Paul-Ghazaryan (Eddie) und Emre Erdogan.
 
 ## Live
@@ -92,14 +92,22 @@ Prüfungen das nicht sahen.
 
 ## Bilder
 
-Zwei Bilder im Deck sind mit KI erzeugt (Higgsfield, GPT Image 2) und beide
-gekennzeichnet:
+Alle Bilder im Deck sind mit KI erzeugt (Higgsfield) und gekennzeichnet:
 
-- `assets/images/fruehstueck.jpg` auf der Trennfolie vor den drei Fällen
-- `assets/images/tagungsraum-ki.jpg` auf der Folie zur Kennzeichnungspflicht
+- `assets/images/fruehstueck.jpg` und `schreibtisch.jpg` auf den beiden
+  Trennfolien, `tagungsraum-ki.jpg` auf der Folie zur Kennzeichnungspflicht
+  (GPT Image 2)
+- `assets/images/robo/` der Begleiter: drei Freisteller mit Transparenz
+  (`winkt`, `daumen`, `ratlos`) und vier Ortsbilder (`holstentor`, `passat`,
+  `strandkorb`, `muk`), alle mit Nano Banana 2 aus drei Vorlagen gebaut, die
+  auf dem Schreibtisch lagen: ein Roboter-Render, eine Mütze mit der
+  Stickerei "ich ❤️ fischbrötchen" und ein Fischbrötchen. Die Orte kannte das
+  Modell von selbst, Referenzfotos waren nicht nötig. Freigestellt wurde über
+  den Background-Remover, nicht über eine Weiß-Maske: die Kanten an Fingern
+  und Antennen halten das sonst nicht aus.
 
-Das zweite ist Absicht bis ins Detail: es ist genau die Sorte Hochglanzbild, die
-ein Haus auf Instagram stellt, es trägt die Kennzeichnung, die Artikel 50
+Der Tagungsraum ist Absicht bis ins Detail: es ist genau die Sorte Hochglanzbild,
+die ein Haus auf Instagram stellt, es trägt die Kennzeichnung, die Artikel 50
 verlangt, und hinter seinen Fenstern liegen Berge, die es an der Ostsee nicht
 gibt. Damit belegt es beide Aussagen des Blocks auf einmal.
 

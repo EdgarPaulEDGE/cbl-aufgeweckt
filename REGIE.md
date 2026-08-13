@@ -16,8 +16,9 @@ lauffähig: man kann jeden Fall weglassen, ohne dass der Rest bricht.
 | 0:11 | 11 bis 13 | Die drei Fälle, live getippt | Emre |
 | 0:24 | 14 | Die vier Bausteine, jetzt benannt | Emre |
 | 0:27 | 15 bis 20 | Daten, Erfindungen, Kennzeichnung, unser Reinfall | Eddie |
-| 0:36 | 21 bis 23 | Acht zum Mitnehmen, offenes Ende | beide |
-| 0:40 | 24 | Steht, während weitergefrühstückt wird | |
+| 0:36 | 21 | Vier Bilder aus Lübeck und Travemünde | Emre |
+| 0:38 | 22 bis 24 | Acht zum Mitnehmen, offenes Ende | beide |
+| 0:41 | 25 | Steht, während weitergefrühstückt wird | |
 
 ## Rollenverteilung
 
@@ -65,7 +66,7 @@ raten, sondern anbieten, die Zahl nachzureichen.
 
 Das Deck lag mit vier Fällen und dem Zeitstrahl bei realistisch 48 bis 54
 Minuten, also über der Zielmarke von 30 bis 45 plus Q&A. Beides ist raus.
-Mit den verbliebenen 24 Folien liegt der Vortrag bei etwa **40 Minuten**,
+Mit den 25 Folien liegt der Vortrag bei etwa **40 Minuten**,
 inklusive der Zwischenfragen, die in so einer Runde immer kommen.
 
 Das Nadelöhr bleiben die Fälle: live getippt dauert einer eher vier als drei
@@ -75,10 +76,12 @@ Minuten, weil das Tippen selbst Zeit kostet und jedes Ergebnis kommentiert wird.
 
 In dieser Reihenfolge streichen:
 
-1. **Folie 12** (Fall 2, Absage) nur zeigen statt tippen. Spart drei Minuten,
+1. **Folie 21** (die vier Bilder aus Lübeck und Travemünde). Sie trägt keinen
+   eigenen Lernpunkt, sie verstärkt nur die Folie davor. Zwei Minuten.
+2. **Folie 12** (Fall 2, Absage) nur zeigen statt tippen. Spart drei Minuten,
    ohne dass der Bogen bricht.
-2. **Folie 5** (zwei Sätze zu uns) gesprochen statt gezeigt.
-3. **Folie 9** (Pizza) gesprochen statt gezeigt. Die Analogie trägt auch
+3. **Folie 5** (zwei Sätze zu uns) gesprochen statt gezeigt.
+4. **Folie 9** (Pizza) gesprochen statt gezeigt. Die Analogie trägt auch
    ohne Bild, sie ist in zwei Sätzen erzählt.
 
 Nicht streichen: Folie 4, Folie 14, Folie 20. Das sind die drei Folien, wegen
@@ -112,3 +115,14 @@ Revolutionsrhetorik. Ehrliche Grenzen benennen: sagen, was nicht funktioniert
 und wo wir selbst noch suchen. In dieser Runde ist das ein Vertrauenssignal.
 
 Zwischenfragen sind erwünscht, nicht störend. Wer unterbricht, hat zugehört.
+
+## Der Begleiter
+
+Auf drei Folien steht ein kleiner Roboter mit einer Fischbrötchen-Mütze: auf der
+Titelfolie, bei den Halluzinationen (dort ratlos) und bei der Schlussfrage
+(Daumen hoch). Er ist aus drei Bildern zusammengesetzt, die auf dem Schreibtisch
+lagen, und taucht auf Folie 21 in Lübeck und Travemünde wieder auf.
+
+Er ist bewusst kein Erklärstück, sondern ein Wiedererkennungszeichen. Nicht
+kommentieren, außer die Runde fragt. Dann ist die Antwort dieselbe wie auf
+Folie 21: drei Bilder, ein Satz, zehn Minuten.
