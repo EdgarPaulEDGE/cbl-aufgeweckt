@@ -407,6 +407,17 @@ body.chrome-aus .chrome { opacity: 0; }
 .begleiter { position: absolute; z-index: 3; pointer-events: none; }
 .begleiter img { display: block; height: 100%; width: auto; }
 
+/* ---------- Die offiziellen EU-Zeichen plus QR ----------
+   Die Icons liegen als SVG in Weiß vor, deshalb brauchen sie keine Fläche
+   hinter sich. Der QR-Code bleibt bewusst dunkel auf hell: helle Module auf
+   dunklem Grund lesen ältere Scanner nicht zuverlässig, und dieser Code wird
+   im Saal vom Beamer abfotografiert. */
+.zeichen-reihe { display: flex; align-items: center; gap: 44px; }
+.zeichen-reihe .eu-icon { display: block; }
+.zeichen-reihe .qr { display: flex; align-items: center; gap: 20px; margin-left: auto; }
+.zeichen-reihe .qr img { width: 140px; height: 140px; display: block; border-radius: 12px; }
+.zeichen-reihe .qr span { font-size: 22px; line-height: 1.35; color: var(--w-45); }
+
 /* ---------- Platzhalter für offene Punkte ---------- */
 .ph {
   border: 2px dashed var(--hairline-stark); border-radius: 26px;
@@ -1149,23 +1160,33 @@ body.chrome-aus .chrome { opacity: 0; }
           </p>
         </div>
         <div class="fragment fade-up">
-          <p class="lead" style="font-size:33px;">
+          <p class="lead" style="font-size:30px;">
             Seit dem 2. August 2026. Auf Instagram genauso wie auf der Website.
             Für Ton und Video gilt dasselbe, und wer einen Chatbot einsetzt,
             muss sagen, dass da eine Maschine schreibt.
           </p>
         </div>
         <div class="fragment fade-up">
-          <p style="font-size:33px;line-height:1.4;margin:0;">
-            Die Zeile links reicht als Kennzeichnung.
-            <span class="cyan">Genau so, ein Satz.</span>
-          </p>
+          <p class="label" style="margin-bottom:20px;">Ein Satz wie links reicht. Oder eines dieser Zeichen</p>
+          <div class="zeichen-reihe">
+            <img class="eu-icon" src="assets/images/eu/ki-generiert.svg" alt="Zeichen für KI-generierte Inhalte" style="height:84px;">
+            <img class="eu-icon" src="assets/images/eu/ki-modifiziert.svg" alt="Zeichen für KI-modifizierte Inhalte" style="height:56px;">
+            <span class="qr">
+              <img src="assets/images/eu/qr-eu-icons.png" alt="QR-Code zur Downloadseite der EU-Kommission">
+              <span>Kostenlos bei der<br>EU-Kommission</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
     <p class="quelle mt">Verordnung (EU) 2024/1689, Artikel 50. In Kraft seit August 2024, dieser Teil anwendbar ab 2. August 2026.</p>
     <aside class="notes">
       Der stärkste Aufwecker der Runde. Erwartbar: die meisten wussten das nicht.
+      Die beiden Zeichen sind die offiziellen der EU-Kommission, veröffentlicht
+      im Juli 2026. Ihre Verwendung ist freiwillig, die Kennzeichnung dahinter
+      nicht. Der QR-Code führt direkt auf die Downloadseite, dort liegen alle
+      drei Zeichen in vier Farben als SVG und PNG. Ruhig eine Minute Zeit zum
+      Scannen geben, das ist der praktischste Moment des ganzen Vortrags.
       Das Bild links haben wir heute früh in zwei Minuten erzeugen lassen.
       Genau diese Sorte Bild postet ein Haus auf Instagram, und genau dafür
       gilt die Pflicht. Wer genau hinsieht: hinter den Fenstern liegen Berge,

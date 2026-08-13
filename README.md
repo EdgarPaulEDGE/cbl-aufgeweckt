@@ -114,6 +114,28 @@ gibt. Damit belegt es beide Aussagen des Blocks auf einmal.
 Wer die Bilder austauscht: die Kennzeichnung muss mit. Ein Deck, das die Pflicht
 erklärt und selbst dagegen verstößt, verliert den Raum.
 
+## Die EU-Zeichen auf der Kennzeichnungsfolie
+
+Die beiden Zeichen auf Folie 20 sind die offiziellen Icons der EU-Kommission
+für KI-Inhalte, veröffentlicht im Juli 2026: eines für vollständig KI-erzeugte,
+eines für KI-veränderte Inhalte. Sie liegen als weißes SVG in
+`assets/images/eu/`, die Vorlagen kamen aus
+`EDGE/Clients/Bürokompetenz/Orga/ki-icons-fuer-eddie`.
+
+Der QR-Code daneben führt auf die Downloadseite der Kommission:
+`digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content`.
+Dort liegen alle drei Zeichen in vier Farbvarianten als SVG und PNG.
+
+Der Code ist bewusst dunkel auf hell gehalten, obwohl das im schwarzen Deck
+weniger elegant aussieht: helle Module auf dunklem Grund erkennen ältere
+Scanner nicht zuverlässig, und dieser Code wird im Saal aus mehreren Metern
+vom Beamer abfotografiert. Nach jeder Änderung mit `zxingcpp` gegenlesen,
+ein QR-Code, der nicht scannt, fällt vor Publikum auf.
+
+**Wichtig für die Aussage:** Die Verwendung der Icons ist freiwillig, die
+Kennzeichnungspflicht dahinter nicht. Ein Satz wie unter dem Bild links reicht
+genauso.
+
 ## Gestaltung
 
 Übernommen aus der SoulByte-Schulung, damit alle EDGE-Auftritte gleich aussehen:
