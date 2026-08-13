@@ -41,6 +41,9 @@ for (let h = 0; h < anzahl; h++) {
       const jetzt = sichtbar();
       for (const f of jetzt) {
         if (vorher.has(f)) continue;
+        // reine Grafik ohne Text trägt keine eigene Aussage und wird in der
+        // Reihenfolge nicht mitgezählt
+        if (!(f.textContent || "").trim()) continue;
         const r = f.getBoundingClientRect();
         liste.push({
           y: Math.round((r.top - bt.top) / zoom),
