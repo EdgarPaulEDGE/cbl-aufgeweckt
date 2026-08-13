@@ -38,6 +38,28 @@ ganzen Deck **keine Leistungsübersicht, keinen Case und keinen Call-to-Action**
 `?nofrag` an die Adresse hängen zeigt alle Einblendungen sofort. Praktisch für
 die Durchsicht und für den PDF-Export.
 
+## Ohne Adressleiste zeigen
+
+Drei Wege, vom schnellsten zum saubersten:
+
+**1. Taste F.** Sobald die Seite geladen ist, einmal `F` drücken. Das ist der
+eingebaute Vollbildmodus von reveal.js und blendet Adressleiste, Tabs und Dock
+komplett aus. Zurück mit `Esc`. Funktioniert in Chrome und Safari gleich.
+
+**2. Als App installieren.** Chrome bietet über das Dreipunktmenü
+*Streamen, Speichern und Teilen → Seite als App installieren* an, Safari über
+*Ablage → Zum Dock hinzufügen*. Danach liegt der Vortrag als eigenes Symbol im
+Dock und startet in einem Fenster ganz ohne Browserleisten. Möglich macht das
+`manifest.webmanifest` mit `"display": "fullscreen"`.
+
+**3. Doppelklick auf `Vollbild starten.command`.** Startet Chrome im
+Kiosk-Modus direkt mit der Live-Adresse: kein Fensterrahmen, keine Leisten,
+nichts. Beenden mit `cmd+Q`. Das ist der Weg für den Vortragstag, weil nichts
+schiefgehen kann und niemand versehentlich eine Leiste einblendet.
+
+Beim ersten Start fragt macOS bei der `.command`-Datei einmal nach, ob sie
+ausgeführt werden darf.
+
 ## Lokal starten
 
 ```bash

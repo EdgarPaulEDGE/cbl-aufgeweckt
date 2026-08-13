@@ -98,7 +98,8 @@ Die Präsentation selbst braucht kein Internet. Alles liegt lokal.
 
 ## Checkliste vor Ort
 
-- Rechner am Beamer, Auflösung 16:9, Vollbild mit **F**
+- Rechner am Beamer, Auflösung 16:9, Vollbild mit **F** (oder Doppelklick auf
+  `Vollbild starten.command`, dann kommt gar keine Leiste hoch)
 - Zweiter Bildschirm für die Redneransicht (**S**), sonst reicht der Ausdruck
   von FRAGEN.md
 - Bildschirmschoner und Mitteilungen aus
