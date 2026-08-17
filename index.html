@@ -153,16 +153,40 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 .spalten p { color: var(--w-70); font-size: 26px; line-height: 1.55; margin: 0; }
 .sp-num { font-size: 46px; font-weight: 700; color: var(--cyan); margin-bottom: 16px; line-height: 1; }
 
-/* ---------- Kreis-Nummer: die nackte Zahl im Kreis ----------
-   Nie 01 02 03. Schritt-Nummern stehen als 1, 2, 3 in einem Kreis,
-   gleiche Familie wie die Haken- und Kreuz-Kreise der Vergleichsfolie. */
-.kreis-num {
-  display: inline-grid; place-items: center; flex-shrink: 0;
-  width: 88px; height: 88px; border-radius: 50%;
-  background: rgba(0, 226, 226, .1);
-  border: 1px solid rgba(0, 226, 226, .38);
-  color: var(--cyan); font-weight: 700; font-size: 42px; line-height: 1;
+/* ---------- Nummern-Badge: der drehende Verlaufs-Ring ----------
+   Nie 01 02 03, immer die nackte Zahl. Der Markenverlauf läuft als Kontur
+   einmal um den Kreis und rotiert langsam: dieselbe Sprache wie der
+   Schimmer in den Headlines, nur in Bewegung. Die Drehung liegt auf einem
+   Pseudo-Element mit transform, das läuft überall und kostet kein Layout. */
+.ring {
+  position: relative; width: 84px; height: 84px; border-radius: 50%;
+  padding: 3px; overflow: hidden; flex-shrink: 0; display: inline-block;
 }
+.ring::before {
+  content: ""; position: absolute; inset: -30%; border-radius: 50%;
+  background: conic-gradient(var(--purple), var(--blau) 38%, var(--cyan) 62%, var(--purple));
+  animation: ring-drehen 5s linear infinite;
+}
+.ring > b {
+  position: relative; display: grid; place-items: center;
+  width: 100%; height: 100%; border-radius: 50%;
+  background: #070a14; font-size: 38px; font-weight: 700; color: var(--weiss);
+}
+.ring.warn::before { background: conic-gradient(#ff9a8e, var(--warn) 45%, #b23a2f 75%, #ff9a8e); }
+.ring.ok::before { background: conic-gradient(#8fe9c9, var(--ok) 45%, #1e8f68 75%, #8fe9c9); }
+.ring.klein { width: 72px; height: 72px; }
+.ring.klein > b { font-size: 32px; }
+@keyframes ring-drehen { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ring::before { animation: none; } }
+
+/* ---------- Fließband: rein, tippen, raus ---------- */
+.band { display: flex; gap: 26px; flex: 1; align-items: stretch; min-height: 0; }
+.band .pfeil-r { flex-shrink: 0; align-self: center; }
+.station { display: flex; flex-direction: column; min-width: 0; }
+.station-kopf { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.station .feld { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.stich { display: flex; gap: 18px; align-items: flex-start; font-size: 27px; line-height: 1.4; }
+.stich svg { width: 34px; height: 34px; flex-shrink: 0; margin-top: 2px; }
 
 /* ---------- Zeilen-Listen ---------- */
 .zeilen { display: flex; flex-direction: column; width: 100%; }
@@ -711,15 +735,15 @@ body.deckblatt .chrome-num { opacity: 0; }
     <h2 class="headline">Kurze Runde. Hand <span class="schimmer">hoch.</span></h2>
     <div class="zeilen feld wachsen" style="justify-content:center;margin-top:10px;padding:20px 52px;">
       <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="kreis-num">1</span>
+        <span class="ring"><b>1</b></span>
         <span style="font-size:70px;font-weight:600;">Wer hat KI schon einmal benutzt?</span>
       </div>
       <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="kreis-num">2</span>
+        <span class="ring"><b>2</b></span>
         <span style="font-size:70px;font-weight:600;">Wer benutzt sie im Job?</span>
       </div>
       <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="kreis-num">3</span>
+        <span class="ring"><b>3</b></span>
         <span style="font-size:70px;font-weight:600;">Wer hat sie heute schon aufgehabt?</span>
       </div>
     </div>
@@ -829,46 +853,54 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
-    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="wachsen" style="display:flex;flex-direction:column;">
-          <!-- Die Fallnummer sitzt in der Labelzeile, nicht in der Headline:
-               eine zweite Farbe in der Überschrift zerreißt die Zeile. -->
-          <p class="label" style="margin-bottom:14px;">Fall 1 &middot; Was auf dem Zettel steht</p>
-          <div class="zettel" style="flex:1;display:flex;align-items:center;">
-            <ul>
-              <li>25 Personen, 14.10., ganztags</li>
-              <li>Raum Trave, Tageslicht</li>
-              <li>68 Euro pro Person</li>
-              <li>Mittag und Pausen drin</li>
-              <li>Antwort bis Freitag</li>
-            </ul>
-          </div>
+    <div class="band" style="margin-top:6px;">
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein warn"><b>1</b></span>
+          <span class="label">Kommt rein</span>
         </div>
-        <div>
-          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
-          <div class="prompt klein">
-            <span>Du bist Veranstaltungsleiterin in unserem Tagungshaus. Schreib aus
-            diesen Notizen eine Antwortmail an Frau Behrens. Ton freundlich und knapp,
-            kein Werbedeutsch. Höchstens 150 Wörter, Ende mit einer Frage.</span>
-          </div>
+        <div class="feld" style="border-color:rgba(255,107,94,.25);">
+          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig, mit Mittagessen. Können Sie uns ein Angebot machen?"</p>
+          <p class="label" style="margin:0;">Anfrage von Frau Behrens</p>
         </div>
       </div>
-      <div class="fenster wachsen">
-        <div class="fenster-kopf"><span class="von">Antwort an K. Behrens</span><span class="betreff">in acht Sekunden</span></div>
-        <div class="fenster-leib" style="font-size:37px;">
-          <p>Hallo Frau Behrens,</p>
-          <p>der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave:
-             Tageslicht, ruhig, gut für einen ganzen Tag.</p>
-          <p>Die Pauschale liegt bei 68 Euro pro Person, mit Pausen und Mittagessen.</p>
-          <p>Ich halte den Termin bis Freitag fest. Passt das?</p>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb1a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb1a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
+      </svg>
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein"><b>2</b></span>
+          <span class="label">Ihr tippt</span>
+        </div>
+        <div class="feld">
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg><span>Du bist Veranstaltungsleiterin</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Raum Trave, 68 Euro, 14.10. frei</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Höchstens 150 Wörter, Ende mit Frage</span></div>
+        </div>
+      </div>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb1b)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb1b" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/></linearGradient></defs>
+      </svg>
+      <div class="station">
+        <div class="station-kopf">
+          <span class="ring klein ok"><b>3</b></span>
+          <span class="label">Geht raus</span>
+        </div>
+        <div class="feld" style="border-color:rgba(58,210,159,.3);">
+          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Frau Behrens, der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave: Tageslicht, ruhig, gut für einen ganzen Tag. Die Pauschale liegt bei 68 Euro pro Person. Ich halte den Termin bis Freitag fest. Passt das?</p>
         </div>
       </div>
     </div>
+    <p class="label" style="margin-top:28px;text-align:center;">Die Fakten kommen von euch. Was ihr nicht sagt, wird erfunden.</p>
     <aside class="notes">
-      Live tippen. Wichtig zu zeigen: die Fakten kommen von euch, nicht aus dem Netz.
-      Wer keine Zahlen liefert, bekommt erfundene Zahlen. Das ist die Brücke zu Folie 21.
-      Zeit: etwa drei Minuten.
+      Live tippen. Wichtig zu zeigen: die Fakten kommen von euch, nicht aus dem
+      Netz. Wer keine Zahlen liefert, bekommt erfundene Zahlen. Etwa drei Minuten.
+      Ohne Netz trägt die Folie allein: links vorlesen, Mitte zeigen, rechts raten
+      lassen, was rauskommt.
     </aside>
   </div>
 </section>
@@ -877,43 +909,52 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Absagen, ohne die Tür <span class="schimmer">zuzuziehen.</span></h2>
-    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="wachsen" style="display:flex;flex-direction:column;">
-          <p class="label" style="margin-bottom:14px;">Fall 2 &middot; Die Lage</p>
-          <div class="zettel" style="flex:1;display:flex;align-items:center;">
-            <ul>
-              <li>Anfrage über 120 Personen</li>
-              <li>Wir haben Platz für 60</li>
-              <li>Guter Kontakt, kommt jedes Jahr</li>
-              <li>Sollen wiederkommen</li>
-            </ul>
-          </div>
+    <div class="band" style="margin-top:6px;">
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein warn"><b>1</b></span>
+          <span class="label">Kommt rein</span>
         </div>
-        <div>
-          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
-          <div class="prompt klein">
-            <span>Schreib eine Absage. 120 Personen passen nicht zu uns, unser
-            Maximum sind 60. Der Kunde soll wiederkommen. Kurz und ehrlich,
-            kein Bedauern über drei Absätze. Lass die Tür offen.</span>
-          </div>
+        <div class="feld" style="border-color:rgba(255,107,94,.25);">
+          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Wir planen unsere Jahresfeier mit 120 Gästen. Haben Sie Platz für uns?"</p>
+          <p class="label" style="margin:0;">Guter Kunde, kommt jedes Jahr</p>
         </div>
       </div>
-      <div class="fenster wachsen">
-        <div class="fenster-kopf"><span class="von">Absage</span><span class="betreff">freundlich, aber klar</span></div>
-        <div class="fenster-leib" style="font-size:44px;">
-          <p>Hallo Herr Petersen,</p>
-          <p>diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Ich möchte
-             Ihnen keinen Abend verkaufen, der zu voll ist.</p>
-          <p>Wenn Sie mögen, frage ich nebenan nach. Für Ihre kleinere Runde im
-             Frühjahr halte ich gern wieder etwas frei.</p>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb2a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb2a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
+      </svg>
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein"><b>2</b></span>
+          <span class="label">Ihr tippt</span>
+        </div>
+        <div class="feld">
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Unser Maximum sind 60</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Er soll wiederkommen</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Kurz, ehrlich, Tür offen</span></div>
+        </div>
+      </div>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb2b)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb2b" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/></linearGradient></defs>
+      </svg>
+      <div class="station">
+        <div class="station-kopf">
+          <span class="ring klein ok"><b>3</b></span>
+          <span class="label">Geht raus</span>
+        </div>
+        <div class="feld" style="border-color:rgba(58,210,159,.3);">
+          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Herr Petersen, diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Ich möchte Ihnen keinen Abend verkaufen, der zu voll ist. Wenn Sie mögen, frage ich nebenan nach. Für Ihre kleinere Runde im Frühjahr halte ich gern wieder etwas frei.</p>
         </div>
       </div>
     </div>
+    <p class="label" style="margin-top:28px;text-align:center;">Die KI hält den Ton, den man nach zwölf Mails selbst nicht mehr findet</p>
     <aside class="notes">
-      Der Punkt hier: die KI kann den Ton halten, den man selbst nicht mehr findet,
-      wenn man schon zwölf Mails geschrieben hat. Und: eine Absage ist der Text,
-      den die meisten am längsten vor sich herschieben.
+      Der Punkt: die KI kann den Ton halten, wenn man selbst durch ist. Und die
+      Absage ist der Text, den alle am längsten vor sich herschieben.
     </aside>
   </div>
 </section>
@@ -922,58 +963,61 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Ein Stern. Und jetzt <span class="schimmer">ruhig bleiben.</span></h2>
-    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="wachsen" style="display:flex;flex-direction:column;">
-        <p class="label" style="margin-bottom:14px;">Fall 3 &middot; Was hereinkommt</p>
-        <div class="fenster" style="flex:1;justify-content:center;">
-          <div class="fenster-kopf" style="align-items:center;">
-            <span class="sterne" aria-label="Ein von fünf Sternen">
+    <div class="band" style="margin-top:6px;">
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein warn"><b>1</b></span>
+          <span class="label">Kommt rein</span>
+        </div>
+        <div class="feld" style="border-color:rgba(255,107,94,.25);">
+          <span class="sterne" aria-label="Ein von fünf Sternen">
               <svg viewBox="0 0 24 24"><path class="stern-voll" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
             </span>
-            <span class="betreff">vor zwei Stunden</span>
-          </div>
-          <div class="fenster-leib" style="font-size:31px;">
-            <p>Frühstück um kurz nach neun schon komplett leergeräumt, auf Nachfrage
-               kam nichts nach. Personal genervt. So nicht.</p>
-          </div>
-        </div>
-        </div>
-        <div>
-          <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
-          <div class="prompt klein">
-            <span>Antworte öffentlich auf diese Bewertung. Das Frühstück geht bis
-            10 Uhr, an dem Tag war eine Gruppe früher da als angekündigt.
-            Nicht rechtfertigen, nicht streiten. Höchstens vier Sätze.</span>
-          </div>
+          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Frühstück um neun leergeräumt, nichts kam nach. Personal genervt."</p>
+          <p class="label" style="margin:0;">Öffentlich, vor zwei Stunden</p>
         </div>
       </div>
-      <div class="spalte wachsen">
-        <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;">
-          <p style="font-size:41px;line-height:1.45;margin:0;">
-            Das tut uns leid, so soll ein Morgen bei uns nicht anfangen. An dem Tag
-            war eine Gruppe früher da als angemeldet, und wir sind nicht
-            hinterhergekommen. Regulär gibt es bis 10 Uhr Frühstück.
-          </p>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb3a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb3a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
+      </svg>
+      <div class="station" style="flex:0 0 470px;">
+        <div class="station-kopf">
+          <span class="ring klein"><b>2</b></span>
+          <span class="label">Ihr tippt</span>
         </div>
-        <div style="flex-shrink:0;">
-          <p class="label" style="margin-bottom:10px;">Warum das trägt</p>
-          <p class="lead" style="font-size:28px;">Die Antwort ist nicht für den Gast von gestern.
-             Sie ist für die zwanzig Leute, die sie nächste Woche lesen.</p>
+        <div class="feld">
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Öffentlich antworten</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Bis 10 Uhr Frühstück, Gruppe kam früher</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Vier Sätze, nicht streiten</span></div>
+        </div>
+      </div>
+      <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
+        <path d="M5 30h66M58 16l16 14-16 14" stroke="url(#fb3b)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="fb3b" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/></linearGradient></defs>
+      </svg>
+      <div class="station">
+        <div class="station-kopf">
+          <span class="ring klein ok"><b>3</b></span>
+          <span class="label">Geht raus</span>
+        </div>
+        <div class="feld" style="border-color:rgba(58,210,159,.3);">
+          <p style="font-size:29px;line-height:1.5;margin:0;">Das tut uns leid, so soll ein Morgen bei uns nicht anfangen. An dem Tag war eine Gruppe früher da als angemeldet. Regulär gibt es bis 10 Uhr Frühstück. Schreiben Sie uns, wir machen das wieder gut.</p>
         </div>
       </div>
     </div>
+    <p class="label" style="margin-top:28px;text-align:center;">Die Antwort ist für die zwanzig, die nächste Woche mitlesen</p>
     <aside class="notes">
       Erfahrungsgemäß der Fall mit den meisten Zwischenfragen. Ruhig zulassen,
-      hier darf das Gespräch kippen.
-      Hier gehört noch ein Satz mündlich dazu, weil die eigene Folie dafür
-      gestrichen wurde: Es hilft mehr zu sagen, was man NICHT will
-      ("kein Werbedeutsch", "keine Superlative"), als den Wunschton zu
-      beschreiben. Steht als Punkt 4 auf der Karte.
+      hier darf das Gespräch kippen. Mündlich mitnehmen: Es hilft mehr zu sagen,
+      was man NICHT will (kein Werbedeutsch, keine Superlative), als den
+      Wunschton zu beschreiben. Steht als Punkt 4 auf der Karte.
     </aside>
   </div>
 </section>
@@ -1074,17 +1118,17 @@ body.deckblatt .chrome-num { opacity: 0; }
          wandern sie mit der Textlänge auseinander. -->
     <div class="spalten feld" style="grid-template-columns:repeat(3,1fr);align-items:stretch;margin-top:auto;padding:72px 52px;">
       <div class="fragment fade-up">
-        <div class="kreis-num" style="margin-bottom:20px;">1</div>
+        <div class="ring" style="margin-bottom:20px;"><b>1</b></div>
         <h3 style="font-size:46px;min-height:2.7em;">Einstellungen öffnen</h3>
         <p style="font-size:32px;">Unten links über euren Namen.</p>
       </div>
       <div class="fragment fade-up">
-        <div class="kreis-num" style="margin-bottom:20px;">2</div>
+        <div class="ring" style="margin-bottom:20px;"><b>2</b></div>
         <h3 style="font-size:46px;min-height:2.7em;">Datenschutz suchen</h3>
         <p style="font-size:32px;">Heißt auch Datenkontrolle.</p>
       </div>
       <div class="fragment fade-up">
-        <div class="kreis-num" style="margin-bottom:20px;">3</div>
+        <div class="ring" style="margin-bottom:20px;"><b>3</b></div>
         <h3 style="font-size:46px;min-height:2.7em;">Training ausschalten</h3>
         <p style="font-size:32px;">Alles mit „Modell verbessern" aus.</p>
       </div>
