@@ -187,7 +187,8 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
   font-weight: 600; font-size: calc(21px * var(--folie-skala, 1));
   letter-spacing: .12em; color: var(--w-45);
 }
-body.chrome-aus .chrome { opacity: 0; }
+body.chrome-aus .chrome-edge, body.chrome-aus .chrome-client { opacity: 0; }
+body.deckblatt .chrome-num { opacity: 0; }
 
 /* ---------- Divider ---------- */
 .riesenzahl {
@@ -1402,6 +1403,7 @@ function chromeUpdate() {
   var aktuelle = Reveal.getCurrentSlide();
   var aus = aktuelle.dataset.chrome === 'aus';
   document.body.classList.toggle('chrome-aus', aus);
+  document.body.classList.toggle('deckblatt', idx === 0);
   /* Nur die nackte Zahl: 2, 3, 4. Kein Gesamtzähler, keine führende Null. */
   numEl.textContent = String(idx + 1);
 }
