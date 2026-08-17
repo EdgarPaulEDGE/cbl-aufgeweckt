@@ -180,12 +180,16 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 @media (prefers-reduced-motion: reduce) { .ring::before { animation: none; } }
 
 /* ---------- Fließband: rein, tippen, raus ---------- */
-.band { display: flex; gap: 26px; flex: 1; align-items: stretch; min-height: 0; }
+.band { display: flex; gap: 26px; align-items: stretch; }
+/* Band plus Merkzeile stehen als Gruppe mittig im Rest der Folie. Die Kästen
+   sind so hoch wie der längste von ihnen, nicht so hoch wie die Folie:
+   ein Loch im Kasten liest sich als Fehler, Luft um die Gruppe als Absicht. */
+.gruppe-mittig { display: flex; flex-direction: column; justify-content: center; gap: 34px; min-height: 0; }
 .band .pfeil-r { flex-shrink: 0; align-self: center; }
 .station { display: flex; flex-direction: column; min-width: 0; }
 .station-kopf { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
 .station .feld { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
-.stich { display: flex; gap: 18px; align-items: flex-start; font-size: 27px; line-height: 1.4; }
+.stich { display: flex; gap: 18px; align-items: flex-start; font-size: 29px; line-height: 1.45; }
 .stich svg { width: 34px; height: 34px; flex-shrink: 0; margin-top: 2px; }
 
 /* ---------- Zeilen-Listen ---------- */
@@ -853,14 +857,15 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
-    <div class="band" style="margin-top:6px;">
-      <div class="station" style="flex:0 0 470px;">
+    <div class="gruppe-mittig wachsen">
+    <div class="band">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
         </div>
         <div class="feld" style="border-color:rgba(255,107,94,.25);">
-          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig, mit Mittagessen. Können Sie uns ein Angebot machen?"</p>
+          <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig, mit Mittagessen. Können Sie uns ein Angebot machen?"</p>
           <p class="label" style="margin:0;">Anfrage von Frau Behrens</p>
         </div>
       </div>
@@ -869,7 +874,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb1a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 470px;">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -895,7 +900,8 @@ body.deckblatt .chrome-num { opacity: 0; }
         </div>
       </div>
     </div>
-    <p class="label" style="margin-top:28px;text-align:center;">Die Fakten kommen von euch. Was ihr nicht sagt, wird erfunden.</p>
+    <p class="label" style="margin:0;text-align:center;">Die Fakten kommen von euch. Was ihr nicht sagt, wird erfunden.</p>
+    </div>
     <aside class="notes">
       Live tippen. Wichtig zu zeigen: die Fakten kommen von euch, nicht aus dem
       Netz. Wer keine Zahlen liefert, bekommt erfundene Zahlen. Etwa drei Minuten.
@@ -909,14 +915,15 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Absagen, ohne die Tür <span class="schimmer">zuzuziehen.</span></h2>
-    <div class="band" style="margin-top:6px;">
-      <div class="station" style="flex:0 0 470px;">
+    <div class="gruppe-mittig wachsen">
+    <div class="band">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
         </div>
         <div class="feld" style="border-color:rgba(255,107,94,.25);">
-          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Wir planen unsere Jahresfeier mit 120 Gästen. Haben Sie Platz für uns?"</p>
+          <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Wir planen unsere Jahresfeier mit 120 Gästen. Haben Sie Platz für uns?"</p>
           <p class="label" style="margin:0;">Guter Kunde, kommt jedes Jahr</p>
         </div>
       </div>
@@ -925,7 +932,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb2a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 470px;">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -947,11 +954,12 @@ body.deckblatt .chrome-num { opacity: 0; }
           <span class="label">Geht raus</span>
         </div>
         <div class="feld" style="border-color:rgba(58,210,159,.3);">
-          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Herr Petersen, diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Ich möchte Ihnen keinen Abend verkaufen, der zu voll ist. Wenn Sie mögen, frage ich nebenan nach. Für Ihre kleinere Runde im Frühjahr halte ich gern wieder etwas frei.</p>
+          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Herr Petersen, diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Wenn Sie mögen, frage ich nebenan nach. Und für Ihre kleinere Runde im Frühjahr halte ich gern wieder etwas frei.</p>
         </div>
       </div>
     </div>
-    <p class="label" style="margin-top:28px;text-align:center;">Die KI hält den Ton, den man nach zwölf Mails selbst nicht mehr findet</p>
+    <p class="label" style="margin:0;text-align:center;">Die KI hält den Ton, den man nach zwölf Mails selbst nicht mehr findet</p>
+    </div>
     <aside class="notes">
       Der Punkt: die KI kann den Ton halten, wenn man selbst durch ist. Und die
       Absage ist der Text, den alle am längsten vor sich herschieben.
@@ -963,8 +971,9 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Ein Stern. Und jetzt <span class="schimmer">ruhig bleiben.</span></h2>
-    <div class="band" style="margin-top:6px;">
-      <div class="station" style="flex:0 0 470px;">
+    <div class="gruppe-mittig wachsen">
+    <div class="band">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
@@ -977,7 +986,7 @@ body.deckblatt .chrome-num { opacity: 0; }
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
               <svg viewBox="0 0 24 24"><path class="stern-leer" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1L12 2Z"/></svg>
             </span>
-          <p style="font-size:29px;line-height:1.5;margin:0;color:var(--w-70);">„Frühstück um neun leergeräumt, nichts kam nach. Personal genervt."</p>
+          <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Frühstück um neun leergeräumt, nichts kam nach. Personal genervt."</p>
           <p class="label" style="margin:0;">Öffentlich, vor zwei Stunden</p>
         </div>
       </div>
@@ -986,7 +995,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb3a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 470px;">
+      <div class="station" style="flex:0 0 425px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -1012,7 +1021,8 @@ body.deckblatt .chrome-num { opacity: 0; }
         </div>
       </div>
     </div>
-    <p class="label" style="margin-top:28px;text-align:center;">Die Antwort ist für die zwanzig, die nächste Woche mitlesen</p>
+    <p class="label" style="margin:0;text-align:center;">Die Antwort ist für die zwanzig, die nächste Woche mitlesen</p>
+    </div>
     <aside class="notes">
       Erfahrungsgemäß der Fall mit den meisten Zwischenfragen. Ruhig zulassen,
       hier darf das Gespräch kippen. Mündlich mitnehmen: Es hilft mehr zu sagen,
