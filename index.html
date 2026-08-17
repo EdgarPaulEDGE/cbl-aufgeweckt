@@ -195,6 +195,12 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 .stich { display: flex; gap: 18px; align-items: flex-start; font-size: 29px; line-height: 1.45; }
 .stich svg { width: 34px; height: 34px; flex-shrink: 0; margin-top: 2px; }
 
+/* ---------- Zeilen-Liste mit Piktogramm ----------
+   Jede Zeile trägt ihr eigenes Zeichen, damit sie unterscheidbar bleibt
+   und nicht als Textblock gelesen wird. */
+.zeilen.mit-ikon > div { display: flex; align-items: center; gap: 24px; }
+.zeilen.mit-ikon svg { width: 30px; height: 30px; flex-shrink: 0; }
+
 /* ---------- Zeilen-Listen ---------- */
 .zeilen { display: flex; flex-direction: column; width: 100%; }
 .zeilen > div { padding: 24px 6px; border-bottom: 1px solid var(--hairline); }
@@ -378,9 +384,9 @@ body.deckblatt .chrome-num { opacity: 0; }
 
 /* ---------- Takeaway-Liste ---------- */
 .mitnehmen { display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; width: 100%; }
-.mitnehmen > div { display: flex; gap: 30px; align-items: baseline; padding: 30px 4px; border-bottom: 1px solid var(--hairline); }
-.mitnehmen .nr { font-size: 40px; font-weight: 700; color: var(--cyan); flex: 0 0 54px; }
-.mitnehmen .satz { font-size: 35px; line-height: 1.35; }
+.mitnehmen > div { display: flex; gap: 30px; align-items: center; padding: 26px 4px; border-bottom: 1px solid var(--hairline); }
+.mitnehmen .nr { flex: 0 0 62px; }
+.mitnehmen .satz { font-size: 35px; line-height: 1.35; font-weight: 600; }
 .mitnehmen .satz small { display: block; font-size: 26px; color: var(--w-45); margin-top: 6px; }
 
 /* ---------- Warnliste (was nie ins Tool gehört) ---------- */
@@ -432,6 +438,10 @@ body.deckblatt .chrome-num { opacity: 0; }
   background:
     linear-gradient(90deg, rgba(3, 3, 9, .97) 0%, rgba(3, 3, 9, .88) 38%, rgba(3, 3, 9, .35) 78%, rgba(3, 3, 9, .55) 100%),
     linear-gradient(0deg, rgba(3, 3, 9, .7) 0%, transparent 45%);
+}
+/* Steht die Aussage mittig, muss das Bild rundum zurücktreten */
+.slide.mittig .bild-voll::after {
+  background: radial-gradient(120% 100% at 50% 50%, rgba(3, 3, 9, .8) 0%, rgba(3, 3, 9, .92) 55%, rgba(3, 3, 9, .97) 100%);
 }
 
 /* ---------- Beispiel-Posting mit Kennzeichnung ----------
@@ -830,7 +840,9 @@ body.deckblatt .chrome-num { opacity: 0; }
 
 <!-- ============ 8: MERKSATZ ============ -->
 <section data-chrome="aus">
-  <div class="slide mittig">
+  <div class="slide mittig hat-bild" style="position:relative;">
+    <div class="bild-voll"><img src="assets/images/robo/holstentor.jpg" alt=""></div>
+    <span class="bild-quelle">Bild mit KI erstellt</span>
     <h2 class="hero" style="font-size:96px;margin-bottom:14px;">Die KI liefert nicht schlecht.</h2>
     <p class="hero schimmer" style="font-size:126px;margin:0;">Wir fragen schlecht.</p>
     <aside class="notes">
@@ -1036,8 +1048,8 @@ body.deckblatt .chrome-num { opacity: 0; }
         </div>
         <div class="feld">
           <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Öffentlich antworten</span></div>
-          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Bis 10 Uhr Frühstück, Gruppe kam früher</span></div>
-          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Vier Sätze, nicht streiten</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Bis 10 Uhr Frühstück,<br>Gruppe kam früher</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Vier Sätze,<br>nicht streiten</span></div>
         </div>
       </div>
       <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
@@ -1142,7 +1154,7 @@ body.deckblatt .chrome-num { opacity: 0; }
           <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/><path d="M8 13h8M8 17h5"/></svg></span>Listen aus dem Buchungssystem</div>
         </div>
         <hr style="border:none;height:1px;background:var(--hairline);margin:38px 0 34px;">
-        <p class="lead" style="font-size:38px;max-width:none;text-align:center;">
+        <p class="lead" style="font-size:38px;max-width:none;text-align:center;font-weight:500;color:var(--weiss);">
           Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
           „Frau B." reicht völlig, der Text wird genauso gut.
         </p>
@@ -1160,8 +1172,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Einmal umlegen, dann ist <span class="schimmer">Ruhe.</span></h2>
-    <p class="lead" style="margin-top:4px;font-size:38px;">In den kostenlosen Zugängen lernen die
-       Anbieter aus dem mit, was ihr eintippt.</p>
+    <p class="lead" style="margin-top:4px;font-size:33px;max-width:none;">In den kostenlosen Zugängen lernen die Anbieter aus dem mit, was ihr eintippt.</p>
     <!-- align-items:start hält die drei Ziffern auf einer Linie. Bei center
          wandern sie mit der Textlänge auseinander. -->
     <div class="spalten feld" style="grid-template-columns:repeat(3,1fr);align-items:stretch;margin-top:auto;padding:72px 52px;">
@@ -1203,12 +1214,12 @@ body.deckblatt .chrome-num { opacity: 0; }
     <div class="reihe" style="gap:44px;align-items:stretch;">
       <div class="spalte" style="flex:1;">
         <p class="label">Was am liebsten erfunden wird</p>
-        <div class="zeilen feld wachsen" style="justify-content:center;">
-          <div>Öffnungszeiten und Preise</div>
-          <div>Telefonnummern und Adressen</div>
-          <div>Zitate, die nie jemand gesagt hat</div>
-          <div>Förderprogramme und Fristen</div>
-          <div>Quellen und Studien mit Titel und Jahr</div>
+        <div class="zeilen mit-ikon feld wachsen" style="justify-content:center;">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Öffnungszeiten und Preise</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="#009FF4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Telefonnummern und Adressen</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2l-2 4h4l2-4v-5a2 2 0 0 0-2-2Z"/><path d="M20 8h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2l-2 4h4l2-4v-5a2 2 0 0 0-2-2Z"/></svg>Zitate, die nie jemand gesagt hat</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Förderprogramme und Fristen</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="#ff9a8e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M15 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>Quellen und Studien mit Titel und Jahr</div>
         </div>
       </div>
       <div class="spalte" style="flex:1;">
@@ -1220,7 +1231,7 @@ body.deckblatt .chrome-num { opacity: 0; }
           <hr style="border:none;height:1px;background:var(--hairline);margin:0;">
           <p style="font-size:36px;line-height:1.45;margin:0;">
             Die einzige Regel, die hilft:
-            <span class="cyan">Alles, was das Haus verlässt, liest ein Mensch gegen.</span>
+            <span class="cyan" style="font-weight:600;">Alles, was das Haus verlässt, liest ein Mensch gegen.</span>
           </p>
         </div>
       </div>
@@ -1344,67 +1355,21 @@ body.deckblatt .chrome-num { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 21: WIE SCHNELL DAS GEHT ============ -->
-<section>
-  <div class="slide">
-    <h2 class="headline gesetzt" style="font-size:74px;">Diese vier sind heute früh <span class="schimmer">entstanden.</span></h2>
-    <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="galerie" style="flex:1;">
-        <figure><img src="assets/images/robo/holstentor.jpg" alt="Roboter zeigt auf das Holstentor"><figcaption>Holstentor</figcaption></figure>
-        <figure><img src="assets/images/robo/passat.jpg" alt="Roboter am Bug der Passat"><figcaption>Passat, Travemünde</figcaption></figure>
-        <figure><img src="assets/images/robo/strandkorb.jpg" alt="Roboter mit Fernglas auf einem Strandkorb"><figcaption>Strand Travemünde</figcaption></figure>
-        <figure><img src="assets/images/robo/muk.jpg" alt="Roboter beim Breakdance vor der MuK"><figcaption>Vor der MuK</figcaption></figure>
-      </div>
-      <div class="spalte" style="flex:0 0 560px;gap:30px;justify-content:center;">
-        <div>
-          <p class="label" style="margin-bottom:16px;">Zutaten</p>
-          <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
-            Drei Bilder und ein Satz.
-          </p>
-          <p class="lead" style="font-size:29px;margin-top:18px;">
-            Ein Roboter, eine Mütze, ein Fischbrötchen.
-          </p>
-        </div>
-        <div>
-          <p class="label" style="margin-bottom:16px;">Aufwand</p>
-          <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
-            Zehn Minuten. Ohne Fotograf.
-          </p>
-        </div>
-        <div>
-          <p style="font-size:31px;line-height:1.4;margin:0;">
-            <span class="cyan">Alle vier gekennzeichnet.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-    <span class="bild-quelle" style="left:270px;bottom:34px;">Bilder mit KI erstellt</span>
-    <aside class="notes">
-      Der Lacher nach dem Rechtsblock, und trotzdem inhaltlich: die Runde sieht,
-      wie wenig dahintersteckt und warum die Kennzeichnung kein Sonderfall ist,
-      sondern Alltag. Wer fragt, womit: Nano Banana über Higgsfield, die drei
-      Ausgangsbilder lagen auf dem Schreibtisch.
-      Wenn die Zeit knapp ist, ist das die erste Folie zum Streichen.
-      Sie trägt keinen eigenen Lernpunkt, sie verstärkt nur den vorherigen.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 22: SIEBEN ZUM MITNEHMEN ============ -->
+<!-- ============ 21: SIEBEN ZUM MITNEHMEN ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Acht Dinge für den <span class="schimmer">Schreibtisch.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="feld" style="padding:34px 52px;">
       <div class="mitnehmen">
-        <div><span class="nr">1</span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
-        <div><span class="nr">5</span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
-        <div><span class="nr">2</span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
-        <div><span class="nr">6</span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
-        <div><span class="nr">3</span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
-        <div><span class="nr">7</span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
-        <div style="border-bottom:none;"><span class="nr">4</span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
-        <div style="border-bottom:none;"><span class="nr">8</span><span class="satz">Fangt mit dem an, was nervt.<small>Die Aufgabe, die ihr am längsten vor euch herschiebt.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>1</b></span></span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>5</b></span></span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>2</b></span></span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>6</b></span></span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>3</b></span></span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>7</b></span></span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
+        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>4</b></span></span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
+        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>8</b></span></span><span class="satz">Fangt mit dem an, was nervt.<small>Die Aufgabe, die ihr am längsten vor euch herschiebt.</small></span></div>
       </div>
     </div>
     </div>
@@ -1416,9 +1381,11 @@ body.deckblatt .chrome-num { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 23: TITEL EINGELÖST ============ -->
+<!-- ============ 22: TITEL EINGELÖST ============ -->
 <section data-chrome="aus">
-  <div class="slide mittig">
+  <div class="slide mittig hat-bild" style="position:relative;">
+    <div class="bild-voll"><img src="assets/images/robo/strandkorb.jpg" alt=""></div>
+    <span class="bild-quelle">Bild mit KI erstellt</span>
     <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
     <p class="lead" style="font-size:44px;margin-top:30px;">
       Ein Fall. Einmal richtig bestellt. Heute Nachmittag.
@@ -1429,9 +1396,11 @@ body.deckblatt .chrome-num { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 24: OFFENES ENDE ============ -->
-<section>
-  <div class="slide mittig" style="position:relative;">
+<!-- ============ 23: OFFENES ENDE ============ -->
+<section data-chrome="aus">
+  <div class="slide mittig hat-bild" style="position:relative;">
+    <div class="bild-voll"><img src="assets/images/robo/muk.jpg" alt=""></div>
+    <span class="bild-quelle">Bild mit KI erstellt</span>
     <div class="begleiter" style="left:96px;bottom:0;height:470px;">
       <img src="assets/images/robo/zeigt-hoch.png" alt="">
     </div>
@@ -1450,7 +1419,7 @@ body.deckblatt .chrome-num { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 25: ABSCHLUSS ============ -->
+<!-- ============ 24: ABSCHLUSS ============ -->
 <section data-chrome="aus">
   <div class="slide" style="flex-direction:row;align-items:center;gap:90px;">
     <div class="spalte" style="flex:1;gap:26px;justify-content:center;">
