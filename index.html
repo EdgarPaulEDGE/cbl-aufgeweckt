@@ -423,7 +423,7 @@ body.deckblatt .chrome-num { opacity: 0; }
    eigenen Stapelkontext erzeugt. Deshalb hier explizit: Bild nach hinten,
    alle Geschwister nach vorn. */
 .hat-bild > * { position: relative; z-index: 1; }
-.hat-bild > .bild-voll { z-index: 0; }
+.hat-bild > .bild-voll { position: absolute; z-index: 0; }
 .bild-voll { position: absolute; inset: 0; overflow: hidden; border-radius: 0; }
 /* Wir verlangen die Kennzeichnung auf Folie 20 selbst, also steht sie auch
    an unserem eigenen Bild. Dezent, aber vorhanden. */
@@ -908,7 +908,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="band">
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 390px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
@@ -923,7 +923,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb1a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 500px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -966,7 +966,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <h2 class="headline">Absagen, ohne die Tür <span class="schimmer">zuzuziehen.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="band">
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 390px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
@@ -981,7 +981,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb2a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 500px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -1022,7 +1022,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <h2 class="headline">Ein Stern. Und jetzt <span class="schimmer">ruhig bleiben.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="band">
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 390px;">
         <div class="station-kopf">
           <span class="ring klein warn"><b>1</b></span>
           <span class="label">Kommt rein</span>
@@ -1044,7 +1044,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <defs><linearGradient id="fb3a" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset="1" stop-color="#009FF4"/></linearGradient></defs>
       </svg>
-      <div class="station" style="flex:0 0 425px;">
+      <div class="station" style="flex:0 0 500px;">
         <div class="station-kopf">
           <span class="ring klein"><b>2</b></span>
           <span class="label">Ihr tippt</span>
@@ -1426,7 +1426,7 @@ body.deckblatt .chrome-num { opacity: 0; }
       <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:110px;align-self:flex-start;margin-bottom:26px;">
       <h2 class="hero gesetzt" style="font-size:100px;margin:0;">Danke fürs<br><span class="schimmer">Frühstück.</span></h2>
       <p class="lead" style="font-size:34px;margin-top:10px;">
-        Emre Erdogan und Edgar Paul-Ghazaryan<br>
+        EDGE Digital<br>
         Fischstraße 16 · 23552 Lübeck
       </p>
       <p class="label" style="margin-top:34px;">Künstliche Intelligenz. Echte Wirkung.</p>
