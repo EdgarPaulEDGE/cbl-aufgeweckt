@@ -112,6 +112,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
   font-size: 82px; line-height: 1.03; letter-spacing: -.02em; font-weight: 700;
   text-transform: uppercase; text-wrap: balance; margin: 0 0 20px; flex-shrink: 0;
 }
+/* Headlines mit gesetztem Umbruch: balance würde gegen die Satzgrenze
+   rechnen und wieder mitten im Satz trennen. */
+.headline.gesetzt, .hero.gesetzt { text-wrap: initial; }
 .schimmer {
   background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -635,7 +638,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <!-- ============ 3: DIE ANFRAGE ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline">Diese Mail lag heute früh im <span class="schimmer">Postfach.</span></h2>
+    <h2 class="headline gesetzt" style="font-size:74px;">Diese Mail lag heute früh im <span class="schimmer">Postfach.</span></h2>
     <div class="reihe wachsen" style="align-items:center;margin-top:8px;">
       <div class="fenster" style="width:100%;">
         <div class="fenster-kopf">
@@ -703,7 +706,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <!-- ============ 5: DER UNTERSCHIED ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline">Gleiches Werkzeug. Gleicher Tag. Ein <span class="schimmer">Unterschied.</span></h2>
+    <h2 class="headline gesetzt">Gleiches Werkzeug. Gleicher Tag.<br>Ein <span class="schimmer">Unterschied.</span></h2>
     <div class="gegen wachsen" style="margin-top:8px;align-items:stretch;">
       <div>
         <div class="wertung schwach">Das wurde für A getippt</div>
@@ -849,7 +852,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <div class="bild-voll"><img src="assets/images/fruehstueck.jpg" alt=""></div>
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Der praktische Teil</p>
-    <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Fälle vom<br><span class="schimmer">Frühstückstisch.</span></h2>
+    <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Fälle<br>vom <span class="schimmer">Frühstückstisch.</span></h2>
     <p class="divider-zeit">Angebot · Absage · Bewertung</p>
     <aside class="notes">
       Übergabe an Emre. Ab hier wird getippt, nicht erzählt.
@@ -1089,7 +1092,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <div class="bild-voll"><img src="assets/images/schreibtisch.jpg" alt=""></div>
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Bevor ihr loslegt</p>
-    <h2 class="hero" style="font-size:118px;margin-top:26px;">Drei Dinge, die euch<br><span class="schimmer">teuer werden können.</span></h2>
+    <h2 class="hero gesetzt" style="font-size:118px;margin-top:26px;">Drei Dinge, die euch<br><span class="schimmer">teuer werden können.</span></h2>
     <p class="divider-zeit">Daten · Erfindungen · Kennzeichnung</p>
     <aside class="notes">
       Übergabe zurück an Eddie. Ton wechselt: eben war es spielerisch,
@@ -1113,9 +1116,9 @@ body.deckblatt .chrome-num { opacity: 0; }
           <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/><path d="M8 13h8M8 17h5"/></svg></span>Listen aus dem Buchungssystem</div>
         </div>
         <hr style="border:none;height:1px;background:var(--hairline);margin:38px 0 34px;">
-        <p class="lead" style="font-size:38px;max-width:none;">
+        <p class="lead" style="font-size:38px;max-width:none;text-align:center;">
           Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
-          „Frau B." reicht völlig. Der Text wird genauso gut.
+          „Frau B." reicht völlig, der Text wird genauso gut.
         </p>
       </div>
     </div>
@@ -1166,7 +1169,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <!-- ============ 18: HALLUZINATIONEN ============ -->
 <section>
   <div class="slide" style="position:relative;">
-    <h2 class="headline">Sie sagt es dir freundlich. Und <span class="schimmer">falsch.</span></h2>
+    <h2 class="headline gesetzt">Sie sagt es dir freundlich.<br>Und <span class="schimmer">falsch.</span></h2>
     <div class="begleiter" style="right:64px;bottom:18px;height:158px;opacity:.95;">
       <img src="assets/images/robo/ratlos.png" alt="">
     </div>
@@ -1174,7 +1177,7 @@ body.deckblatt .chrome-num { opacity: 0; }
     <div class="reihe" style="gap:44px;align-items:stretch;">
       <div class="spalte" style="flex:1;">
         <p class="label">Was am liebsten erfunden wird</p>
-        <div class="zeilen feld" style="justify-content:center;">
+        <div class="zeilen feld wachsen" style="justify-content:center;">
           <div>Öffnungszeiten und Preise</div>
           <div>Telefonnummern und Adressen</div>
           <div>Zitate, die nie jemand gesagt hat</div>
@@ -1184,7 +1187,7 @@ body.deckblatt .chrome-num { opacity: 0; }
       </div>
       <div class="spalte" style="flex:1;">
         <p class="label">Woran ihr es merkt</p>
-        <div class="feld" style="display:flex;flex-direction:column;justify-content:center;gap:28px;">
+        <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;gap:28px;">
           <p style="font-size:36px;line-height:1.45;margin:0;">
             An gar nichts. Erfundenes klingt wie Richtiges.
           </p>
@@ -1213,7 +1216,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <!-- ============ 19: EIGENER REINFALL ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
+    <h2 class="headline gesetzt" style="font-size:76px;">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="reihe" style="gap:44px;align-items:stretch;">
       <div class="feld" style="flex:0 0 620px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
@@ -1323,7 +1326,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 <!-- ============ 21: WIE SCHNELL DAS GEHT ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline">Diese vier sind heute früh <span class="schimmer">entstanden.</span></h2>
+    <h2 class="headline gesetzt" style="font-size:74px;">Diese vier sind heute früh <span class="schimmer">entstanden.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
       <div class="galerie" style="flex:1;">
         <figure><img src="assets/images/robo/holstentor.jpg" alt="Roboter zeigt auf das Holstentor"><figcaption>Holstentor</figcaption></figure>
@@ -1431,7 +1434,7 @@ body.deckblatt .chrome-num { opacity: 0; }
   <div class="slide" style="flex-direction:row;align-items:center;gap:90px;">
     <div class="spalte" style="flex:1;gap:26px;justify-content:center;">
       <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:110px;align-self:flex-start;margin-bottom:26px;">
-      <h2 class="hero" style="font-size:118px;margin:0;">Danke fürs <span class="schimmer">Frühstück.</span></h2>
+      <h2 class="hero gesetzt" style="font-size:94px;margin:0;">Danke<br>fürs <span class="schimmer">Frühstück.</span></h2>
       <p class="lead" style="font-size:34px;margin-top:10px;">
         Emre Erdogan und Edgar Paul-Ghazaryan<br>
         Fischstraße 16 · 23552 Lübeck
