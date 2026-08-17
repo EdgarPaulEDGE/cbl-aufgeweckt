@@ -118,9 +118,14 @@ Prüfungen das nicht sahen.
 
 Alle Bilder im Deck sind mit KI erzeugt (Higgsfield) und gekennzeichnet:
 
-- `assets/images/fruehstueck.jpg` und `schreibtisch.jpg` auf den beiden
-  Trennfolien, `tagungsraum-ki.jpg` auf der Folie zur Kennzeichnungspflicht
-  (GPT Image 2)
+- `assets/images/fruehstueck.jpg` auf der Trennfolie vor den Fällen,
+  `tagungsraum-ki.jpg` auf der Folie zur Kennzeichnungspflicht (GPT Image 2)
+- Die vier Ortsbilder aus `assets/images/robo/` liegen **hinter Aussagen**,
+  nicht auf einer eigenen Folie: Holstentor hinter dem Merksatz, Passat auf
+  der Trennfolie vor den Regeln, Strandkorb hinter „Aufgeweckt heißt nicht",
+  MuK hinter der Schlussfrage. Sie beweisen nichts über KI, sie geben den
+  Sätzen einen Ort, den die Runde kennt. Die Folie, die sie als Vorführung
+  zeigte, ist bewusst gestrichen.
 - `assets/images/robo/` der Begleiter: drei Freisteller mit Transparenz
   (`winkt`, `daumen`, `ratlos`) und vier Ortsbilder (`holstentor`, `passat`,
   `strandkorb`, `muk`), alle mit Nano Banana 2 aus drei Vorlagen gebaut, die
