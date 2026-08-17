@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Reinfall-Folie: drei Vorschläge</title>
+<style>
+/* Entscheidungshilfe, keine Vortragsdatei. Drei Umbauten der Klausur-Folie:
+   ein Block statt drei, Lesefluss von oben nach unten, mit dem echten Foto. */
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Regular.ttf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-DemiBold.ttf") format("truetype"); font-weight: 600; }
+@font-face { font-family: "Avenir Next LT"; src: url("assets/fonts/AvenirNext-Bold.ttf") format("truetype"); font-weight: 700; }
+:root {
+  --raum: #030309; --weiss: #F4F6FF;
+  --w-70: rgba(244,246,255,.7); --w-45: rgba(244,246,255,.45); --w-25: rgba(244,246,255,.25);
+  --hairline: rgba(244,246,255,.14); --hairline-stark: rgba(244,246,255,.28);
+  --purple: #C15DE6; --blau: #009FF4; --cyan: #00E2E2; --warn: #ff6b5e; --ok: #3ad29f;
+  --font: "Avenir Next LT", "Avenir Next", Avenir, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #0a0c14; font-family: var(--font); color: var(--weiss); }
+.folie { width: 1920px; height: 1080px; background: var(--raum);
+  padding: 132px 130px 96px; display: flex; flex-direction: column; position: relative; overflow: hidden; margin: 40px 0; }
+.headline { font-size: 82px; line-height: 1.12; letter-spacing: -.02em; font-weight: 700;
+  text-transform: uppercase; margin: 0 0 24px; }
+.schimmer { background: linear-gradient(96deg, var(--purple), var(--blau) 52%, var(--cyan));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.label { font-weight: 600; font-size: 20px; letter-spacing: .16em; text-transform: uppercase; color: var(--w-45); }
+.feld { border: 1px solid var(--hairline); border-radius: 26px; background: rgba(8,11,22,.62); overflow: hidden; }
+.gruppe { display: flex; flex-direction: column; justify-content: center; flex: 1; min-height: 0; }
+.ring { position: relative; width: 68px; height: 68px; border-radius: 50%; padding: 3px; overflow: hidden; flex-shrink: 0; display: inline-block; }
+.ring::before { content: ""; position: absolute; inset: -30%; border-radius: 50%;
+  background: conic-gradient(var(--purple), var(--blau) 38%, var(--cyan) 62%, var(--purple)); }
+.ring > b { position: relative; display: grid; place-items: center; width: 100%; height: 100%;
+  border-radius: 50%; background: #070a14; font-size: 30px; font-weight: 700; color: var(--weiss); }
+.ring.warn::before { background: conic-gradient(#ff9a8e, var(--warn) 45%, #b23a2f 75%, #ff9a8e); }
+.vorschlag-titel { font-size: 44px; font-weight: 700; padding: 46px 130px 0; color: var(--cyan); }
+
+/* ---------- A: Zeitstrahl im Block, Foto rechts ---------- */
+.strang { display: flex; gap: 56px; align-items: stretch; }
+.strang .schritte { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 48px 54px; position: relative; }
+.strang .linie { position: absolute; left: 88px; top: 96px; bottom: 96px; width: 2px;
+  background: linear-gradient(180deg, var(--purple), var(--blau) 50%, var(--warn)); opacity: .45; }
+.schritt { display: flex; gap: 30px; align-items: flex-start; position: relative; z-index: 1; }
+.schritt .txt h3 { font-size: 40px; font-weight: 700; margin: 6px 0 8px; }
+.schritt .txt p { font-size: 27px; line-height: 1.45; color: var(--w-70); margin: 0; }
+.strang .bild { flex: 0 0 520px; }
+.strang .bild img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+
+/* ---------- B: Foto als Bühne, Text als Overlay-Karte ---------- */
+.buehne { position: relative; flex: 1; border-radius: 26px; overflow: hidden; }
+.buehne > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; }
+.buehne::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(3,3,9,.97) 0%, rgba(3,3,9,.9) 42%, rgba(3,3,9,.25) 78%, rgba(3,3,9,.6) 100%); }
+.karte { position: relative; z-index: 2; width: 1080px; padding: 60px 64px; display: flex; flex-direction: column; gap: 34px; justify-content: center; height: 100%; }
+.karte .zeile { display: flex; gap: 26px; align-items: baseline; }
+.karte .zeile .wert { font-size: 36px; line-height: 1.4; }
+.karte .zeile .wert b { font-weight: 700; }
+.karte .pointe { font-size: 52px; font-weight: 700; line-height: 1.2; }
+
+/* ---------- C: Drei Zeilen, Foto als Beweisstück daneben ---------- */
+.protokoll { display: flex; gap: 50px; align-items: stretch; min-height: 0; }
+.protokoll .liste { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.protokoll .zeile { display: flex; gap: 30px; align-items: center; padding: 34px 46px; border-bottom: 1px solid var(--hairline); }
+.protokoll .zeile:last-child { border-bottom: none; }
+.protokoll .zeile .wann { font-size: 21px; letter-spacing: .14em; text-transform: uppercase; color: var(--w-45); font-weight: 600; flex: 0 0 190px; }
+.protokoll .zeile .was { font-size: 33px; line-height: 1.35; }
+.protokoll .zeile.schluss .was { font-size: 42px; font-weight: 700; }
+.protokoll .beweis { flex: 0 0 430px; border-radius: 26px; overflow: hidden; border: 1px solid var(--hairline); position: relative; }
+.protokoll .beweis img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.protokoll .beweis figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 26px;
+  background: linear-gradient(0deg, rgba(3,3,9,.94), transparent); font-size: 22px; color: var(--w-70); }
+.takeaway { text-align: center; padding-top: 30px; }
+.takeaway::before { content: ""; display: block; width: 90px; height: 3px; margin: 0 auto 22px;
+  background: linear-gradient(90deg, var(--purple), var(--blau) 52%, var(--cyan)); border-radius: 2px; }
+.takeaway p { font-size: 40px; font-weight: 600; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="vorschlag-titel">Vorschlag A · Zeitstrahl im Block, Foto rechts</div>
+<section class="folie">
+  <h2 class="headline">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
+  <div class="gruppe">
+    <div class="strang feld" style="padding:0;">
+      <div class="schritte">
+        <div class="linie"></div>
+        <div class="schritt">
+          <span class="ring"><b>1</b></span>
+          <div class="txt">
+            <h3>Open-Book-Klausur, 2023</h3>
+            <p>Alle Hilfsmittel erlaubt. Also fragten wir ChatGPT, damals Version 3.5.</p>
+          </div>
+        </div>
+        <div class="schritt">
+          <span class="ring"><b>2</b></span>
+          <div class="txt">
+            <h3>Sah aus wie eine Eins</h3>
+            <p>Ganze Sätze, ohne Zögern. Abgeschrieben, nichts nachgeschlagen.</p>
+          </div>
+        </div>
+        <div class="schritt">
+          <span class="ring warn"><b>3</b></span>
+          <div class="txt">
+            <h3 style="font-size:46px;">Beide durchgefallen.</h3>
+          </div>
+        </div>
+      </div>
+      <div class="bild"><img src="assets/images/klausur-danach.jpg" alt=""></div>
+    </div>
+  </div>
+  <div class="takeaway"><p>Nicht die KI ist durchgefallen. Wir haben nicht gegengelesen.</p></div>
+</section>
+
+<div class="vorschlag-titel">Vorschlag B · Das Foto ist die Folie</div>
+<section class="folie" style="padding:0;">
+  <div class="buehne" style="border-radius:0;">
+    <img src="assets/images/klausur-danach.jpg" alt="">
+    <div class="karte">
+      <h2 class="headline" style="margin-bottom:10px;font-size:74px;">Und wo wir selbst<br><span class="schimmer">reingefallen sind.</span></h2>
+      <div class="zeile">
+        <span class="ring"><b>1</b></span>
+        <span class="wert"><b>Open-Book-Klausur, 2023.</b><br>Alle Hilfsmittel erlaubt, also fragten wir ChatGPT.</span>
+      </div>
+      <div class="zeile">
+        <span class="ring"><b>2</b></span>
+        <span class="wert"><b>Sah aus wie eine Eins.</b><br>Abgeschrieben, nichts nachgeschlagen.</span>
+      </div>
+      <div class="zeile">
+        <span class="ring warn"><b>3</b></span>
+        <span class="pointe">Beide durchgefallen.</span>
+      </div>
+      <p style="margin:14px 0 0;font-size:30px;font-weight:600;color:var(--w-70);">Nicht die KI ist durchgefallen.<br>Wir haben nicht gegengelesen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="vorschlag-titel">Vorschlag C · Protokoll mit Beweisstück</div>
+<section class="folie">
+  <h2 class="headline" style="font-size:76px;">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
+  <div class="gruppe">
+    <div class="protokoll" style="max-height:600px;">
+      <div class="liste feld">
+        <div class="zeile">
+          <span class="wann">Vorher</span>
+          <span class="was">Open-Book-Klausur, alle Hilfsmittel erlaubt.<br>Also fragten wir ChatGPT 3.5.</span>
+        </div>
+        <div class="zeile">
+          <span class="wann">Währenddessen</span>
+          <span class="was">Ganze Sätze, ohne Zögern, sah aus wie eine Eins.<br>Abgeschrieben, nichts nachgeschlagen.</span>
+        </div>
+        <div class="zeile schluss">
+          <span class="wann" style="color:var(--warn);">Danach</span>
+          <span class="was">Beide durchgefallen.</span>
+        </div>
+      </div>
+      <figure class="beweis" style="margin:0;">
+        <img src="assets/images/klausur-danach.jpg" alt="">
+        <figcaption>Kurz danach, im selben Raum</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="takeaway"><p>Nicht die KI ist durchgefallen. Wir haben nicht gegengelesen.</p></div>
+</section>
+
+</body>
+</html>
