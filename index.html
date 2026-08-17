@@ -1170,22 +1170,24 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   <div class="slide">
     <h2 class="headline">Einmal umlegen, dann ist <span class="schimmer">Ruhe.</span></h2>
     <p class="lead" style="margin-top:4px;font-size:33px;max-width:none;">In den kostenlosen Zugängen lernen die Anbieter aus dem mit, was ihr eintippt.</p>
-    <!-- align-items:start hält die drei Ziffern auf einer Linie. Bei center
-         wandern sie mit der Textlänge auseinander. -->
+    <!-- Die Titel stehen einzeilig, sonst reißt der zweizeilige ein Loch
+         zwischen Titel und Zeile darunter. Der Engpass ist die mittlere
+         Spalte: sie trägt als einzige links UND rechts den Abstand zu den
+         Trennlinien und hat damit 417px statt 467px. -->
     <div class="spalten feld" style="grid-template-columns:repeat(3,1fr);align-items:stretch;margin-top:auto;padding:72px 52px;">
       <div class="fragment fade-up">
         <div class="ring" style="margin-bottom:20px;"><b>1</b></div>
-        <h3 style="font-size:46px;min-height:2.7em;">Einstellungen öffnen</h3>
+        <h3 style="font-size:42px;white-space:nowrap;">Einstellungen öffnen</h3>
         <p style="font-size:32px;">Unten links über euren Namen.</p>
       </div>
       <div class="fragment fade-up">
         <div class="ring" style="margin-bottom:20px;"><b>2</b></div>
-        <h3 style="font-size:46px;min-height:2.7em;">Datenschutz suchen</h3>
+        <h3 style="font-size:42px;white-space:nowrap;">Datenschutz suchen</h3>
         <p style="font-size:32px;">Heißt auch Datenkontrolle.</p>
       </div>
       <div class="fragment fade-up">
         <div class="ring" style="margin-bottom:20px;"><b>3</b></div>
-        <h3 style="font-size:46px;min-height:2.7em;">Training ausschalten</h3>
+        <h3 style="font-size:42px;white-space:nowrap;">Training ausschalten</h3>
         <p style="font-size:32px;">„Modell verbessern" aus.</p>
       </div>
     </div>
