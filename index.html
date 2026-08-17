@@ -416,32 +416,29 @@ body.deckblatt .chrome-num { opacity: 0; }
 /* ---------- Vollflächiges Bild hinter einer Trennfolie ----------
    Der Verlauf darüber ist kein Effekt, sondern Bedingung: ohne ihn steht
    weiße Schrift auf einem Foto mit hellen Stellen und wird unlesbar.
-   Er läuft von links (fast deckend) nach rechts (offen), also genau
+   Bei "seite" läuft er von links (fast deckend) nach rechts (offen), also
    entgegengesetzt zur Leserichtung der Headline. */
-/* Ohne die Stapelordnung liegt alles Statische HINTER dem absolut gesetzten
-   Bild. Sichtbar blieb nur die Headline, weil ihre Einlauf-Animation einen
-   eigenen Stapelkontext erzeugt. Deshalb hier explizit: Bild nach hinten,
-   alle Geschwister nach vorn. */
-.hat-bild > * { position: relative; z-index: 1; }
-.hat-bild > .bild-voll { position: absolute; z-index: 0; }
-.bild-voll { position: absolute; inset: 0; overflow: hidden; border-radius: 0; }
+/* Der Schleier gehört auf Reveals Hintergrund-Ebene: sie deckt das ganze
+   Fenster, während die Bühne nur 16:9 ist. Lag das Bild im Slide, endete es
+   an der Folienkante und daneben lief die Galaxie weiter. */
+.reveal .slide-background[data-schleier]::after { content: ""; position: absolute; inset: 0; }
+.reveal .slide-background[data-schleier="seite"]::after {
+  background:
+    linear-gradient(90deg, rgba(3, 3, 9, .97) 0%, rgba(3, 3, 9, .88) 38%, rgba(3, 3, 9, .35) 78%, rgba(3, 3, 9, .55) 100%),
+    linear-gradient(0deg, rgba(3, 3, 9, .7) 0%, transparent 45%);
+}
+.reveal .slide-background[data-schleier="mittig"]::after {
+  background: radial-gradient(120% 100% at 50% 50%, rgba(3, 3, 9, .8) 0%, rgba(3, 3, 9, .92) 55%, rgba(3, 3, 9, .97) 100%);
+}
+/* Hinter einem Vollbild hat die Galaxie nichts zu suchen */
+body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacity: 0; }
+#kosmos, .nebel, .vignette { transition: opacity .4s; }
 /* Wir verlangen die Kennzeichnung auf Folie 20 selbst, also steht sie auch
    an unserem eigenen Bild. Dezent, aber vorhanden. */
 .bild-quelle {
   position: absolute; left: 130px; bottom: 40px; z-index: 2;
   font-weight: 500; font-size: 17px; letter-spacing: .1em; text-transform: uppercase;
   color: rgba(244, 246, 255, .38);
-}
-.bild-voll img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bild-voll::after {
-  content: ""; position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, rgba(3, 3, 9, .97) 0%, rgba(3, 3, 9, .88) 38%, rgba(3, 3, 9, .35) 78%, rgba(3, 3, 9, .55) 100%),
-    linear-gradient(0deg, rgba(3, 3, 9, .7) 0%, transparent 45%);
-}
-/* Steht die Aussage mittig, muss das Bild rundum zurücktreten */
-.slide.mittig .bild-voll::after {
-  background: radial-gradient(120% 100% at 50% 50%, rgba(3, 3, 9, .8) 0%, rgba(3, 3, 9, .92) 55%, rgba(3, 3, 9, .97) 100%);
 }
 
 /* ---------- Beispiel-Posting mit Kennzeichnung ----------
@@ -842,9 +839,8 @@ body.deckblatt .chrome-num { opacity: 0; }
 </section>
 
 <!-- ============ 8: MERKSATZ ============ -->
-<section data-chrome="aus">
-  <div class="slide mittig hat-bild" style="position:relative;">
-    <div class="bild-voll"><img src="assets/images/robo/holstentor.jpg" alt=""></div>
+<section data-chrome="aus" data-background-image="assets/images/robo/holstentor.jpg" data-background-size="cover" data-schleier="mittig">
+  <div class="slide mittig">
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <h2 class="hero" style="font-size:96px;margin-bottom:14px;">Die KI liefert nicht schlecht.</h2>
     <p class="hero schimmer" style="font-size:126px;margin:0;">Wir fragen schlecht.</p>
@@ -888,9 +884,8 @@ body.deckblatt .chrome-num { opacity: 0; }
 </section>
 
 <!-- ============ 10: DIVIDER VIER FÄLLE ============ -->
-<section data-chrome="aus">
-  <div class="slide hat-bild" style="justify-content:center;position:relative;">
-    <div class="bild-voll"><img src="assets/images/fruehstueck.jpg" alt=""></div>
+<section data-chrome="aus" data-background-image="assets/images/fruehstueck.jpg" data-background-size="cover" data-schleier="seite">
+  <div class="slide" style="justify-content:center;">
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Der praktische Teil</p>
     <h2 class="hero gesetzt" style="font-size:118px;margin-top:26px;">Drei Fälle vom<br><span class="schimmer">Frühstückstisch.</span></h2>
@@ -915,7 +910,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         </div>
         <div class="feld" style="border-color:rgba(255,107,94,.25);">
           <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig, mit Mittagessen. Können Sie uns ein Angebot machen?"</p>
-          <p class="label" style="margin:0;">Anfrage von Frau Behrens</p>
+          <p class="label" style="margin:0;">Anfrage von<br>Frau Behrens</p>
         </div>
       </div>
       <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
@@ -973,7 +968,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         </div>
         <div class="feld" style="border-color:rgba(255,107,94,.25);">
           <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Wir planen unsere Jahresfeier mit 120 Gästen. Haben Sie Platz für uns?"</p>
-          <p class="label" style="margin:0;">Guter Kunde, kommt jedes Jahr</p>
+          <p class="label" style="margin:0;">Guter Kunde,<br>kommt jedes Jahr</p>
         </div>
       </div>
       <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
@@ -989,7 +984,7 @@ body.deckblatt .chrome-num { opacity: 0; }
         <div class="feld">
           <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#00E2E2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h6"/></svg><span>Unser Maximum sind 60</span></div>
           <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C15DE6" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Er soll wiederkommen</span></div>
-          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Kurz, ehrlich,<br>Tür offen</span></div>
+          <div class="stich"><svg viewBox="0 0 24 24" fill="none" stroke="#C7D300" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h6"/></svg><span>Kurz, ehrlich, Tür offen</span></div>
         </div>
       </div>
       <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
@@ -1125,12 +1120,11 @@ body.deckblatt .chrome-num { opacity: 0; }
 </section>
 
 <!-- ============ 15: DIVIDER DO'S UND DON'TS ============ -->
-<section data-chrome="aus">
-  <div class="slide hat-bild" style="justify-content:center;position:relative;">
+<section data-chrome="aus" data-background-image="assets/images/robo/passat.jpg" data-background-size="cover" data-schleier="seite">
+  <div class="slide" style="justify-content:center;">
     <!-- Die Passat in Travemünde: ein Ort, den die Runde kennt, und die
          Galionsfigur passt zum Ton des Blocks. Das generische Schreibtisch-
          Motiv lag daneben, weil es nichts mit Lübeck zu tun hatte. -->
-    <div class="bild-voll"><img src="assets/images/robo/passat.jpg" alt=""></div>
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <p class="label">Bevor ihr loslegt</p>
     <h2 class="hero gesetzt" style="font-size:118px;margin-top:26px;">Drei Dinge, die euch<br><span class="schimmer">teuer werden können.</span></h2>
@@ -1385,9 +1379,8 @@ body.deckblatt .chrome-num { opacity: 0; }
 </section>
 
 <!-- ============ 22: TITEL EINGELÖST ============ -->
-<section data-chrome="aus">
-  <div class="slide mittig hat-bild" style="position:relative;">
-    <div class="bild-voll"><img src="assets/images/robo/strandkorb.jpg" alt=""></div>
+<section data-chrome="aus" data-background-image="assets/images/robo/strandkorb.jpg" data-background-size="cover" data-schleier="mittig">
+  <div class="slide mittig">
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
     <p class="lead" style="font-size:44px;margin-top:30px;">
@@ -1400,9 +1393,8 @@ body.deckblatt .chrome-num { opacity: 0; }
 </section>
 
 <!-- ============ 23: OFFENES ENDE ============ -->
-<section data-chrome="aus">
-  <div class="slide mittig hat-bild" style="position:relative;">
-    <div class="bild-voll"><img src="assets/images/robo/muk.jpg" alt=""></div>
+<section data-chrome="aus" data-background-image="assets/images/robo/muk.jpg" data-background-size="cover" data-schleier="mittig">
+  <div class="slide mittig">
     <span class="bild-quelle">Bild mit KI erstellt</span>
     <h2 class="hero" style="font-size:154px;">Jetzt seid <span class="schimmer">ihr dran.</span></h2>
     <p class="lead" style="font-size:38px;margin-top:16px;">
@@ -1497,6 +1489,24 @@ function chromeAusrichten() {
   w.setProperty('--folie-unten', Math.max(0, window.innerHeight - r.bottom) + 'px');
   w.setProperty('--folie-skala', String(r.height / 1080));
 }
+/* Reveal legt für jede Folie ein eigenes Hintergrund-Element an, kopiert
+   aber nur seine eigenen data-background-Attribute dorthin. Die Angabe,
+   welcher Schleier über das Bild gehört, muss also von Hand hinüber. */
+Reveal.on('ready', function () {
+  document.querySelectorAll('.reveal .slides section[data-schleier]').forEach(function (s) {
+    var bg = Reveal.getSlideBackground(s);
+    if (bg) bg.dataset.schleier = s.dataset.schleier;
+  });
+});
+
+/* Trägt die Folie ein Vollbild, tritt die Galaxie dahinter zurück */
+function bildfolie() {
+  var s = Reveal.getCurrentSlide();
+  document.body.classList.toggle('bildfolie', !!(s && s.dataset.backgroundImage));
+}
+Reveal.on('ready', bildfolie);
+Reveal.on('slidechanged', bildfolie);
+
 Reveal.on('ready', chromeAusrichten);
 Reveal.on('resize', chromeAusrichten);
 window.addEventListener('resize', chromeAusrichten);
