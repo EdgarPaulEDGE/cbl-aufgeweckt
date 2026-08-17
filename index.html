@@ -184,8 +184,8 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 .chrome-num {
   bottom: calc(var(--folie-unten, 0px) + 36px * var(--folie-skala, 1));
   left: calc(var(--folie-links, 0px) + 60px * var(--folie-skala, 1));
-  font-weight: 500; font-size: calc(16px * var(--folie-skala, 1));
-  letter-spacing: .12em; color: var(--w-25);
+  font-weight: 600; font-size: calc(21px * var(--folie-skala, 1));
+  letter-spacing: .12em; color: var(--w-45);
 }
 body.chrome-aus .chrome { opacity: 0; }
 
@@ -423,6 +423,18 @@ body.chrome-aus .chrome { opacity: 0; }
    Hier stand der Roboter am Laptop 825px breit statt 195px. */
 .gegen > div > img, .spalte > img, .zeilen > img { align-self: flex-start; }
 
+/* ---------- Collage: echte Fotos, echte Menschen ----------
+   Drei mal drei Kacheln im Seitenverhältnis 3:2, enge Fugen, gleiche Rundung:
+   so lesen sich die neun Bilder als eine Fläche statt als Tabelle. */
+.collage {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  width: 100%; align-content: center;
+}
+.collage img {
+  width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block;
+  border-radius: 12px; border: 1px solid var(--hairline);
+}
+
 /* ---------- Der Begleiter ----------
    Freigestellt, deshalb ohne Rahmen und ohne Fläche: er steht einfach da. */
 .begleiter { position: absolute; z-index: 3; pointer-events: none; }
@@ -536,12 +548,56 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 2: DIE ANFRAGE ============ -->
+<!-- ============ 2: WER WIR SIND ============ -->
+<section>
+  <div class="slide">
+    <h2 class="headline">Moin. Wir sind <span class="schimmer">EDGE.</span></h2>
+    <div class="reihe wachsen" style="margin-top:26px;gap:60px;align-items:center;">
+      <div class="spalte" style="flex:0 0 540px;gap:40px;justify-content:center;">
+        <div class="kopf">
+          <div class="kopf-foto"><img src="assets/images/team/edgar.png" alt="Edgar Paul-Ghazaryan"></div>
+          <div>
+            <div class="kopf-name">Eddie</div>
+            <div class="kopf-rolle">COO</div>
+          </div>
+        </div>
+        <div class="kopf">
+          <div class="kopf-foto"><img src="assets/images/team/emre.png" alt="Emre Erdogan"></div>
+          <div>
+            <div class="kopf-name">Emre</div>
+            <div class="kopf-rolle">Geschäftsführer</div>
+          </div>
+        </div>
+        <p class="lead" style="font-size:30px;">KI in den Arbeitsalltag.<br>Aus Lübeck.</p>
+      </div>
+      <div class="collage">
+        <img src="assets/images/collage/01.jpg" alt="">
+        <img src="assets/images/collage/02.jpg" alt="">
+        <img src="assets/images/collage/03.jpg" alt="">
+        <img src="assets/images/collage/04.jpg" alt="">
+        <img src="assets/images/collage/07.jpg" alt="">
+        <img src="assets/images/collage/05.jpg" alt="">
+        <img src="assets/images/collage/08.jpg" alt="">
+        <img src="assets/images/collage/06.jpg" alt="">
+        <img src="assets/images/collage/09.jpg" alt="">
+      </div>
+    </div>
+    <aside class="notes">
+      Ganz am Anfang, direkt nach dem Titel. Hier lebt die Vorstellung von den
+      Bildern: zwei, drei Geschichten zu den Fotos erzählen (welcher Kunde,
+      welches Projekt, welcher Moment), nicht die Rollen vorlesen.
+      Zwei Minuten, dann inhaltlich rein. Kein Leistungsportfolio, das war
+      Eikes einzige Vorgabe.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 3: DIE ANFRAGE ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Diese Mail lag heute früh im <span class="schimmer">Postfach.</span></h2>
     <div class="reihe wachsen" style="align-items:center;margin-top:8px;">
-      <div class="fenster fragment fade-up" style="width:100%;">
+      <div class="fenster" style="width:100%;">
         <div class="fenster-kopf">
           <span class="von">Katrin Behrens, Nordwerk Consulting</span>
           <span class="betreff">Betreff: Anfrage Tagung am 14. Oktober</span>
@@ -555,7 +611,7 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
     </div>
-    <p class="label mt fragment fade-up">Eine Anfrage, wie sie jede Woche eingeht</p>
+    <p class="label mt">Eine Anfrage, wie sie jede Woche eingeht</p>
     <aside class="notes">
       Kurz vorlesen lassen wirkt besser als selbst vorlesen. Frage in die Runde:
       "Wie lange braucht ihr für die Antwort?" Antworten sammeln, nicht bewerten.
@@ -564,12 +620,12 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 3: ZWEI ANTWORTEN ============ -->
+<!-- ============ 4: ZWEI ANTWORTEN ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Zwei Antworten. Beide von der <span class="schimmer">KI.</span></h2>
     <div class="gegen wachsen" style="margin-top:6px;">
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung schwach">Antwort A</div>
         <div class="fenster karte-schwach wachsen" style="justify-content:center;">
           <div class="fenster-leib" style="font-size:42px;color:var(--w-70);">
@@ -580,7 +636,7 @@ body.chrome-aus .chrome { opacity: 0; }
           </div>
         </div>
       </div>
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung gut">Antwort B</div>
         <div class="fenster karte-gut wachsen" style="justify-content:center;">
           <div class="fenster-leib" style="font-size:42px;">
@@ -601,19 +657,19 @@ body.chrome-aus .chrome { opacity: 0; }
   </div>
 </section>
 
-<!-- ============ 4: DER UNTERSCHIED ============ -->
+<!-- ============ 5: DER UNTERSCHIED ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Gleiches Werkzeug. Gleicher Tag. Ein <span class="schimmer">Unterschied.</span></h2>
     <div class="gegen wachsen" style="margin-top:8px;align-items:stretch;">
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung schwach">Das wurde für A getippt</div>
         <div class="prompt" style="min-height:0;font-size:38px;">Antworte auf diese Mail.</div>
         <div class="wortzahl schwach"><span class="zahl">4</span><span class="was">Wörter</span></div>
         <img src="assets/images/robo/laptop.png" alt=""
              style="height:250px;width:auto;display:block;align-self:flex-start;margin:16px 0 0 -10px;">
       </div>
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung gut">Das wurde für B getippt</div>
         <div class="prompt klein">
           <span><b>Du bist Veranstaltungsleiterin in unserem Haus.</b> Antworte auf die
@@ -626,47 +682,13 @@ body.chrome-aus .chrome { opacity: 0; }
         <div class="wortzahl gut"><span class="zahl">61</span><span class="was">Wörter</span></div>
       </div>
     </div>
-    <div class="takeaway mt-auto fragment fade-up" style="padding-top:26px;">
+    <div class="takeaway mt-auto" style="padding-top:26px;">
       <p>Der Unterschied liegt nicht im Werkzeug. Er liegt in der Bestellung.</p>
     </div>
     <aside class="notes">
       Kernmoment des Einstiegs. Hier ruhig bleiben und den langen Prompt
       NICHT vorlesen. Nur zeigen: der eine ist vier Wörter, der andere ist ein
       Auftrag. Danach Übergang zur Vorstellung: zwei Sätze, mehr nicht.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 5: WER WIR SIND ============ -->
-<section>
-  <div class="slide">
-    <h2 class="headline">Kurz zu <span class="schimmer">uns.</span></h2>
-    <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;gap:56px;margin-top:10px;">
-      <div class="koepfe fragment fade-up" style="justify-content:center;">
-        <div class="kopf">
-          <div class="kopf-foto"><img src="assets/images/team/edgar.png" alt="Edgar Paul-Ghazaryan"></div>
-          <div>
-            <div class="kopf-name">Eddie</div>
-            <div class="kopf-rolle">Edgar Paul-Ghazaryan, COO</div>
-          </div>
-        </div>
-        <div class="kopf">
-          <div class="kopf-foto"><img src="assets/images/team/emre.png" alt="Emre Erdogan"></div>
-          <div>
-            <div class="kopf-name">Emre</div>
-            <div class="kopf-rolle">Emre Erdogan, Geschäftsführer</div>
-          </div>
-        </div>
-      </div>
-      <p class="lead zentriert fragment fade-up" style="font-size:46px;max-width:none;">
-        EDGE Digital aus Lübeck.<br>
-        Wir bauen KI in den Arbeitsalltag von Unternehmen ein.<br>
-        Heute früh geht es nicht um uns, sondern um euch.
-      </p>
-    </div>
-    <aside class="notes">
-      Wirklich nur zwei Sätze. Eike hat ausdrücklich gesagt: kein Leistungsportfolio.
-      Wer mehr wissen will, fragt später. Das ist der Plan.
     </aside>
   </div>
 </section>
@@ -703,26 +725,26 @@ body.chrome-aus .chrome { opacity: 0; }
   <div class="slide">
     <h2 class="headline">Die <span class="schimmer">Brücke.</span></h2>
     <div class="reihe wachsen" style="align-items:stretch;gap:60px;margin-top:20px;max-height:420px;">
-      <div class="feld fragment fade-up" data-fragment-index="0" style="flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center;">
+      <div class="feld" style="flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center;">
         <p class="label" style="margin-bottom:20px;">Diesseits</p>
         <p style="font-size:62px;font-weight:600;line-height:1.2;margin:0;">
           Wir haben uns im Unternehmen eine KI angeschafft.
         </p>
       </div>
-      <svg class="fragment fade-up" data-fragment-index="1" style="width:120px;height:60px;flex-shrink:0;align-self:center;" viewBox="0 0 120 60" fill="none" aria-hidden="true">
+      <svg style="width:120px;height:60px;flex-shrink:0;align-self:center;" viewBox="0 0 120 60" fill="none" aria-hidden="true">
         <path d="M4 30h100M92 16l16 14-16 14" stroke="url(#pfeil)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         <defs><linearGradient id="pfeil" x1="0" y1="30" x2="120" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#C15DE6"/><stop offset=".5" stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/>
         </linearGradient></defs>
       </svg>
-      <div class="feld fragment fade-up" data-fragment-index="1" style="flex:1;padding:52px 56px;border-color:rgba(0,226,226,.3);display:flex;flex-direction:column;justify-content:center;">
+      <div class="feld" style="flex:1;padding:52px 56px;border-color:rgba(0,226,226,.3);display:flex;flex-direction:column;justify-content:center;">
         <p class="label" style="margin-bottom:20px;">Jenseits</p>
         <p style="font-size:62px;font-weight:600;line-height:1.2;margin:0;">
           Unsere Leute arbeiten wirklich damit.
         </p>
       </div>
     </div>
-    <div class="takeaway mt-auto fragment fade-up" data-fragment-index="2" style="padding-top:30px;">
+    <div class="takeaway mt-auto" style="padding-top:30px;">
       <p>Auf dieser Brücke stehen gerade fast alle.</p>
     </div>
     <aside class="notes">
@@ -748,7 +770,7 @@ body.chrome-aus .chrome { opacity: 0; }
   <div class="slide">
     <h2 class="headline">Bestellen kann man <span class="schimmer">lernen.</span></h2>
     <div class="gegen wachsen" style="margin-top:6px;align-items:stretch;">
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung schwach">Ihr sagt</div>
         <div class="feld karte-schwach wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;">
           <p style="font-size:64px;font-weight:700;margin:0;min-height:150px;display:flex;align-items:center;">„Pizza."</p>
@@ -756,7 +778,7 @@ body.chrome-aus .chrome { opacity: 0; }
           <p class="lead zentriert" style="font-size:26px;">Ihr bekommt irgendeine.</p>
         </div>
       </div>
-      <div class="fragment fade-up">
+      <div>
         <div class="wertung gut">Oder ihr sagt</div>
         <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;">
           <p style="font-size:32px;font-weight:600;margin:0;text-align:center;line-height:1.4;max-width:24em;min-height:150px;display:flex;align-items:center;">
@@ -767,7 +789,7 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
     </div>
-    <p class="label mt fragment fade-up">Je genauer die Bestellung, desto besser das Ergebnis.</p>
+    <p class="label mt">Je genauer die Bestellung, desto besser das Ergebnis.</p>
     <aside class="notes">
       Die Analogie funktioniert in jeder Runde. Sie erlaubt außerdem den Satz:
       "Ihr müsst nichts Technisches lernen. Ihr müsst nur aufhören, im Vorbeigehen
@@ -797,7 +819,7 @@ body.chrome-aus .chrome { opacity: 0; }
     <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
       <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="fragment fade-up wachsen" style="display:flex;flex-direction:column;">
+        <div class="wachsen" style="display:flex;flex-direction:column;">
           <!-- Die Fallnummer sitzt in der Labelzeile, nicht in der Headline:
                eine zweite Farbe in der Überschrift zerreißt die Zeile. -->
           <p class="label" style="margin-bottom:14px;">Fall 1 &middot; Was auf dem Zettel steht</p>
@@ -811,7 +833,7 @@ body.chrome-aus .chrome { opacity: 0; }
             </ul>
           </div>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
           <div class="prompt klein">
             <span>Du bist Veranstaltungsleiterin in unserem Tagungshaus. Schreib aus
@@ -820,7 +842,7 @@ body.chrome-aus .chrome { opacity: 0; }
           </div>
         </div>
       </div>
-      <div class="fenster wachsen fragment fade-up">
+      <div class="fenster wachsen">
         <div class="fenster-kopf"><span class="von">Antwort an K. Behrens</span><span class="betreff">in acht Sekunden</span></div>
         <div class="fenster-leib" style="font-size:37px;">
           <p>Hallo Frau Behrens,</p>
@@ -845,7 +867,7 @@ body.chrome-aus .chrome { opacity: 0; }
     <h2 class="headline">Absagen, ohne die Tür <span class="schimmer">zuzuziehen.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
       <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="fragment fade-up wachsen" style="display:flex;flex-direction:column;">
+        <div class="wachsen" style="display:flex;flex-direction:column;">
           <p class="label" style="margin-bottom:14px;">Fall 2 &middot; Die Lage</p>
           <div class="zettel" style="flex:1;display:flex;align-items:center;">
             <ul>
@@ -856,7 +878,7 @@ body.chrome-aus .chrome { opacity: 0; }
             </ul>
           </div>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
           <div class="prompt klein">
             <span>Schreib eine Absage. 120 Personen passen nicht zu uns, unser
@@ -865,7 +887,7 @@ body.chrome-aus .chrome { opacity: 0; }
           </div>
         </div>
       </div>
-      <div class="fenster wachsen fragment fade-up">
+      <div class="fenster wachsen">
         <div class="fenster-kopf"><span class="von">Absage</span><span class="betreff">freundlich, aber klar</span></div>
         <div class="fenster-leib" style="font-size:44px;">
           <p>Hallo Herr Petersen,</p>
@@ -890,7 +912,7 @@ body.chrome-aus .chrome { opacity: 0; }
     <h2 class="headline">Ein Stern. Und jetzt <span class="schimmer">ruhig bleiben.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
       <div class="spalte" style="flex:0 0 620px;gap:26px;">
-        <div class="fragment fade-up wachsen" style="display:flex;flex-direction:column;">
+        <div class="wachsen" style="display:flex;flex-direction:column;">
         <p class="label" style="margin-bottom:14px;">Fall 3 &middot; Was hereinkommt</p>
         <div class="fenster" style="flex:1;justify-content:center;">
           <div class="fenster-kopf" style="align-items:center;">
@@ -909,7 +931,7 @@ body.chrome-aus .chrome { opacity: 0; }
           </div>
         </div>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:14px;">Was ihr tippt</p>
           <div class="prompt klein">
             <span>Antworte öffentlich auf diese Bewertung. Das Frühstück geht bis
@@ -919,14 +941,14 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
       <div class="spalte wachsen">
-        <div class="feld karte-gut wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="feld karte-gut wachsen" style="display:flex;flex-direction:column;justify-content:center;">
           <p style="font-size:41px;line-height:1.45;margin:0;">
             Das tut uns leid, so soll ein Morgen bei uns nicht anfangen. An dem Tag
             war eine Gruppe früher da als angemeldet, und wir sind nicht
             hinterhergekommen. Regulär gibt es bis 10 Uhr Frühstück.
           </p>
         </div>
-        <div class="fragment fade-up" style="flex-shrink:0;">
+        <div style="flex-shrink:0;">
           <p class="label" style="margin-bottom:10px;">Warum das trägt</p>
           <p class="lead" style="font-size:28px;">Die Antwort ist nicht für den Gast von gestern.
              Sie ist für die zwanzig Leute, die sie nächste Woche lesen.</p>
@@ -974,7 +996,7 @@ body.chrome-aus .chrome { opacity: 0; }
         <p style="font-size:34px;">„Eine Mail, 150 Wörter, Ende mit Frage."</p>
       </div>
     </div>
-    <div class="takeaway mt-auto fragment fade-up" style="padding-top:26px;">
+    <div class="takeaway mt-auto" style="padding-top:26px;">
       <p>Mehr ist es nicht.</p>
     </div>
     <aside class="notes">
@@ -1009,15 +1031,15 @@ body.chrome-aus .chrome { opacity: 0; }
     <h2 class="headline">Das gehört in kein <span class="schimmer">KI-Fenster.</span></h2>
     <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;margin-top:8px;padding:44px 56px;">
       <div class="nie">
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Namen und Adressen von Gästen</div>
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Personalakten und Bewerbungen</div>
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Verträge und Konditionen</div>
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Krankmeldungen und Diagnosen</div>
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Kontodaten und Rechnungen</div>
-        <div class="fragment fade-up"><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Listen aus dem Buchungssystem</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Namen und Adressen von Gästen</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Personalakten und Bewerbungen</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Verträge und Konditionen</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Krankmeldungen und Diagnosen</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Kontodaten und Rechnungen</div>
+        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Listen aus dem Buchungssystem</div>
       </div>
       <hr style="border:none;height:1px;background:var(--hairline);margin:36px 0 32px;">
-      <p class="lead fragment fade-up" style="font-size:38px;max-width:none;">
+      <p class="lead" style="font-size:38px;max-width:none;">
         Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
         „Frau B." reicht völlig. Der Text wird genauso gut.
       </p>
@@ -1034,7 +1056,7 @@ body.chrome-aus .chrome { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Einmal umlegen, dann ist <span class="schimmer">Ruhe.</span></h2>
-    <p class="lead fragment fade-up" style="margin-top:4px;font-size:38px;">In den kostenlosen Zugängen lernen die
+    <p class="lead" style="margin-top:4px;font-size:38px;">In den kostenlosen Zugängen lernen die
        Anbieter aus dem mit, was ihr eintippt.</p>
     <!-- align-items:start hält die drei Ziffern auf einer Linie. Bei center
          wandern sie mit der Textlänge auseinander. -->
@@ -1055,7 +1077,7 @@ body.chrome-aus .chrome { opacity: 0; }
         <p style="font-size:32px;">Alles mit „Modell verbessern" aus.</p>
       </div>
     </div>
-    <p class="lead fragment fade-up" style="font-size:32px;max-width:none;margin-top:auto;padding-top:40px;">
+    <p class="lead" style="font-size:32px;max-width:none;margin-top:auto;padding-top:40px;">
       <span class="cyan">Geschäftskonten</span> sind meist ohnehin ausgenommen. Nachsehen lohnt sich trotzdem.
     </p>
     <aside class="notes">
@@ -1074,7 +1096,7 @@ body.chrome-aus .chrome { opacity: 0; }
       <img src="assets/images/robo/ratlos.png" alt="">
     </div>
     <div class="reihe wachsen" style="gap:44px;margin-top:8px;align-items:stretch;">
-      <div class="spalte fragment fade-up" style="flex:1;">
+      <div class="spalte" style="flex:1;">
         <p class="label">Was am liebsten erfunden wird</p>
         <div class="zeilen feld wachsen" style="justify-content:center;">
           <div>Öffnungszeiten und Preise</div>
@@ -1084,7 +1106,7 @@ body.chrome-aus .chrome { opacity: 0; }
           <div>Quellen und Studien mit Titel und Jahr</div>
         </div>
       </div>
-      <div class="spalte fragment fade-up" style="flex:1;">
+      <div class="spalte" style="flex:1;">
         <p class="label">Woran ihr es merkt</p>
         <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;gap:28px;">
           <p style="font-size:36px;line-height:1.45;margin:0;">
@@ -1098,7 +1120,7 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
     </div>
-    <div class="takeaway mt-auto fragment fade-up" style="padding-top:26px;">
+    <div class="takeaway mt-auto" style="padding-top:26px;">
       <p>Die KI schreibt den Entwurf. Die Verantwortung bleibt am Tisch.</p>
     </div>
     <aside class="notes">
@@ -1116,7 +1138,7 @@ body.chrome-aus .chrome { opacity: 0; }
   <div class="slide">
     <h2 class="headline">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="feld fragment fade-up" style="flex:0 0 620px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
+      <div class="feld" style="flex:0 0 620px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
         <p class="label">Klausur an der Uni, 2023</p>
         <p style="font-size:46px;font-weight:600;line-height:1.25;margin:0;">
           Open-Book-Klausur. Alle Hilfsmittel erlaubt.
@@ -1126,14 +1148,14 @@ body.chrome-aus .chrome { opacity: 0; }
         </p>
       </div>
       <div class="spalte wachsen" style="gap:26px;">
-        <div class="feld wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;">
           <p class="label" style="margin-bottom:14px;">Was auf dem Bildschirm stand</p>
           <p style="font-size:38px;line-height:1.45;margin:0;">
-            Ganze Sätze, sauber gegliedert, ohne Zögern. Genau das, was in einer
-            Klausur stehen sollte. Wir haben abgeschrieben und nichts nachgeschlagen.
+            Ganze Sätze, ohne Zögern, sah aus wie eine Eins.
+            Abgeschrieben, nichts nachgeschlagen.
           </p>
         </div>
-        <div class="feld wachsen fragment fade-up" style="display:flex;flex-direction:column;justify-content:center;border-color:rgba(255,107,94,.28);">
+        <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;border-color:rgba(255,107,94,.28);">
           <p class="label" style="margin-bottom:14px;">Was dabei herauskam</p>
           <p style="font-size:52px;font-weight:700;line-height:1.3;margin:0;">
             Wir sind beide durchgefallen.
@@ -1141,7 +1163,7 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
     </div>
-    <div class="takeaway mt-auto fragment fade-up" style="padding-top:26px;">
+    <div class="takeaway mt-auto" style="padding-top:26px;">
       <p>Nicht die KI ist durchgefallen. Wir haben nicht gegengelesen.</p>
     </div>
     <aside class="notes">
@@ -1164,7 +1186,7 @@ body.chrome-aus .chrome { opacity: 0; }
       <!-- Das Bild ist selbst mit KI erzeugt und trägt die Kennzeichnung, die
            der Artikel verlangt. Damit ist die Rechtsfolie kein Hinweis mehr,
            sondern ein Beispiel, das die Runde abschreiben kann. -->
-      <div class="posting fragment fade-up" style="flex:0 0 700px;">
+      <div class="posting" style="flex:0 0 700px;">
         <img src="assets/images/tagungsraum-ki.jpg" alt="Beispielbild eines Tagungsraums">
         <div class="hinweis">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1174,20 +1196,20 @@ body.chrome-aus .chrome { opacity: 0; }
         </div>
       </div>
       <div class="spalte wachsen" style="gap:30px;">
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:16px;">EU AI Act, Artikel 50</p>
           <p style="font-size:50px;font-weight:600;line-height:1.2;margin:0;">
             Wer KI-Bilder veröffentlicht, muss das offenlegen.
           </p>
         </div>
-        <div class="fragment fade-up">
-          <p class="lead" style="font-size:30px;">
-            Seit dem 2. August 2026. Auf Instagram genauso wie auf der Website.
-            Für Ton und Video gilt dasselbe, und wer einen Chatbot einsetzt,
-            muss sagen, dass da eine Maschine schreibt.
-          </p>
+        <div>
+          <div class="zeilen" style="font-size:30px;color:var(--w-70);">
+            <div>Gilt seit dem 2. August 2026</div>
+            <div>Bilder, Ton und Video: offenlegen</div>
+            <div>Chatbot: sagen, dass eine Maschine schreibt</div>
+          </div>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:20px;">Ein Satz wie links reicht. Oder eines dieser Zeichen</p>
           <div class="zeichen-reihe">
             <img class="eu-icon" src="assets/images/eu/ki-generiert.svg" alt="Zeichen für KI-generierte Inhalte" style="height:84px;">
@@ -1224,14 +1246,14 @@ body.chrome-aus .chrome { opacity: 0; }
   <div class="slide">
     <h2 class="headline">Diese vier sind heute früh <span class="schimmer">entstanden.</span></h2>
     <div class="reihe wachsen" style="gap:44px;margin-top:6px;align-items:stretch;">
-      <div class="galerie fragment fade-up" style="flex:1;">
+      <div class="galerie" style="flex:1;">
         <figure><img src="assets/images/robo/holstentor.jpg" alt="Roboter zeigt auf das Holstentor"><figcaption>Holstentor</figcaption></figure>
         <figure><img src="assets/images/robo/passat.jpg" alt="Roboter am Bug der Passat"><figcaption>Passat, Travemünde</figcaption></figure>
         <figure><img src="assets/images/robo/strandkorb.jpg" alt="Roboter mit Fernglas auf einem Strandkorb"><figcaption>Strand Travemünde</figcaption></figure>
         <figure><img src="assets/images/robo/muk.jpg" alt="Roboter beim Breakdance vor der MuK"><figcaption>Vor der MuK</figcaption></figure>
       </div>
       <div class="spalte" style="flex:0 0 560px;gap:30px;justify-content:center;">
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:16px;">Zutaten</p>
           <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
             Drei Bilder und ein Satz.
@@ -1241,13 +1263,13 @@ body.chrome-aus .chrome { opacity: 0; }
             Werkzeug von selbst.
           </p>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p class="label" style="margin-bottom:16px;">Aufwand</p>
           <p style="font-size:38px;font-weight:600;line-height:1.3;margin:0;">
             Zehn Minuten. Ohne Fotograf.
           </p>
         </div>
-        <div class="fragment fade-up">
+        <div>
           <p style="font-size:31px;line-height:1.4;margin:0;">
             Und alle vier tragen aus demselben Grund einen Hinweis wie den
             unten links. <span class="cyan">Genau darum ging es eben.</span>
@@ -1273,14 +1295,14 @@ body.chrome-aus .chrome { opacity: 0; }
     <h2 class="headline">Acht Dinge für den <span class="schimmer">Schreibtisch.</span></h2>
     <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;margin-top:8px;padding:34px 52px;">
       <div class="mitnehmen">
-        <div class="fragment fade-up" data-fragment-index="0"><span class="nr">1</span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="4"><span class="nr">5</span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="1"><span class="nr">2</span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="5"><span class="nr">6</span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="2"><span class="nr">3</span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="6"><span class="nr">7</span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="3" style="border-bottom:none;"><span class="nr">4</span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
-        <div class="fragment fade-up" data-fragment-index="7" style="border-bottom:none;"><span class="nr">8</span><span class="satz">Fangt mit dem an, was nervt.<small>Die Aufgabe, die ihr am längsten vor euch herschiebt.</small></span></div>
+        <div><span class="nr">1</span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
+        <div><span class="nr">5</span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
+        <div><span class="nr">2</span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
+        <div><span class="nr">6</span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
+        <div><span class="nr">3</span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
+        <div><span class="nr">7</span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
+        <div style="border-bottom:none;"><span class="nr">4</span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
+        <div style="border-bottom:none;"><span class="nr">8</span><span class="satz">Fangt mit dem an, was nervt.<small>Die Aufgabe, die ihr am längsten vor euch herschiebt.</small></span></div>
       </div>
     </div>
     <aside class="notes">
@@ -1295,7 +1317,7 @@ body.chrome-aus .chrome { opacity: 0; }
 <section data-chrome="aus">
   <div class="slide mittig">
     <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
-    <p class="lead fragment fade-up" style="font-size:38px;margin-top:26px;max-width:30em;">
+    <p class="lead" style="font-size:38px;margin-top:26px;max-width:30em;">
       Es heißt, dass das Ding auf eurem Rechner nicht mehr nur herumliegt.
       Ein Fall, einmal richtig bestellt, heute Nachmittag.
     </p>
@@ -1312,11 +1334,11 @@ body.chrome-aus .chrome { opacity: 0; }
       <img src="assets/images/robo/zeigt-hoch.png" alt="">
     </div>
     <h2 class="hero" style="font-size:154px;">Jetzt seid <span class="schimmer">ihr dran.</span></h2>
-    <p class="lead fragment fade-up" style="font-size:38px;margin-top:16px;">
+    <p class="lead" style="font-size:38px;margin-top:16px;">
       Fragt uns, was ihr fragen wollt.<br>
       Es gibt hier keine Frage, die zu einfach wäre.
     </p>
-    <p class="label fragment fade-up" style="margin-top:64px;">Und wenn wir etwas nicht wissen, sagen wir das auch</p>
+    <p class="label" style="margin-top:64px;">Und wenn wir etwas nicht wissen, sagen wir das auch</p>
     <aside class="notes">
       Genau dieser Teil ist Eike wichtig: der luftleere Raum.
       Nicht zu früh auflösen, Stille aushalten. Die erste Frage kommt immer.
@@ -1331,7 +1353,7 @@ body.chrome-aus .chrome { opacity: 0; }
   <div class="slide mittig">
     <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:140px;margin-bottom:66px;">
     <h2 class="hero" style="font-size:128px;">Danke fürs <span class="schimmer">Frühstück.</span></h2>
-    <p class="lead fragment fade-up" style="font-size:34px;margin-top:22px;">
+    <p class="lead" style="font-size:34px;margin-top:22px;">
       Edgar Paul-Ghazaryan und Emre Erdogan<br>
       Fischstraße 16 · 23552 Lübeck
     </p>

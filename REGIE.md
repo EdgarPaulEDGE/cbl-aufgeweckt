@@ -9,9 +9,9 @@ lauffähig: man kann jeden Fall weglassen, ohne dass der Rest bricht.
 
 | Zeit | Folien | Block | Wer |
 |---|---|---|---|
-| 0:00 | 1 bis 4 | Einstieg über die Anfrage-Mail | Eddie |
-| 0:04 | 5 | Zwei Sätze zu uns | Eddie |
-| 0:05 | 6 bis 7 | Handzeichen und die Brücke | Eddie |
+| 0:00 | 1 bis 2 | Titel und wer wir sind, über die Fotos erzählt | Eddie |
+| 0:03 | 3 bis 5 | Einstieg über die Anfrage-Mail | Eddie |
+| 0:06 | 6 bis 7 | Handzeichen und die Brücke | Eddie |
 | 0:08 | 8 bis 10 | Merksatz, Pizza, Übergabe | Eddie zu Emre |
 | 0:11 | 11 bis 13 | Die drei Fälle, live getippt | Emre |
 | 0:24 | 14 | Die vier Bausteine, jetzt benannt | Emre |
@@ -31,28 +31,23 @@ runzelt. Das ist bei acht Leuten am Tisch wichtiger als jede Folie.
 
 ## Wie sich eine Folie aufbaut
 
-Jede Folie kommt **geführt**, nicht fertig. Beim Blättern läuft zuerst die
-Headline allein ein, ohne Klick. Danach folgt Segment für Segment, je ein Klick
-in Leserichtung: linke Spalte vor rechter, oben vor unten, der Takeaway zuletzt.
-Headline und Inhalt erscheinen nie zusammen.
+**Folienwechsel zeigt sofort die finale Folie.** Kein gestaffeltes Aufploppen
+von Text: solange noch etwas kommen könnte, starrt der ganze Raum auf die
+Leinwand und wartet, statt zuzuhören (Emres QS vom 17.08.).
 
-Das sind etwa drei bis sieben Klicks pro Inhaltsfolie. Wer schneller durchwill,
-drückt einfach mehrmals: die Pfeiltaste rechts arbeitet die Segmente ab und
-springt danach zur nächsten Folie. Rückwärts geht es genauso.
-
-Praktisch heißt das: **redet zum Segment, das gerade gekommen ist.** Wer alle
-Segmente vorklickt und dann erzählt, verschenkt genau den Effekt, für den die
-Staffelung da ist.
+Nur drei Folien bauen sich klickweise auf, weil dort der Redner Punkt für
+Punkt durchgeht: die drei Handzeichen-Fragen (6), die vier Bausteine (14) und
+die drei Schalter-Schritte (17). Überall sonst gilt: reden, nicht klicken.
 
 `?nofrag` an die Adresse hängen zeigt alles sofort, praktisch für die Durchsicht
 und für den Fall, dass jemand anders das Deck durchblättert.
 
 ## Die drei Momente, auf die es ankommt
 
-**Folie 3 und 4.** Antwort A einblenden, wirken lassen, dann B. Erst danach
-auflösen, dass beide von derselben KI stammen. Den langen Prompt auf Folie 4
-nicht vorlesen: nur zeigen, dass der eine vier Wörter hat und der andere ein
-Auftrag ist.
+**Folie 4 und 5.** Beide Antworten stehen sofort da. Erst über A reden, dann
+über B, dann auflösen, dass beide von derselben KI stammen. Den langen Prompt
+auf Folie 5 nicht vorlesen: nur zeigen, dass der eine vier Wörter hat und der
+andere ein Auftrag ist.
 
 **Folie 18, Halluzinationen.** Hier live etwas fragen, das die Runde selbst
 prüfen kann. Vorher einmal durchspielen. Wenn die KI zufällig richtig liegt,
@@ -80,11 +75,10 @@ In dieser Reihenfolge streichen:
    eigenen Lernpunkt, sie verstärkt nur die Folie davor. Zwei Minuten.
 2. **Folie 12** (Fall 2, Absage) nur zeigen statt tippen. Spart drei Minuten,
    ohne dass der Bogen bricht.
-3. **Folie 5** (zwei Sätze zu uns) gesprochen statt gezeigt.
-4. **Folie 9** (Pizza) gesprochen statt gezeigt. Die Analogie trägt auch
+3. **Folie 9** (Pizza) gesprochen statt gezeigt. Die Analogie trägt auch
    ohne Bild, sie ist in zwei Sätzen erzählt.
 
-Nicht streichen: Folie 4, Folie 14, Folie 20. Das sind die drei Folien, wegen
+Nicht streichen: Folie 5, Folie 14, Folie 20. Das sind die drei Folien, wegen
 denen der Vortrag stattfindet.
 
 ## Wenn es keine Verbindung gibt
