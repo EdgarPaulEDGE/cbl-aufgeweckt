@@ -153,6 +153,17 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 .spalten p { color: var(--w-70); font-size: 26px; line-height: 1.55; margin: 0; }
 .sp-num { font-size: 46px; font-weight: 700; color: var(--cyan); margin-bottom: 16px; line-height: 1; }
 
+/* ---------- Kreis-Nummer: die nackte Zahl im Kreis ----------
+   Nie 01 02 03. Schritt-Nummern stehen als 1, 2, 3 in einem Kreis,
+   gleiche Familie wie die Haken- und Kreuz-Kreise der Vergleichsfolie. */
+.kreis-num {
+  display: inline-grid; place-items: center; flex-shrink: 0;
+  width: 88px; height: 88px; border-radius: 50%;
+  background: rgba(0, 226, 226, .1);
+  border: 1px solid rgba(0, 226, 226, .38);
+  color: var(--cyan); font-weight: 700; font-size: 42px; line-height: 1;
+}
+
 /* ---------- Zeilen-Listen ---------- */
 .zeilen { display: flex; flex-direction: column; width: 100%; }
 .zeilen > div { padding: 24px 6px; border-bottom: 1px solid var(--hairline); }
@@ -699,16 +710,16 @@ body.deckblatt .chrome-num { opacity: 0; }
   <div class="slide">
     <h2 class="headline">Kurze Runde. Hand <span class="schimmer">hoch.</span></h2>
     <div class="zeilen feld wachsen" style="justify-content:center;margin-top:10px;padding:20px 52px;">
-      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:44px;padding:52px 6px;">
-        <span class="sp-num" style="margin:0;flex:0 0 92px;font-size:58px;">01</span>
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="kreis-num">1</span>
         <span style="font-size:70px;font-weight:600;">Wer hat KI schon einmal benutzt?</span>
       </div>
-      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:44px;padding:52px 6px;">
-        <span class="sp-num" style="margin:0;flex:0 0 92px;font-size:58px;">02</span>
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="kreis-num">2</span>
         <span style="font-size:70px;font-weight:600;">Wer benutzt sie im Job?</span>
       </div>
-      <div class="fragment fade-up" style="display:flex;align-items:baseline;gap:44px;padding:52px 6px;">
-        <span class="sp-num" style="margin:0;flex:0 0 92px;font-size:58px;">03</span>
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="kreis-num">3</span>
         <span style="font-size:70px;font-weight:600;">Wer hat sie heute schon aufgehabt?</span>
       </div>
     </div>
@@ -1063,17 +1074,17 @@ body.deckblatt .chrome-num { opacity: 0; }
          wandern sie mit der Textlänge auseinander. -->
     <div class="spalten feld" style="grid-template-columns:repeat(3,1fr);align-items:stretch;margin-top:auto;padding:72px 52px;">
       <div class="fragment fade-up">
-        <div class="sp-num" style="font-size:72px;">01</div>
+        <div class="kreis-num" style="margin-bottom:20px;">1</div>
         <h3 style="font-size:46px;min-height:2.7em;">Einstellungen öffnen</h3>
         <p style="font-size:32px;">Unten links über euren Namen.</p>
       </div>
       <div class="fragment fade-up">
-        <div class="sp-num" style="font-size:72px;">02</div>
+        <div class="kreis-num" style="margin-bottom:20px;">2</div>
         <h3 style="font-size:46px;min-height:2.7em;">Datenschutz suchen</h3>
         <p style="font-size:32px;">Heißt auch Datenkontrolle.</p>
       </div>
       <div class="fragment fade-up">
-        <div class="sp-num" style="font-size:72px;">03</div>
+        <div class="kreis-num" style="margin-bottom:20px;">3</div>
         <h3 style="font-size:46px;min-height:2.7em;">Training ausschalten</h3>
         <p style="font-size:32px;">Alles mit „Modell verbessern" aus.</p>
       </div>
