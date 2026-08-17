@@ -2,7 +2,7 @@
 
 Impuls von EDGE Digital beim **Netzwerkfrühstück der LTM im K64**, Lübeck,
 **20. August 2026, ab 8:30 Uhr**. 25 Folien, etwa 40 Minuten plus offenes Q&A.
-Referenten: Edgar Paul-Ghazaryan (Eddie) und Emre Erdogan.
+Referenten: Emre Erdogan und Edgar Paul-Ghazaryan (Eddie).
 
 ## Live
 
