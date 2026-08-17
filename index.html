@@ -1398,12 +1398,12 @@ Reveal.initialize({
    laufen ohne Logos und ohne Zähler. */
 var numEl = document.getElementById('chrome-num');
 function chromeUpdate() {
-  var slides = Reveal.getSlides();
   var idx = Reveal.getState().indexh;
   var aktuelle = Reveal.getCurrentSlide();
   var aus = aktuelle.dataset.chrome === 'aus';
   document.body.classList.toggle('chrome-aus', aus);
-  numEl.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  /* Nur die nackte Zahl: 2, 3, 4. Kein Gesamtzähler, keine führende Null. */
+  numEl.textContent = String(idx + 1);
 }
 Reveal.on('ready', chromeUpdate);
 Reveal.on('slidechanged', chromeUpdate);
