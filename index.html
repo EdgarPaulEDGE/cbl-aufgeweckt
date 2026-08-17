@@ -385,7 +385,7 @@ body.deckblatt .chrome-num { opacity: 0; }
 .nie > div { display: flex; gap: 24px; align-items: center; font-size: 36px; line-height: 1.3; padding: 26px 0; }
 .nie .zeichen { flex: 0 0 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
   background: rgba(255, 107, 94, .12); }
-.nie .zeichen svg { width: 26px; height: 26px; stroke: var(--warn); }
+.nie .zeichen svg { width: 28px; height: 28px; stroke: var(--warn); }
 
 /* ---------- Portraits ---------- */
 .koepfe { display: flex; gap: 56px; }
@@ -1095,20 +1095,22 @@ body.deckblatt .chrome-num { opacity: 0; }
 <section>
   <div class="slide">
     <h2 class="headline">Das gehört in kein <span class="schimmer">KI-Fenster.</span></h2>
-    <div class="feld wachsen" style="display:flex;flex-direction:column;justify-content:center;margin-top:8px;padding:44px 56px;">
-      <div class="nie">
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Namen und Adressen von Gästen</div>
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Personalakten und Bewerbungen</div>
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Verträge und Konditionen</div>
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Krankmeldungen und Diagnosen</div>
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Kontodaten und Rechnungen</div>
-        <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Listen aus dem Buchungssystem</div>
+    <div class="gruppe-mittig wachsen">
+      <div class="feld" style="padding:56px 60px;">
+        <div class="nie">
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Namen und Adressen von Gästen</div>
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h3.6a2 2 0 0 1 1.6.8L11.4 8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg></span>Personalakten und Bewerbungen</div>
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></svg></span>Verträge und Konditionen</div>
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 4.7 13.7a5 5 0 0 1 7.1-7.1l.2.2.2-.2a5 5 0 0 1 7.1 7.1L12 21Z"/></svg></span>Krankmeldungen und Diagnosen</div>
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Kontodaten und Rechnungen</div>
+          <div><span class="zeichen"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/><path d="M8 13h8M8 17h5"/></svg></span>Listen aus dem Buchungssystem</div>
+        </div>
+        <hr style="border:none;height:1px;background:var(--hairline);margin:38px 0 34px;">
+        <p class="lead" style="font-size:38px;max-width:none;">
+          Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
+          „Frau B." reicht völlig. Der Text wird genauso gut.
+        </p>
       </div>
-      <hr style="border:none;height:1px;background:var(--hairline);margin:36px 0 32px;">
-      <p class="lead" style="font-size:38px;max-width:none;">
-        Der Weg drumherum: <span class="cyan">Platzhalter statt Klarnamen.</span>
-        „Frau B." reicht völlig. Der Text wird genauso gut.
-      </p>
     </div>
     <aside class="notes">
       Kein Paragrafenritt. Ein Satz zur Einordnung reicht: personenbezogene Daten
