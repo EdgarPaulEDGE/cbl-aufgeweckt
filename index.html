@@ -427,6 +427,11 @@ body.deckblatt .chrome-num { opacity: 0; }
     linear-gradient(90deg, rgba(3, 3, 9, .97) 0%, rgba(3, 3, 9, .88) 38%, rgba(3, 3, 9, .35) 78%, rgba(3, 3, 9, .55) 100%),
     linear-gradient(0deg, rgba(3, 3, 9, .7) 0%, transparent 45%);
 }
+/* "leicht" lässt das Motiv sichtbar: nur oben und unten so viel Dunkel,
+   dass Headline und Uferzeilen lesbar bleiben. */
+.reveal .slide-background[data-schleier="leicht"]::after {
+  background: linear-gradient(180deg, rgba(3, 3, 9, .74) 0%, rgba(3, 3, 9, .28) 30%, rgba(3, 3, 9, .22) 62%, rgba(3, 3, 9, .68) 100%);
+}
 .reveal .slide-background[data-schleier="mittig"]::after {
   background: radial-gradient(120% 100% at 50% 50%, rgba(3, 3, 9, .8) 0%, rgba(3, 3, 9, .92) 55%, rgba(3, 3, 9, .97) 100%);
 }
@@ -523,9 +528,9 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
    im Saal vom Beamer abfotografiert. */
 .zeichen-reihe { display: flex; align-items: center; gap: 44px; }
 .zeichen-reihe .eu-icon { display: block; }
-.zeichen-reihe .qr { display: flex; align-items: center; gap: 20px; margin-left: auto; }
-.zeichen-reihe .qr img { width: 140px; height: 140px; display: block; border-radius: 12px; }
-.zeichen-reihe .qr span { font-size: 22px; line-height: 1.35; color: var(--w-45); }
+.qr { display: flex; align-items: center; gap: 20px; }
+.qr img { width: 140px; height: 140px; display: block; border-radius: 12px; }
+.qr span { font-size: 22px; line-height: 1.35; color: var(--w-45); }
 
 /* ---------- Platzhalter für offene Punkte ---------- */
 .ph {
@@ -644,7 +649,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
             <div class="kopf-rolle">COO</div>
           </div>
         </div>
-        <p class="lead" style="font-size:30px;">KI in den Arbeitsalltag.<br>Aus Lübeck.</p>
+        <p class="lead" style="font-size:30px;">KI aus Lübeck.<br>Für Deutschland.</p>
       </div>
       <div class="collage">
         <img src="assets/images/collage/01.jpg" alt="">
@@ -687,7 +692,6 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         </div>
       </div>
     </div>
-    <p class="label mt">Eine Anfrage, wie sie jede Woche eingeht</p>
     <aside class="notes">
       Kurz vorlesen lassen wirkt besser als selbst vorlesen. Frage in die Runde:
       "Wie lange braucht ihr für die Antwort?" Antworten sammeln, nicht bewerten.
@@ -718,7 +722,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         <div class="wertung gut">Antwort B</div>
         <div class="fenster karte-gut wachsen" style="justify-content:center;">
           <div class="fenster-leib" style="font-size:42px;">
-            <p>Hallo Frau Behrens,</p>
+            <p>Hallo Frau B.,</p>
             <p>der 14. Oktober ist frei. Für 25 Personen passt der Raum Trave,
                Beamer und WLAN sind drin.</p>
             <p>Die Tagungspauschale liegt bei 68 Euro pro Person.</p>
@@ -739,29 +743,28 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
 <!-- ============ 5: DER UNTERSCHIED ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline gesetzt">Gleiches Werkzeug. Gleicher Tag.<br>Ein <span class="schimmer">Unterschied.</span></h2>
-    <div class="gegen wachsen" style="margin-top:8px;align-items:stretch;">
+    <h2 class="headline gesetzt">Gleiches Werkzeug. Ein <span class="schimmer">Unterschied.</span></h2>
+    <div class="gruppe-mittig wachsen">
+    <div class="gegen" style="align-items:stretch;">
       <div>
         <div class="wertung schwach">Das wurde für A getippt</div>
         <div class="prompt" style="min-height:0;font-size:38px;">Antworte auf diese Mail.</div>
-        <div class="wortzahl schwach"><span class="zahl">4</span><span class="was">Wörter</span></div>
-        <img src="assets/images/robo/laptop.png" alt=""
-             style="height:250px;width:auto;display:block;align-self:flex-start;margin:16px 0 0 -10px;">
+        <div class="wortzahl schwach" style="margin-top:auto;"><span class="zahl">4</span><span class="was">Wörter</span></div>
       </div>
       <div>
         <div class="wertung gut">Das wurde für B getippt</div>
         <div class="prompt klein">
-          <span><b>Du bist Veranstaltungsleiterin in unserem Haus.</b> Antworte auf die
-          Anfrage von Frau Behrens. Fakten: Raum Trave, bis 30 Personen, Tageslicht,
+          <span>Antworte auf die Anfrage von Frau B. Fakten: Raum Trave, bis 30 Personen, Tageslicht,
           Blick aufs Wasser, Tagungspauschale 68 Euro pro Person mit zwei Pausen,
           Mittagessen und Getränken, Beamer und WLAN inklusive, 14. Oktober ist frei.
           Ton: freundlich und knapp, kein Werbedeutsch. Sie soll den Termin halten.
           Ende mit einer konkreten Frage. Höchstens 150 Wörter.</span>
         </div>
-        <div class="wortzahl gut"><span class="zahl">61</span><span class="was">Wörter</span></div>
+        <div class="wortzahl gut" style="margin-top:auto;"><span class="zahl">55</span><span class="was">Wörter</span></div>
       </div>
     </div>
-    <div class="takeaway mt-auto" style="padding-top:26px;">
+    </div>
+    <div class="takeaway" style="padding-top:26px;">
       <p>Der Unterschied liegt nicht im Werkzeug. Er liegt in der Bestellung.</p>
     </div>
     <aside class="notes">
@@ -772,85 +775,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 6: HANDZEICHEN ============ -->
-<section>
-  <div class="slide" style="position:relative;">
-    <h2 class="headline">Kurze Runde. Hand <span class="schimmer">hoch.</span></h2>
-    <div class="begleiter" style="right:56px;bottom:0;height:330px;">
-      <img src="assets/images/robo/zeigt-hoch.png" alt="">
-    </div>
-    <div class="gruppe-mittig wachsen" style="padding-right:300px;">
-    <div class="zeilen feld" style="padding:20px 52px;">
-      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="ring"><b>1</b></span>
-        <span style="font-size:60px;font-weight:600;">Wer hat KI schon einmal benutzt?</span>
-      </div>
-      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="ring"><b>2</b></span>
-        <span style="font-size:60px;font-weight:600;">Wer benutzt sie im Job?</span>
-      </div>
-      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
-        <span class="ring"><b>3</b></span>
-        <span style="font-size:60px;font-weight:600;">Wer hat sie heute schon aufgehabt?</span>
-      </div>
-    </div>
-    </div>
-    <aside class="notes">
-      Ergebnis laut benennen, es ist der Übergang: "Ihr seid nicht am Anfang.
-      Genau deshalb reden wir heute nicht darüber, was KI ist, sondern darüber,
-      wie man sie wirklich arbeiten lässt."
-      Falls wider Erwarten kaum Hände hochgehen: Folie 7 etwas länger nehmen.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 7: DIE BRÜCKE ============ -->
-<section>
-  <div class="slide">
-    <h2 class="headline">Die <span class="schimmer">Brücke.</span></h2>
-    <div class="reihe wachsen" style="align-items:stretch;gap:60px;margin-top:20px;max-height:420px;">
-      <div class="feld" style="flex:1;padding:52px 56px;display:flex;flex-direction:column;justify-content:center;">
-        <p class="label" style="margin-bottom:20px;">Diesseits</p>
-        <p style="font-size:62px;font-weight:600;line-height:1.2;margin:0;">
-          Wir haben uns im Unternehmen eine KI angeschafft.
-        </p>
-      </div>
-      <svg style="width:120px;height:60px;flex-shrink:0;align-self:center;" viewBox="0 0 120 60" fill="none" aria-hidden="true">
-        <path d="M4 30h100M92 16l16 14-16 14" stroke="url(#pfeil)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <defs><linearGradient id="pfeil" x1="0" y1="30" x2="120" y2="30" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#C15DE6"/><stop offset=".5" stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/>
-        </linearGradient></defs>
-      </svg>
-      <div class="feld" style="flex:1;padding:52px 56px;border-color:rgba(0,226,226,.3);display:flex;flex-direction:column;justify-content:center;">
-        <p class="label" style="margin-bottom:20px;">Jenseits</p>
-        <p style="font-size:62px;font-weight:600;line-height:1.2;margin:0;">
-          Unsere Leute arbeiten wirklich damit.
-        </p>
-      </div>
-    </div>
-    <div class="takeaway mt-auto" style="padding-top:30px;">
-      <p>Auf dieser Brücke stehen gerade fast alle.</p>
-    </div>
-    <aside class="notes">
-      Das ist Eikes eigene Beobachtung aus dem Abstimmungstermin. Wenn Eike im
-      Raum ist: kurz zu ihm schauen, er erkennt seinen Satz wieder.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 8: MERKSATZ ============ -->
-<section data-chrome="aus" data-background-image="assets/images/robo/holstentor.jpg" data-background-size="cover" data-schleier="mittig">
-  <div class="slide mittig">
-    <span class="bild-quelle">Bild mit KI erstellt</span>
-    <h2 class="hero" style="font-size:96px;margin-bottom:14px;">Die KI liefert nicht schlecht.</h2>
-    <p class="hero schimmer" style="font-size:126px;margin:0;">Wir fragen schlecht.</p>
-    <aside class="notes">
-      Kurz stehen lassen. Nicht erklären. Die Erklärung kommt mit der Pizza.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 9: PIZZA ============ -->
+<!-- ============ 6: PIZZA ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Bestellen kann man <span class="schimmer">lernen.</span></h2>
@@ -874,11 +799,77 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         </div>
       </div>
     </div>
-    <p class="label mt">Je genauer die Bestellung, desto besser das Ergebnis.</p>
     <aside class="notes">
       Die Analogie funktioniert in jeder Runde. Sie erlaubt außerdem den Satz:
       "Ihr müsst nichts Technisches lernen. Ihr müsst nur aufhören, im Vorbeigehen
-      zu bestellen." Danach kommen die vier Fälle.
+      zu bestellen." Danach die kurze Runde mit Handzeichen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 7: HANDZEICHEN ============ -->
+<section>
+  <div class="slide" style="position:relative;">
+    <h2 class="headline">Kurze Runde. Hand <span class="schimmer">hoch.</span></h2>
+    <!-- Eigens erzeugte Gegenpose: gespiegelt wäre die Kappen-Aufschrift
+         falsch herum, also hat Higgsfield die Pose gedreht, nicht das Bild. -->
+    <div class="begleiter" style="right:56px;bottom:0;height:330px;">
+      <img src="assets/images/robo/zeigt-links.png" alt="">
+    </div>
+    <div class="gruppe-mittig wachsen" style="padding-right:300px;">
+    <div class="zeilen feld" style="padding:20px 52px;">
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="ring"><b>1</b></span>
+        <span style="font-size:60px;font-weight:600;">Wer hat KI schon einmal benutzt?</span>
+      </div>
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="ring"><b>2</b></span>
+        <span style="font-size:60px;font-weight:600;">Wer benutzt sie im Job?</span>
+      </div>
+      <div class="fragment fade-up" style="display:flex;align-items:center;gap:44px;padding:44px 6px;">
+        <span class="ring"><b>3</b></span>
+        <span style="font-size:60px;font-weight:600;">Wer hat sie heute schon aufgehabt?</span>
+      </div>
+    </div>
+    </div>
+    <aside class="notes">
+      Ergebnis laut benennen, es ist der Übergang: "Ihr seid nicht am Anfang.
+      Genau deshalb reden wir heute nicht darüber, was KI ist, sondern darüber,
+      wie man sie wirklich arbeiten lässt."
+      Falls wider Erwarten kaum Hände hochgehen: die Brücken-Folie etwas länger nehmen.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 8: DIE BRÜCKE ============ -->
+<section data-chrome="aus" data-background-image="assets/images/robo/bruecke.jpg" data-background-size="cover" data-schleier="leicht">
+  <div class="slide">
+    <span class="bild-quelle">Bild mit KI erstellt</span>
+    <h2 class="hero" style="font-size:118px;text-align:center;margin-top:8px;">Die <span class="schimmer">Brücke.</span></h2>
+    <!-- Die beiden Ufer tragen je einen Satz, der Roboter geht in der Mitte
+         hinüber. Kästen gibt es hier bewusst nicht: das Bild ist die Folie. -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex:1;padding-bottom:80px;">
+      <p style="font-size:46px;font-weight:600;line-height:1.3;margin:0;color:var(--w-70);">Unsere Leute<br>nutzen sie nicht.</p>
+      <p style="font-size:46px;font-weight:600;line-height:1.3;margin:0;text-align:right;">Unsere Leute<br>nutzen sie.</p>
+    </div>
+    <aside class="notes">
+      Eikes Beobachtung aus dem Abstimmungstermin: fast alle haben sich eine KI
+      angeschafft, kaum einer arbeitet wirklich damit. Auf dieser Brücke stehen
+      gerade fast alle. Wenn Eike im Raum ist: kurz zu ihm schauen, er erkennt
+      seinen Satz wieder.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 9: MERKSATZ ============ -->
+<section data-chrome="aus" data-background-image="assets/images/robo/holstentor.jpg" data-background-size="cover" data-schleier="mittig">
+  <div class="slide mittig">
+    <span class="bild-quelle">Bild mit KI erstellt</span>
+    <h2 class="hero" style="font-size:96px;margin-bottom:14px;">Die KI liefert nicht schlecht.</h2>
+    <p class="hero schimmer" style="font-size:126px;margin:0;">Wir fragen schlecht.</p>
+    <aside class="notes">
+      Kurz stehen lassen. Nicht erklären. Pizza und Mail-Beispiel sind erzählt,
+      der Satz bündelt sie nur noch.
     </aside>
   </div>
 </section>
@@ -900,7 +891,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
 <!-- ============ 11: FALL 1 ANGEBOT ============ -->
 <section>
   <div class="slide">
-    <h2 class="headline">Aus fünf Stichpunkten wird ein <span class="schimmer">Angebot.</span></h2>
+    <h2 class="headline">Fünf Stichpunkte, ein <span class="schimmer">Angebot.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="band">
       <div class="station" style="flex:0 0 390px;">
@@ -910,7 +901,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         </div>
         <div class="feld" style="border-color:rgba(255,107,94,.25);">
           <p style="font-size:32px;line-height:1.5;margin:0;color:var(--w-70);">„Wir suchen für den 14. Oktober einen Raum für 25 Personen, ganztägig, mit Mittagessen. Können Sie uns ein Angebot machen?"</p>
-          <p class="label" style="margin:0;">Anfrage von<br>Frau Behrens</p>
+          <p class="label" style="margin:0;">Anfrage von<br>Frau B.</p>
         </div>
       </div>
       <svg class="pfeil-r" width="86" height="60" viewBox="0 0 86 60" fill="none">
@@ -940,11 +931,10 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
           <span class="label">Geht raus</span>
         </div>
         <div class="feld" style="border-color:rgba(58,210,159,.3);">
-          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Frau Behrens, der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave: Tageslicht, ruhig, gut für einen ganzen Tag. Die Pauschale liegt bei 68 Euro pro Person. Ich halte den Termin bis Freitag fest. Passt das?</p>
+          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Frau B., der 14. Oktober ist frei. Für 25 Personen empfehle ich den Raum Trave: Tageslicht, ruhig, gut für einen ganzen Tag. Die Pauschale liegt bei 68 Euro pro Person. Ich halte den Termin bis Freitag fest. Passt das?</p>
         </div>
       </div>
     </div>
-    <p class="label" style="margin:0;text-align:center;">Die Fakten kommen von euch. Was ihr nicht sagt, wird erfunden.</p>
     </div>
     <aside class="notes">
       Live tippen. Wichtig zu zeigen: die Fakten kommen von euch, nicht aus dem
@@ -998,11 +988,10 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
           <span class="label">Geht raus</span>
         </div>
         <div class="feld" style="border-color:rgba(58,210,159,.3);">
-          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Herr Petersen, diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Wenn Sie mögen, frage ich nebenan nach. Und für Ihre kleinere Runde im Frühjahr halte ich gern wieder etwas frei.</p>
+          <p style="font-size:29px;line-height:1.5;margin:0;">Hallo Herr P., diesmal muss ich passen: bei 120 Gästen sind wir zu klein. Wenn Sie mögen, frage ich nebenan nach. Und für Ihre kleinere Runde im Frühjahr halte ich gern wieder etwas frei.</p>
         </div>
       </div>
     </div>
-    <p class="label" style="margin:0;text-align:center;">Die KI hält den Ton, den man nach zwölf Mails selbst nicht mehr findet</p>
     </div>
     <aside class="notes">
       Der Punkt: die KI kann den Ton halten, wenn man selbst durch ist. Und die
@@ -1065,7 +1054,6 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         </div>
       </div>
     </div>
-    <p class="label" style="margin:0;text-align:center;">Die Antwort ist für die zwanzig, die nächste Woche mitlesen</p>
     </div>
     <aside class="notes">
       Erfahrungsgemäß der Fall mit den meisten Zwischenfragen. Ruhig zulassen,
@@ -1165,47 +1153,10 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 17: TRAINING ABSCHALTEN ============ -->
-<section>
-  <div class="slide">
-    <h2 class="headline">Einmal umlegen, dann ist <span class="schimmer">Ruhe.</span></h2>
-    <p class="lead" style="margin-top:4px;font-size:33px;max-width:none;">In den kostenlosen Zugängen lernen die Anbieter aus dem mit, was ihr eintippt.</p>
-    <!-- Die Titel stehen einzeilig, sonst reißt der zweizeilige ein Loch
-         zwischen Titel und Zeile darunter. Der Engpass ist die mittlere
-         Spalte: sie trägt als einzige links UND rechts den Abstand zu den
-         Trennlinien und hat damit 417px statt 467px. -->
-    <div class="spalten feld" style="grid-template-columns:repeat(3,1fr);align-items:stretch;margin-top:auto;padding:72px 52px;">
-      <div class="fragment fade-up">
-        <div class="ring" style="margin-bottom:20px;"><b>1</b></div>
-        <h3 style="font-size:42px;white-space:nowrap;">Einstellungen öffnen</h3>
-        <p style="font-size:32px;">Unten links über euren Namen.</p>
-      </div>
-      <div class="fragment fade-up">
-        <div class="ring" style="margin-bottom:20px;"><b>2</b></div>
-        <h3 style="font-size:42px;white-space:nowrap;">Datenschutz suchen</h3>
-        <p style="font-size:32px;">Heißt auch Datenkontrolle.</p>
-      </div>
-      <div class="fragment fade-up">
-        <div class="ring" style="margin-bottom:20px;"><b>3</b></div>
-        <h3 style="font-size:42px;white-space:nowrap;">Training ausschalten</h3>
-        <p style="font-size:32px;">„Modell verbessern" aus.</p>
-      </div>
-    </div>
-    <p class="lead" style="font-size:32px;max-width:none;margin-top:auto;padding-top:40px;">
-      <span class="cyan" style="font-weight:700;">Geschäftskonten</span> sind meist ohnehin ausgenommen. Nachsehen lohnt sich trotzdem.
-    </p>
-    <aside class="notes">
-      Bewusst ohne Screenshots und ohne genaue Menüpfade: die ändern sich
-      schneller als jede Folie. Wer will, macht es hier direkt am Handy mit.
-      Das ist ein guter Moment für zwei Minuten Unruhe im Raum.
-    </aside>
-  </div>
-</section>
-
-<!-- ============ 18: HALLUZINATIONEN ============ -->
+<!-- ============ 17: HALLUZINATIONEN ============ -->
 <section>
   <div class="slide" style="position:relative;">
-    <h2 class="headline gesetzt">Sie sagt es dir freundlich.<br>Und <span class="schimmer">falsch.</span></h2>
+    <h2 class="headline">Freundlich und <span class="schimmer">falsch.</span></h2>
     <div class="begleiter" style="right:64px;bottom:18px;height:158px;opacity:.95;">
       <img src="assets/images/robo/ratlos.png" alt="">
     </div>
@@ -1228,15 +1179,11 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
             An gar nichts. Erfundenes klingt wie Richtiges.
           </p>
           <hr style="border:none;height:1px;background:var(--hairline);margin:0;">
-          <p style="font-size:36px;line-height:1.45;margin:0;">
-            Die einzige Regel, die hilft:
+          <p style="font-size:38px;line-height:1.45;margin:0;">
             <span class="cyan" style="font-weight:600;">Alles, was das Haus verlässt, liest ein Mensch gegen.</span>
           </p>
         </div>
       </div>
-    </div>
-    <div class="takeaway" style="padding-top:26px;">
-      <p>Die KI schreibt den Entwurf. Die Verantwortung bleibt am Tisch.</p>
     </div>
     </div>
     <aside class="notes">
@@ -1249,7 +1196,7 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 19: EIGENER REINFALL ============ -->
+<!-- ============ 18: EIGENER REINFALL ============ -->
 <section>
   <div class="slide">
     <h2 class="headline gesetzt" style="font-size:76px;">Und wo wir selbst <span class="schimmer">reingefallen sind.</span></h2>
@@ -1291,11 +1238,12 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 20: KENNZEICHNUNGSPFLICHT ============ -->
+<!-- ============ 19: KENNZEICHNUNGSPFLICHT ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Seit diesem Monat ist das <span class="schimmer">Pflicht.</span></h2>
-    <div class="reihe wachsen" style="gap:52px;margin-top:8px;align-items:center;">
+    <p style="font-size:52px;font-weight:600;line-height:1.25;margin:2px 0 0;">Wer KI-Bilder veröffentlicht, muss das offenlegen.</p>
+    <div class="reihe wachsen" style="gap:52px;margin-top:30px;align-items:center;">
       <!-- Das Bild ist selbst mit KI erzeugt und trägt die Kennzeichnung, die
            der Artikel verlangt. Damit ist die Rechtsfolie kein Hinweis mehr,
            sondern ein Beispiel, das die Runde abschreiben kann. -->
@@ -1308,14 +1256,9 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
           <span>Dieses Bild wurde mit KI erstellt.</span>
         </div>
       </div>
-      <div class="spalte wachsen" style="gap:30px;">
+      <div class="spalte wachsen" style="gap:34px;justify-content:center;">
         <div>
           <p class="label" style="margin-bottom:16px;">EU AI Act, Artikel 50</p>
-          <p style="font-size:50px;font-weight:600;line-height:1.2;margin:0;">
-            Wer KI-Bilder veröffentlicht, muss das offenlegen.
-          </p>
-        </div>
-        <div>
           <div class="zeilen" style="font-size:30px;color:var(--w-70);">
             <div>Gilt seit dem 2. August 2026</div>
             <div>Bilder, Ton und Video: offenlegen</div>
@@ -1327,12 +1270,14 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
           <div class="zeichen-reihe">
             <img class="eu-icon" src="assets/images/eu/ki-generiert.svg" alt="Zeichen für KI-generierte Inhalte" style="height:84px;">
             <img class="eu-icon" src="assets/images/eu/ki-modifiziert.svg" alt="Zeichen für KI-modifizierte Inhalte" style="height:56px;">
-            <span class="qr">
-              <img src="assets/images/eu/qr-eu-icons.png" alt="QR-Code zur Downloadseite der EU-Kommission">
-              <span>Kostenlos bei der<br>EU-Kommission</span>
-            </span>
           </div>
         </div>
+        <!-- Bewusst abgesetzt und rechts unten: direkt neben den beiden
+             Zeichen wirkte der QR wie ein drittes. -->
+        <span class="qr" style="align-self:flex-end;margin-top:6px;">
+          <img src="assets/images/eu/qr-eu-icons.png" alt="QR-Code zur Downloadseite der EU-Kommission">
+          <span>Beide Zeichen kostenlos:<br>Downloadseite der EU-Kommission</span>
+        </span>
       </div>
     </div>
     <p class="quelle mt">Verordnung (EU) 2024/1689, Artikel 50. In Kraft seit August 2024, dieser Teil anwendbar ab 2. August 2026.</p>
@@ -1354,21 +1299,21 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 21: SIEBEN ZUM MITNEHMEN ============ -->
+<!-- ============ 20: SIEBEN ZUM MITNEHMEN ============ -->
 <section>
   <div class="slide">
     <h2 class="headline">Acht Dinge für den <span class="schimmer">Schreibtisch.</span></h2>
     <div class="gruppe-mittig wachsen">
     <div class="feld" style="padding:34px 52px;">
       <div class="mitnehmen">
-        <div><span class="nr"><span class="ring klein"><b>1</b></span></span><span class="satz">Bestellt, ruft nicht zu.<small>Rolle, Ziel, Kontext, Aufgabe.</small></span></div>
-        <div><span class="nr"><span class="ring klein"><b>5</b></span></span><span class="satz">Keine echten Namen eintippen.<small>Platzhalter tun es genauso.</small></span></div>
-        <div><span class="nr"><span class="ring klein"><b>2</b></span></span><span class="satz">Die Fakten kommen von euch.<small>Was ihr nicht sagt, wird erfunden.</small></span></div>
-        <div><span class="nr"><span class="ring klein"><b>6</b></span></span><span class="satz">Training einmal abschalten.<small>Einstellungen, Datenschutz, fertig.</small></span></div>
-        <div><span class="nr"><span class="ring klein"><b>3</b></span></span><span class="satz">Die erste Antwort ist ein Entwurf.<small>Nie das Ergebnis.</small></span></div>
-        <div><span class="nr"><span class="ring klein"><b>7</b></span></span><span class="satz">KI-Bilder kennzeichnen.<small>Seit dem 2. August Pflicht.</small></span></div>
-        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>4</b></span></span><span class="satz">Sagt, was ihr nicht wollt.<small>Verbotene Wörter wirken sofort.</small></span></div>
-        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>8</b></span></span><span class="satz">Fangt mit dem an, was nervt.<small>Die Aufgabe, die ihr am längsten vor euch herschiebt.</small></span></div>
+        <div><span class="nr"><span class="ring klein"><b>1</b></span></span><span class="satz">Bestellt, ruft nicht zu.</span></div>
+        <div><span class="nr"><span class="ring klein"><b>5</b></span></span><span class="satz">Keine echten Namen eintippen.</span></div>
+        <div><span class="nr"><span class="ring klein"><b>2</b></span></span><span class="satz">Die Fakten kommen von euch.</span></div>
+        <div><span class="nr"><span class="ring klein"><b>6</b></span></span><span class="satz">Training einmal abschalten.</span></div>
+        <div><span class="nr"><span class="ring klein"><b>3</b></span></span><span class="satz">Die erste Antwort ist ein Entwurf.</span></div>
+        <div><span class="nr"><span class="ring klein"><b>7</b></span></span><span class="satz">KI-Bilder kennzeichnen.</span></div>
+        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>4</b></span></span><span class="satz">Sagt, was ihr nicht wollt.</span></div>
+        <div style="border-bottom:none;"><span class="nr"><span class="ring klein"><b>8</b></span></span><span class="satz">Fangt mit dem an, was nervt.</span></div>
       </div>
     </div>
     </div>
@@ -1380,30 +1325,22 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 22: TITEL EINGELÖST ============ -->
+<!-- ============ 21: TITEL EINGELÖST ============ -->
 <section data-chrome="aus" data-background-image="assets/images/robo/strandkorb.jpg" data-background-size="cover" data-schleier="mittig">
   <div class="slide mittig">
     <span class="bild-quelle">Bild mit KI erstellt</span>
-    <h2 class="hero" style="font-size:112px;">Aufgeweckt heißt nicht,<br>dass ihr jetzt alles <span class="schimmer">wisst.</span></h2>
-    <p class="lead" style="font-size:44px;margin-top:30px;">
-      Ein Fall. Einmal richtig bestellt. Heute Nachmittag.
-    </p>
+    <h2 class="hero" style="font-size:118px;">Guten Morgen.<br>Jetzt seid ihr <span class="schimmer">aufgeweckt.</span></h2>
     <aside class="notes">
       Der Bogen zum Titel. Danach nicht weiterreden, sondern öffnen.
     </aside>
   </div>
 </section>
 
-<!-- ============ 23: OFFENES ENDE ============ -->
-<section data-chrome="aus" data-background-image="assets/images/robo/muk.jpg" data-background-size="cover" data-schleier="mittig">
-  <div class="slide mittig">
+<!-- ============ 22: OFFENES ENDE ============ -->
+<section data-chrome="aus" data-background-image="assets/images/robo/nachtisch.jpg" data-background-size="cover" data-schleier="seite">
+  <div class="slide" style="justify-content:center;">
     <span class="bild-quelle">Bild mit KI erstellt</span>
-    <h2 class="hero" style="font-size:154px;">Jetzt seid <span class="schimmer">ihr dran.</span></h2>
-    <p class="lead" style="font-size:38px;margin-top:16px;">
-      Fragt uns, was ihr fragen wollt.<br>
-      Es gibt hier keine Frage, die zu einfach wäre.
-    </p>
-    <p class="label" style="margin-top:64px;">Und wenn wir etwas nicht wissen, sagen wir das auch</p>
+    <h2 class="hero gesetzt" style="font-size:88px;">Noch Fragen<br>zum <span class="schimmer">Nachtisch?</span></h2>
     <aside class="notes">
       Genau dieser Teil ist Eike wichtig: der luftleere Raum.
       Nicht zu früh auflösen, Stille aushalten. Die erste Frage kommt immer.
@@ -1413,12 +1350,12 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
   </div>
 </section>
 
-<!-- ============ 24: ABSCHLUSS ============ -->
+<!-- ============ 23: ABSCHLUSS ============ -->
 <section data-chrome="aus">
   <div class="slide" style="flex-direction:row;align-items:center;gap:90px;">
     <div class="spalte" style="flex:1;gap:26px;justify-content:center;">
       <img src="assets/logos/edge-logo-white.png" alt="EDGE Digital" style="height:110px;align-self:flex-start;margin-bottom:26px;">
-      <h2 class="hero gesetzt" style="font-size:100px;margin:0;">Danke fürs<br><span class="schimmer">Frühstück.</span></h2>
+      <h2 class="hero gesetzt" style="font-size:100px;margin:0;">Danke fürs<br><span class="schimmer">Mitfrühstücken.</span></h2>
       <p class="lead" style="font-size:34px;margin-top:10px;">
         EDGE Digital<br>
         Fischstraße 16 · 23552 Lübeck
