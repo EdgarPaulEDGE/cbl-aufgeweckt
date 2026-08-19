@@ -926,16 +926,18 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
         <defs><linearGradient id="fb1b" x1="0" y1="30" x2="86" y2="30" gradientUnits="userSpaceOnUse">
           <stop stop-color="#009FF4"/><stop offset="1" stop-color="#00E2E2"/></linearGradient></defs>
       </svg>
-      <div class="station">
+      <div class="station" style="flex:1;">
         <div class="station-kopf">
           <span class="ring klein ok"><b>3</b></span>
           <span class="label">Geht raus</span>
         </div>
         <!-- Kein fertiger Text: dieser Fall wird live getippt, die Folie
-             verspricht das Ergebnis nur -->
+             verspricht das Ergebnis nur. flex:1 hält den Kasten auf der
+             Breite der anderen beiden Fall-Folien, sonst schrumpft er auf
+             das kurze Fragezeichen. -->
         <div class="feld wachsen" style="border-color:rgba(58,210,159,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
           <p class="schimmer" style="font-size:220px;font-weight:700;line-height:1;margin:0;">?</p>
-          <p class="label" style="margin:0;color:var(--weiss);text-align:center;">Schauen wir uns doch mal live an</p>
+          <p class="label" style="margin:0;color:var(--weiss);text-align:center;">Schauen wir uns<br>doch mal live an</p>
         </div>
       </div>
     </div>
