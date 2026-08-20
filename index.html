@@ -111,6 +111,9 @@ body.standbild *, body.standbild *::before, body.standbild *::after {
   transition: none !important;
 }
 body.standbild .cursor, body.standbild .tippen::after { display: none !important; }
+/* Bedienelemente gehören auf die Leinwand, nicht ins Export-PDF */
+body.standbild .reveal .controls,
+body.standbild .reveal .progress { display: none !important; }
 
 /* ---------- Typografie ---------- */
 h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
