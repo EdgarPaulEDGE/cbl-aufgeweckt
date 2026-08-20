@@ -102,6 +102,16 @@ html, body { background: var(--raum); font-family: var(--font); }
 }
 .slide.mittig { justify-content: center; align-items: center; text-align: center; }
 
+/* Für Prüfung und PDF-Export: jede Animation sofort auf ihren Endzustand.
+   Sonst fotografiert decktape die Folie mitten im Einlauf, und im PDF steht
+   ein halb aufgebauter Kasten samt Schreibmaschinen-Cursor. */
+body.standbild *, body.standbild *::before, body.standbild *::after {
+  animation-duration: .001s !important;
+  animation-delay: 0s !important;
+  transition: none !important;
+}
+body.standbild .cursor, body.standbild .tippen::after { display: none !important; }
+
 /* ---------- Typografie ---------- */
 h1, h2, h3, h4 { margin: 0; font-family: var(--font); }
 .hero {
@@ -1374,6 +1384,11 @@ body.bildfolie #kosmos, body.bildfolie .nebel, body.bildfolie .vignette { opacit
 <script src="vendor/reveal/reveal.js"></script>
 <script src="vendor/reveal/plugin/notes/notes.js"></script>
 <script>
+/* Standbild-Modus für Prüfläufe und den PDF-Export */
+if (new URLSearchParams(location.search).has('nofrag')) {
+  document.body.classList.add('standbild');
+}
+
 Reveal.initialize({
   /* ?nofrag zeigt alle Einblendungen sofort: für die visuelle Prüfung und den PDF-Export */
   fragments: !new URLSearchParams(location.search).has('nofrag'),
